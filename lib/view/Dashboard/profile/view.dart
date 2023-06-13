@@ -1,0 +1,11 @@
+export 'change_password/change_password.dart';
+export 'change_password/changepassword_inputfiels.dart';
+export 'change_password/dummydetails.dart';
+export 'edit_clinic_details.dart';
+export 'personal_details.dart';
+export 'professional_details.dart';
+export 'profile.dart';
+export 'support.dart';
+export 'support_create.dart';
+export 'support_create_balance.dart';
+ export 'terms&condition.dart';
