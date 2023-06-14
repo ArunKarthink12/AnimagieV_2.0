@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:doctorapp/view/allpackages.dart';
- 
+
+import 'processindicator/progressindicator.dart';
 
 class UploadDocuments extends StatefulWidget {
   const UploadDocuments({super.key});
@@ -54,23 +55,15 @@ class _UploadDocumentsState extends State<UploadDocuments> {
                   ))),
               Positioned(
                 child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 10),
-                                child:
-                                    Image.asset('assets/images/progress.png'),
-                              ),
-                              Positioned(
-                                  left: 2.0.wp,
-                                  child: Image.asset('assets/images/foot.png'))
-                            ],
+                          ProgressIndicatorWithIcon(
+                            percentage: .8,
+                            // )
+                            // child: Image.asset('assets/images/progress.png'),
                           ),
                           SizedBox(
                             height: 1.0.hp,
@@ -85,6 +78,32 @@ class _UploadDocumentsState extends State<UploadDocuments> {
                               ),
                             ),
                           ),
+                          // Stack(
+                          //   children: [
+                          //     Padding(
+                          //       padding: const EdgeInsets.only(
+                          //           left: 20.0, right: 20, top: 10),
+                          //       child:
+                          //           Image.asset('assets/images/progress.png'),
+                          //     ),
+                          //     Positioned(
+                          //         left: 2.0.wp,
+                          //         child: Image.asset('assets/images/foot.png'))
+                          //   ],
+                          // ),
+                          // SizedBox(
+                          //   height: 1.0.hp,
+                          // ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(right: 20.0),
+                          //   child: Align(
+                          //     alignment: Alignment.bottomRight,
+                          //     child: Text(
+                          //       '75% Completed',
+                          //       style: threehundredtweleve,
+                          //     ),
+                          //   ),
+                          // ),
                           Center(
                             child: Stack(
                               children: [
@@ -275,26 +294,30 @@ class _UploadDocumentsState extends State<UploadDocuments> {
                                   children: [
                                     InkWell(
                                         onTap: () async {
-                                          final XFile? pickedImage =
-                                              await _picker.pickImage(
-                                                  source: ImageSource.gallery);
-                                          if (pickedImage != null) {
-                                            kycController.pan_pic(
-                                                File(pickedImage.path));
+                                          // final XFile? pickedImage =
+                                          //     await _picker.pickImage(
+                                          //         source: ImageSource.gallery);
+                                          var result = await ImagePicker()
+                                              .pickImage(
+                                                  source: ImageSource.camera);
+                                          File file = File(result!.path);
+                                          if (result.path != '') {
+                                            kycController.pan_pic =
+                                                File(file.path);
                                           }
                                         },
-                                        child: kycController
-                                                .pan_pic.value.path.isEmpty
-                                            ? Image.asset(
-                                                'assets/images/upload.png',
-                                                height: 10.0.hp,
-                                                width: 20.0.wp,
-                                              )
-                                            : Image.file(
-                                                kycController.pan_pic.value,
-                                                height: 10.0.hp,
-                                                width: 20.0.wp,
-                                              )),
+                                        child:
+                                            kycController.pan_pic.path.isEmpty
+                                                ? Image.asset(
+                                                    'assets/images/upload.png',
+                                                    height: 10.0.hp,
+                                                    width: 20.0.wp,
+                                                  )
+                                                : Image.file(
+                                                    kycController.pan_pic,
+                                                    height: 10.0.hp,
+                                                    width: 20.0.wp,
+                                                  )),
                                     Text(
                                       'Click to upload',
                                       style: toptitleStyle,

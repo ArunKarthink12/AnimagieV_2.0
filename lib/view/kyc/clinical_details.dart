@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:doctorapp/view/allpackages.dart';
- 
- 
+
+import 'processindicator/progressindicator.dart';
 
 class ClinicalDocuments extends StatefulWidget {
   const ClinicalDocuments({super.key});
@@ -56,23 +56,15 @@ class _ClinicalDocumentsState extends State<ClinicalDocuments> {
                   ))),
               Positioned(
                 child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 10),
-                                child:
-                                    Image.asset('assets/images/progress.png'),
-                              ),
-                              Positioned(
-                                  left: 2.0.wp,
-                                  child: Image.asset('assets/images/foot.png'))
-                            ],
+                          ProgressIndicatorWithIcon(
+                            percentage: .9,
+                            // )
+                            // child: Image.asset('assets/images/progress.png'),
                           ),
                           SizedBox(
                             height: 1.0.hp,
@@ -87,6 +79,32 @@ class _ClinicalDocumentsState extends State<ClinicalDocuments> {
                               ),
                             ),
                           ),
+                          // Stack(
+                          //   children: [
+                          //     Padding(
+                          //       padding: const EdgeInsets.only(
+                          //           left: 20.0, right: 20, top: 10),
+                          //       child:
+                          //           Image.asset('assets/images/progress.png'),
+                          //     ),
+                          //     Positioned(
+                          //         left: 2.0.wp,
+                          //         child: Image.asset('assets/images/foot.png'))
+                          //   ],
+                          // ),
+                          // SizedBox(
+                          //   height: 1.0.hp,
+                          // ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(right: 20.0),
+                          //   child: Align(
+                          //     alignment: Alignment.bottomRight,
+                          //     child: Text(
+                          //       '85% Completed',
+                          //       style: threehundredtweleve,
+                          //     ),
+                          //   ),
+                          // ),
                           Center(
                             child: Stack(
                               children: [
@@ -324,8 +342,9 @@ class _ClinicalDocumentsState extends State<ClinicalDocuments> {
                             child: ButtonIconButton(
                               press: () {
                                 // loginController.loginController(context: context);
-                                kycController.kycController();
-
+                                Future.delayed(Duration.zero, () async {
+                                  await kycController.kycController();
+                                });
                                 // Get.to(const HomeScreen());
                               },
                               bordercolor: buttoncolor,

@@ -1,4 +1,4 @@
-export 'all_appointment.dart';
+export 'appointmentScreens/view/all_appointment.dart';
 export 'blog_details.dart';
 export 'completed_appointment.dart';
 export 'joinsession.dart';

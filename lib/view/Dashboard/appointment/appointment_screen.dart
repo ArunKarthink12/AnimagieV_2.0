@@ -1,9 +1,6 @@
- 
-
 import '../../allpackages.dart';
 import '../home_screen/otherblog.dart';
 import '../home_screen/your_blog.dart';
- 
 
 class Appointment extends StatefulWidget {
   const Appointment({super.key, this.index});
@@ -14,6 +11,19 @@ class Appointment extends StatefulWidget {
 }
 
 class _AppointmentState extends State<Appointment> {
+  OtherBlogController otherBlogController = Get.put(OtherBlogController());
+  @override
+  void initState() {
+    fetchdata();
+    super.initState();
+  }
+
+  fetchdata() {
+    Future.delayed(Duration.zero, () async {
+      await otherBlogController.otherController();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -101,8 +111,22 @@ class _AppointmentState extends State<Appointment> {
                         SizedBox(
                           height: 1000.0.hp,
                           width: 1000.0.wp,
-                          child: const TabBarView(children: [
-                              OtherBlog(),
+                          child: TabBarView(children: [
+                            Obx(() {
+                              // print(
+                              //     'othercontroller------------${otherBlogController.listdata.length}');
+                              if (otherBlogController.isLoding.isTrue) {
+                                return const Center(
+                                    child: CircularProgressIndicator());
+                              } else if (otherBlogController.listdata.first ==
+                                  []) {
+                                return const Center(
+                                  child: Text('No Data Found'),
+                                );
+                              } else {
+                                return OtherBlog();
+                              }
+                            }),
                             YourBlog(),
                           ]),
                         )

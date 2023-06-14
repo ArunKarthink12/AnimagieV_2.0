@@ -1,8 +1,4 @@
- 
- 
- 
-
-import 'package:doctorapp/view/Dashboard/profile/personal_details.dart';
+import 'package:doctorapp/view/Dashboard/profile/personaldetails/view/personal_details.dart';
 import 'package:doctorapp/view/Dashboard/profile/professional_details.dart';
 import 'package:doctorapp/view/Dashboard/profile/support.dart';
 import 'package:doctorapp/view/Dashboard/profile/terms&condition.dart';
@@ -11,8 +7,7 @@ import '../../allpackages.dart';
 import '../../notification.dart';
 import 'change_password/change_password.dart';
 import 'edit_clinic_details.dart';
- 
- 
+
 class Profile extends StatefulWidget {
   const Profile({super.key});
 

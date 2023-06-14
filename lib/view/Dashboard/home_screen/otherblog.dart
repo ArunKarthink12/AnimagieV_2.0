@@ -9,11 +9,14 @@ class OtherBlog extends StatefulWidget {
 }
 
 class _OtherBlogState extends State<OtherBlog> {
+  OtherBlogController otherBlogController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
-        itemCount: 5,
+        itemCount: 3,
+        // otherBlogController.listdata.length,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {

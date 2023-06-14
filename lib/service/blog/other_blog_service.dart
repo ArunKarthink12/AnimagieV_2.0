@@ -8,29 +8,37 @@ import 'package:http/http.dart' as http;
 import '../../view/allpackages.dart';
 
 class OtherBlogService {
-  Future otherBlogService() async {
+  Future otherBlogService({view}) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString(Constants.token);
-    var data = {"view": '2'};
     try {
+      var data = {"view": view.toString()};
+
       var response = await http.post(
           Uri.parse(
               'https://jooju.in/app-demo/public/api/doctor/blog/blog-list'),
           body: data,
           headers: {
-            "Accept": "application/json",
             'Authorization': 'Bearer $token',
+            // 'Content-Type': 'application/json',
           });
 
       // var jsonresponse = jsonDecode(response.body);
-      log(response.body.toString());
+      // print("servicess" + response.body.toString());
 
       if (response.statusCode == 200) {
-        List jsonResponse = json.decode(response.body);
-        return jsonResponse
+        print("servicess" + response.body.toString());
+
+        // var jsonResponse = json.decode(response.body);
+        Fluttertoast.showToast(msg: "success");
+        List<dynamic> apiResponse = json.decode(response.body);
+        print("servicedata${response.body}");
+        // return OtherBlogModel.fromJson(apiResponse as Map<String, dynamic>);
+        return apiResponse
             .map((job) => new OtherBlogModel.fromJson(job))
             .toList();
       } else {
+        Fluttertoast.showToast(msg: "Failed");
         return null;
       }
     } catch (e) {

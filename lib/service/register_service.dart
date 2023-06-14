@@ -11,35 +11,36 @@ class RegisterService {
     name,
     email,
     password,
-    password_confirmation,
+    passwordConfirmation,
   }) async {
     try {
       var data = {
-        "name": name ?? "",
-        "email": email ?? "",
-        "password": password ?? "",
-        "password_confirmation": password_confirmation ?? ""
+        "name": name.toString(),
+        "email": email.toString(),
+        "password": password.toString(),
+        "password_confirmation": passwordConfirmation.toString()
       };
       log(data.toString());
-      var dataEncode = jsonEncode(data);
+      // var dataEncode = jsonEncode(data);
       var response = await http.post(
           Uri.parse('https://jooju.in/app-demo/public/api/create-doctor'),
-          body: dataEncode);
+          body: data);
 
       var jsonresponse = jsonDecode(response.body);
-      log(response.body.toString());
+      // log(response.body.toString());
 
       if (response.statusCode == 200) {
-        if (jsonresponse['status'] == 'success') {
-          Fluttertoast.showToast(msg: jsonresponse['message']);
-          return RegisterModel.fromJson(jsonresponse);
-        } else {
-          Fluttertoast.showToast(msg: jsonresponse['message'].toString());
-        }
+        // if (jsonresponse['status'] == 'success') {
+        Fluttertoast.showToast(msg: 'Success');
+        return RegisterModel.fromJson(jsonresponse);
       } else {
-        Fluttertoast.showToast(msg: jsonresponse['message'].toString());
-        return null;
+        Fluttertoast.showToast(msg: "Failed");
       }
+      // }
+      //  else {
+      //   Fluttertoast.showToast(msg: jsonresponse['message'].toString());
+      //   return null;
+      // }
     } catch (e) {
       rethrow;
     }

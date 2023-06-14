@@ -1,6 +1,6 @@
 import '../allpackages.dart';
 import '../notification.dart';
-import 'home_screen/all_appointment.dart';
+import 'home_screen/appointmentScreens/view/all_appointment.dart';
 import 'home_screen/completed_appointment.dart';
 import 'home_screen/today_appointment.dart';
 import 'home_screen/upcoming_details.dart';

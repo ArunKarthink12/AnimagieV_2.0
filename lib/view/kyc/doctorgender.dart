@@ -1,8 +1,8 @@
 import 'package:doctorapp/controller/kyc_controller.dart';
+import 'package:doctorapp/view/kyc/processindicator/progressindicator.dart';
 
- 
 import '../allpackages.dart';
- 
+
 class DoctorGender extends StatefulWidget {
   const DoctorGender({super.key});
 
@@ -61,17 +61,10 @@ class _DoctorGenderState extends State<DoctorGender> {
               child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(children: [
-                    Stack(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 20.0, right: 20, top: 10),
-                          child: Image.asset('assets/images/progress.png'),
-                        ),
-                        Positioned(
-                            left: 2.0.wp,
-                            child: Image.asset('assets/images/foot.png'))
-                      ],
+                    ProgressIndicatorWithIcon(
+                      percentage: .2,
+                      // )
+                      // child: Image.asset('assets/images/progress.png'),
                     ),
                     SizedBox(
                       height: 1.0.hp,
@@ -86,6 +79,31 @@ class _DoctorGenderState extends State<DoctorGender> {
                         ),
                       ),
                     ),
+                    // Stack(
+                    //   children: [
+                    //     Padding(
+                    //       padding: const EdgeInsets.only(
+                    //           left: 20.0, right: 20, top: 10),
+                    //       child: Image.asset('assets/images/progress.png'),
+                    //     ),
+                    //     Positioned(
+                    //         left: 2.0.wp,
+                    //         child: Image.asset('assets/images/foot.png'))
+                    //   ],
+                    // ),
+                    // SizedBox(
+                    //   height: 1.0.hp,
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(right: 20.0),
+                    //   child: Align(
+                    //     alignment: Alignment.bottomRight,
+                    //     child: Text(
+                    //       '15% Completed',
+                    //       style: threehundredtweleve,
+                    //     ),
+                    //   ),
+                    // ),
                     Stack(
                       children: [
                         Container(
@@ -160,7 +178,6 @@ class _DoctorGenderState extends State<DoctorGender> {
                     ButtonIconButton(
                       press: () {
                         // loginController.loginController(context: context);
-                        
 
                         Get.to(const DoctorPhone());
                       },

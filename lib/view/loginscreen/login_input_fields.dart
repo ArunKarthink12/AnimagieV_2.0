@@ -192,12 +192,13 @@ class _LoginInputFieldsState extends State<LoginInputFields> {
           ButtonIconButton(
             press: () {
               if (formKey.currentState!.validate()) {
-                print('clickk');
-                Get.to(const HomeScreen());
-                // loginController.loginController(context: context);
-                print("no");
+                // print('clickk');
+                // Get.to(const HomeScreen());
+                loginController.loginController(context: context);
+                // print("no");
               } else {
-                Get.to(const HomeScreen());
+                Fluttertoast.showToast(msg: "Invalied Credintial");
+                // Get.to(const HomeScreen());
               }
             },
             bordercolor: buttoncolor,

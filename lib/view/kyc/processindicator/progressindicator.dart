@@ -15,7 +15,7 @@ class _ProgressIndicatorWithIconState extends State<ProgressIndicatorWithIcon> {
   @override
   Widget build(BuildContext context) {
     return LinearPercentIndicator(
-      width: 83.0.wp,
+      width: 95.0.wp,
       lineHeight: 8,
       percent: widget.percentage,
       // center: Text(

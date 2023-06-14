@@ -24,7 +24,7 @@ class KycController extends GetxController {
   TextEditingController clinic_address = TextEditingController();
   Rx<File> profile_pic = File('').obs;
   Rx<File> adhaar_pic = File('').obs;
-  Rx<File> pan_pic = File('').obs;
+  File pan_pic = File('');
   Rx<File> degree_document = File('').obs;
   Rx<File> license_document = File('').obs;
   Rx<File> clinic_logo = File('').obs;
@@ -51,7 +51,7 @@ class KycController extends GetxController {
           clinic_address: clinic_address.text,
           profile_pic: profile_pic.value,
           adhaar_pic: adhaar_pic.value,
-          pan_pic: pan_pic.value,
+          pan_pic: pan_pic.path.toString(),
           degree_document: degree_document.value,
           license_document: license_document.value,
           clinic_logo: clinic_logo.value,
@@ -59,9 +59,9 @@ class KycController extends GetxController {
       log('mobile---${response}');
       if (response != null) {
         _kyclist.add(response);
-        Fluttertoast.showToast(msg: response.message.toString());
+        // Fluttertoast.showToast(msg: response.message.toString());
 
-        Get.toNamed('/forgototp');
+        // Get.toNamed('/forgototp');
       } else {
         // Fluttertoast.showToast(msg: response.message.toString());
       }

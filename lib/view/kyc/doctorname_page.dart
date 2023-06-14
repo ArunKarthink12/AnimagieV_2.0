@@ -70,14 +70,15 @@ class _DoctorNameState extends State<DoctorName> with TickerProviderStateMixin {
             Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(children: [
-                  Padding(
-                      padding:
-                          const EdgeInsets.only(left: 20.0, right: 20, top: 10),
-                      child: ProgressIndicatorWithIcon(
-                        percentage: .1,
-                      )
-                      // child: Image.asset('assets/images/progress.png'),
-                      ),
+                  // Padding(
+                  //     padding:
+                  //         const EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                  // child:
+                  ProgressIndicatorWithIcon(
+                    percentage: .1,
+                    // )
+                    // child: Image.asset('assets/images/progress.png'),
+                  ),
                   SizedBox(
                     height: 1.0.hp,
                   ),

@@ -1,8 +1,8 @@
  
 
-import '../../allpackages.dart';
-import '../appointment/session_details.dart';
-import 'joinsession.dart';
+import '../../../../allpackages.dart';
+import '../../../appointment/session_details.dart';
+import '../../joinsession.dart';
  
 class AllAppointment extends StatefulWidget {
   const AllAppointment({super.key});
@@ -12,6 +12,7 @@ class AllAppointment extends StatefulWidget {
 }
 
 class _AllAppointmentState extends State<AllAppointment> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -37,7 +37,7 @@ class OtherBlogModel {
   factory OtherBlogModel.fromJson(Map<String, dynamic> json) => OtherBlogModel(
         id: json["id"],
         userId: json["user_id"],
-        image: json["image"],
+        image: json["image"] ?? "",
         topic: topicValues.map[json["topic"]]!,
         content: contentValues.map[json["content"]]!,
         tags: json["tags"],
@@ -49,10 +49,10 @@ class OtherBlogModel {
   Map<String, dynamic> toJson() => {
         "id": id,
         "user_id": userId,
-        "image": image,
+        "image": image ?? "",
         "topic": topicValues.reverse[topic],
         "content": contentValues.reverse[content],
-        "tags": tagsValues.reverse[tags],
+        "tags": tags,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
         "image_path": imagePath,

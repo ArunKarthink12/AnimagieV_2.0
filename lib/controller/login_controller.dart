@@ -1,13 +1,18 @@
+import 'dart:developer';
+
+import 'package:doctorapp/view/Dashboard/home_page.dart';
+
 import '../model/login_model.dart';
 import '../service/login_service.dart';
 import '../utils/common_function/constants.dart';
+import '../view/Dashboard/home_screen.dart';
 import '../view/allpackages.dart';
 
 class LoginController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-  List<LoginModel> _loginmodel = [];
-  List<LoginModel> get getloginmodel => _loginmodel;
+  List<Loginmodel> _loginmodel = [];
+  List<Loginmodel> get getloginmodel => _loginmodel;
   RxBool isloginLoad = true.obs;
   //otp
 
@@ -32,19 +37,18 @@ class LoginController extends GetxController {
 
       try {
         var response = await loginService.loginService(
-            email: email.text, password: password.text);
-        print(response);
+          email: email.text,
+          password: password.text,
+        );
+        // print(response);
 
         if (response != null) {
-          print(response);
           sharedPreferences.setString(Constants.token, response.token);
-
-          //Get.toNamed('/home');
+          Get.to(const HomeScreen());
           isloginLoad(false);
-          // Get.back();
         } else {
           isloginLoad(false);
-
+          log("gv");
           Get.back();
         }
       } catch (e) {

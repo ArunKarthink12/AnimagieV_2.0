@@ -1,6 +1,5 @@
- 
 import '../allpackages.dart';
- 
+import 'processindicator/progressindicator.dart';
 
 class CouncilRegisterNumer extends StatefulWidget {
   CouncilRegisterNumer({Key? key}) : super(key: key);
@@ -50,17 +49,10 @@ class _CouncilRegisterNumerState extends State<CouncilRegisterNumer> {
               child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(children: [
-                    Stack(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 20.0, right: 20, top: 10),
-                          child: Image.asset('assets/images/progress.png'),
-                        ),
-                        Positioned(
-                            left: 2.0.wp,
-                            child: Image.asset('assets/images/foot.png'))
-                      ],
+                    ProgressIndicatorWithIcon(
+                      percentage: .5,
+                      // )
+                      // child: Image.asset('assets/images/progress.png'),
                     ),
                     SizedBox(
                       height: 1.0.hp,
@@ -75,6 +67,31 @@ class _CouncilRegisterNumerState extends State<CouncilRegisterNumer> {
                         ),
                       ),
                     ),
+                    // Stack(
+                    //   children: [
+                    //     Padding(
+                    //       padding: const EdgeInsets.only(
+                    //           left: 20.0, right: 20, top: 10),
+                    //       child: Image.asset('assets/images/progress.png'),
+                    //     ),
+                    //     Positioned(
+                    //         left: 2.0.wp,
+                    //         child: Image.asset('assets/images/foot.png'))
+                    //   ],
+                    // ),
+                    // SizedBox(
+                    //   height: 1.0.hp,
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(right: 20.0),
+                    //   child: Align(
+                    //     alignment: Alignment.bottomRight,
+                    //     child: Text(
+                    //       '45% Completed',
+                    //       style: threehundredtweleve,
+                    //     ),
+                    //   ),
+                    // ),
                     Stack(
                       children: [
                         Container(

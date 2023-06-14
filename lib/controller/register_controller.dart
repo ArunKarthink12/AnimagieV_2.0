@@ -37,11 +37,12 @@ class RegisterController extends GetxController {
             name: name.text,
             email: email.text,
             password: password.text,
-            password_confirmation: password_confirmation.text);
+            passwordConfirmation: password_confirmation.text);
         log('resss');
-        log(response.toString());
+        // log(response.toString());
         if (response != null) {
           isRegisterLoad(false);
+          Get.to(const UploadPictureDetail());
           // Get.toNamed('/login');
           log("Login");
         } else {

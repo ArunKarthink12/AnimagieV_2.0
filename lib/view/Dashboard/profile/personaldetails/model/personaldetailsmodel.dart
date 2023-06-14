@@ -1,35 +1,16 @@
 // To parse this JSON data, do
 //
-//     final registerModel = registerModelFromJson(jsonString);
+//     final doctorDetailsModel = doctorDetailsModelFromJson(jsonString);
 
 import 'dart:convert';
 
-RegisterModel registerModelFromJson(String str) =>
-    RegisterModel.fromJson(json.decode(str));
+DoctorDetailsModel doctorDetailsModelFromJson(String str) =>
+    DoctorDetailsModel.fromJson(json.decode(str));
 
-String registerModelToJson(RegisterModel data) => json.encode(data.toJson());
+String doctorDetailsModelToJson(DoctorDetailsModel data) =>
+    json.encode(data.toJson());
 
-class RegisterModel {
-  User user;
-  String token;
-
-  RegisterModel({
-    required this.user,
-    required this.token,
-  });
-
-  factory RegisterModel.fromJson(Map<String, dynamic> json) => RegisterModel(
-        user: User.fromJson(json["user"]),
-        token: json["token"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "user": user.toJson(),
-        "token": token,
-      };
-}
-
-class User {
+class DoctorDetailsModel {
   int id;
   String name;
   String email;
@@ -40,15 +21,15 @@ class User {
   String role;
   int status;
   int isAcceptClub;
-  dynamic type;
+  String type;
   dynamic address;
-  dynamic city;
-  dynamic state;
-  dynamic pincode;
+  String city;
+  String state;
+  String pincode;
   dynamic fullName;
   dynamic district;
 
-  User({
+  DoctorDetailsModel({
     required this.id,
     required this.name,
     required this.email,
@@ -59,16 +40,17 @@ class User {
     required this.role,
     required this.status,
     required this.isAcceptClub,
-    this.type,
+    required this.type,
     this.address,
-    this.city,
-    this.state,
-    this.pincode,
+    required this.city,
+    required this.state,
+    required this.pincode,
     this.fullName,
     this.district,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
+  factory DoctorDetailsModel.fromJson(Map<String, dynamic> json) =>
+      DoctorDetailsModel(
         id: json["id"],
         name: json["name"],
         email: json["email"],

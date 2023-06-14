@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:doctorapp/view/allpackages.dart';
+import 'package:doctorapp/view/kyc/processindicator/progressindicator.dart';
 
 import '../Dashboard/home_screen.dart';
 
@@ -73,25 +74,35 @@ class _UploadPictureDetailState extends State<UploadPictureDetail> {
                 child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(children: [
-                      Stack(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0, right: 20, top: 10),
-                            child: Image.asset('assets/images/progress.png'),
-                          ),
-                          Positioned(
-                              left: 2.0.wp,
-                              child: Image.asset('assets/images/foot.png'))
-                        ],
+                      ProgressIndicatorWithIcon(
+                        percentage: .1,
+                        // )
+                        // child: Image.asset('assets/images/progress.png'),
                       ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Text(
-                          '0% Completed',
-                          style: forminputstyle,
+                      SizedBox(
+                        height: 1.0.hp,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: Text(
+                            '0% Completed',
+                            style: threehundredtweleve,
+                          ),
                         ),
                       ),
+                      // ProgressIndicatorWithIcon(
+                      //   percentage: .0,
+                      // ),
+
+                      // Align(
+                      //   alignment: Alignment.bottomRight,
+                      //   child: Text(
+                      //     '0% Completed',
+                      //     style: forminputstyle,
+                      //   ),
+                      // ),
                       Stack(
                         children: [
                           Container(
@@ -130,7 +141,7 @@ class _UploadPictureDetailState extends State<UploadPictureDetail> {
                         height: 5.0.hp,
                       ),
                       Text(
-                        'Upload your picture..',
+                        ' picture..',
                         style: uploadpic,
                       ),
                       SizedBox(
