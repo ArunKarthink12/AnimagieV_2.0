@@ -1,5 +1,6 @@
+import 'package:doctorapp/view/Dashboard/appointment/controller/viewPrescriptioncontroller.dart';
+
 import '../../allpackages.dart';
- 
 
 class AddDetails extends StatefulWidget {
   const AddDetails({super.key});
@@ -9,6 +10,15 @@ class AddDetails extends StatefulWidget {
 }
 
 class _AddDetailsState extends State<AddDetails> {
+  ViewPrescriptionController viewPrescriptionController =
+      Get.put(ViewPrescriptionController());
+  @override
+  void initState() {
+    // TODO: implement initState
+    viewPrescriptionController.viewPrescriptionControllerFunction();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +54,7 @@ class _AddDetailsState extends State<AddDetails> {
                 right: 20,
                 top: 10,
               ),
+              // https://jooju.in/app-demo/public/api/doctor/save-prescription
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,

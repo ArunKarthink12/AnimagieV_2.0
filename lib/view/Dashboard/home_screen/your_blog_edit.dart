@@ -1,5 +1,7 @@
 import 'dart:io';
- 
+
+import 'package:doctorapp/view/Dashboard/home_screen/appointmentScreens/controller/taglistController.dart';
+
 import '../../allpackages.dart';
 
 class YourBlogEdit extends StatefulWidget {
@@ -16,8 +18,14 @@ class _YourBlogEditState extends State<YourBlogEdit> {
   var dummylist;
   BlogCreateController blogCreateController = Get.put(BlogCreateController());
   final _picker = ImagePicker();
-
+  TagListController taglistcontroller = Get.put(TagListController());
   @override
+  void initState() {
+    // TODO: implement initState
+    taglistcontroller.tagListControllerFunction();
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -203,6 +211,8 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                       SizedBox(
                         height: 3.0.hp,
                       ),
+
+                      ///TagListobx
                       Container(
                           height: 7.00.hp,
                           width: 95.00.wp,

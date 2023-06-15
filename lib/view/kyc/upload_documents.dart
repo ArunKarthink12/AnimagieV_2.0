@@ -12,7 +12,7 @@ class UploadDocuments extends StatefulWidget {
 }
 
 class _UploadDocumentsState extends State<UploadDocuments> {
-  KycController kycController = Get.find();
+  KycController kycController = Get.put(KycController());
   final _picker = ImagePicker();
   var selectedindex = 0;
   var images = ['assets/images/dog.png', 'assets/images/cat.png'];

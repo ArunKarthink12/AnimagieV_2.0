@@ -301,7 +301,9 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                                   child: ButtonIconButton(
                                       text: 'SAVE CHANGES',
                                       bordercolor: Colors.blue,
-                                      press: () {}),
+                                      press: () {
+                                        Get.back();
+                                      }),
                                 )
                               ]),
                         ),

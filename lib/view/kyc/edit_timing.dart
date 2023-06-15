@@ -1,4 +1,9 @@
+import 'package:doctorapp/view/kyc/controller/cancelRequestcontroller.dart';
+import 'package:doctorapp/view/kyc/controller/doctorUpdateSlotsController.dart';
+import 'package:doctorapp/view/kyc/controller/storeHolidayController.dart';
+
 import '../allpackages.dart';
+import 'controller/doctorslotsController.dart';
 import 'processindicator/progressindicator.dart';
 
 class EditTiming extends StatefulWidget {
@@ -9,6 +14,24 @@ class EditTiming extends StatefulWidget {
 }
 
 class _EditTimingState extends State<EditTiming> {
+  DoctorSlotsController doctorSlotsController =
+      Get.put(DoctorSlotsController());
+  DoctorUpdateSlotsController doctorUpdateSlotsController =
+      Get.put(DoctorUpdateSlotsController());
+  StoreHolidaysController storeHolidaysController =
+      Get.put(StoreHolidaysController());
+  CancelRequestController cancelRequestController =
+      Get.put(CancelRequestController());
+  @override
+  void initState() {
+    // TODO: implement initState
+    doctorSlotsController.doctorSlotControl();
+    doctorUpdateSlotsController.doctorUpdateSlotsControl();
+    storeHolidaysController.storeHolidaysControl();
+    cancelRequestController.storeHolidaysControl();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

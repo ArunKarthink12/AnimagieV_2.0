@@ -259,7 +259,9 @@ class _EditClinicDetailsState extends State<EditClinicDetails> {
                         child: ButtonIconButton(
                             text: 'SAVE CHANGES',
                             bordercolor: Colors.blue,
-                            press: () {}),
+                            press: () {
+                              Get.back();
+                            }),
                       )
                     ],
                   ),

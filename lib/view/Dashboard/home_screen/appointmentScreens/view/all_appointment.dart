@@ -1,9 +1,10 @@
- 
+import 'package:doctorapp/view/Dashboard/home_screen/appointmentScreens/controller/appointment_controller.dart';
+import 'package:doctorapp/view/Dashboard/home_screen/appointmentScreens/controller/attenNowController.dart';
 
 import '../../../../allpackages.dart';
 import '../../../appointment/session_details.dart';
 import '../../joinsession.dart';
- 
+
 class AllAppointment extends StatefulWidget {
   const AllAppointment({super.key});
 
@@ -12,7 +13,19 @@ class AllAppointment extends StatefulWidget {
 }
 
 class _AllAppointmentState extends State<AllAppointment> {
-  
+  AppointmentController appointmentController =
+      Get.put(AppointmentController());
+  AttenNowController attenNowController = Get.put(AttenNowController());
+  @override
+  void initState() {
+    // TODO: implement initState
+    appointmentController.appointmentListControllerFunction();
+    attenNowController.attenNowControllerFunction();
+    super.initState();
+  }
+
+// https://jooju.in/app-demo/public/api/pets/attend-appointment
+  ///obx missing
   @override
   Widget build(BuildContext context) {
     return Scaffold(

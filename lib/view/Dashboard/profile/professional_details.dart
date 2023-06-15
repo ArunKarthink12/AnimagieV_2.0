@@ -1,5 +1,3 @@
- 
-
 import '../../allpackages.dart';
 
 class ProfessionalDetails extends StatefulWidget {
@@ -346,7 +344,9 @@ class _ProfessionalDetailsState extends State<ProfessionalDetails> {
                             child: ButtonIconButton(
                                 text: 'SAVE CHANGES',
                                 bordercolor: Colors.blue,
-                                press: () {}),
+                                press: () {
+                                  Get.back();
+                                }),
                           )
                         ])),
               ),
