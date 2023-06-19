@@ -2,6 +2,7 @@ import 'dart:io';
 
 // import 'package:dio/dio.dart';
 import 'package:dio/dio.dart';
+import 'package:doctorapp/model/editblocmodel.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,46 +12,38 @@ import '../../utils/utils.dart';
 // import '../../utils/common_function/constants.dart';
 // import '../../view/allpackages.dart';
 
-class BlogCreateService {
-  Future blogCreateService({
+class EditBlogService {
+  Future editBlogService({
     image,
     topic,
+    id,
     content,
   }) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString(Constants.token);
-    String fileNames = '';
-//  var file = File('path/to/file.jpg'); // Replace with the correct file path
+    // String fileNames = '';
 
-//     if (await file.exists()) {
-//       var formData = FormData.fromMap({
-//         'file': await MultipartFile.fromFile(file.path),
-//       });var response = await dio.post(
-//         'YOUR_UPLOAD_URL',
-//         data: formData,
-//       );
-
-//       print(response.data);
-//     }
-    if (image != '') {
-      print("Filename-->$image");
-      fileNames = image.toString().split('/').last;
-      print("Filename-->$fileNames");
-    }
+    // if (image != '') {
+    //   print("Filename-->$image");
+    //   fileNames = image.toString().split('/').last;
+    //   print("Filename-->$fileNames");
+    // }
+    var fileUrl = 'https://example.com/path/to/file.jpg';
     try {
       Dio dio = Dio();
 
       FormData formData = FormData.fromMap({
         "image": await MultipartFile.fromFile(
-          image.toString(),
-          filename: fileNames.toString(),
+          fileUrl,
+          filename: "file.jpg",
           // contentType: MediaType(
           //   "image",
           //   "jpg",
           // ),
         ),
         "topic": topic.toString(),
-        "content": content.toString()
+        "content": content.toString(),
+        "id": 48,
       });
       Response response = await dio.post(
           'https://jooju.in/app-demo/public/api/doctor/blog/store',
@@ -72,7 +65,7 @@ class BlogCreateService {
         // print(response.headers);
         // print(response.requestOptions);
         print(response.statusCode);
-        return BlogCreateModel.fromJson(response.data);
+        return EditBlogModel.fromJson(response.data);
       } else {
         print(response.statusCode);
         return null;

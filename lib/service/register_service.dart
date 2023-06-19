@@ -32,7 +32,7 @@ class RegisterService {
       if (response.statusCode == 200) {
         // if (jsonresponse['status'] == 'success') {
         Fluttertoast.showToast(msg: 'Success');
-        return RegisterModel.fromJson(jsonresponse);
+        return CreateAccountModel.fromJson(jsonresponse);
       } else {
         Fluttertoast.showToast(msg: "Failed");
       }

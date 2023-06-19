@@ -29,44 +29,10 @@ class LoginService {
         return Loginmodel.fromJson(jsonresponse);
       } else {
         log('failure-------------------------------');
-
-        Fluttertoast.showToast(msg: "Failed");
+        Fluttertoast.showToast(msg: "unauthorized credentials ");
       }
     } catch (e) {
       rethrow;
     }
   }
-
-//   Future loginService({email, password}) async {
-//     var data = {
-//       'email': email.toString(),
-//       'password': password.toString(),
-//       "type": '0'
-//     };
-//     // var encodedata = jsonEncode(data);
-//     // print(data.toString());
-//     try {
-//       var response = await http.post(
-//           Uri.parse('https://jooju.in/app-demo/public/api/login-doctor'),
-//           body: data);
-//       // print(response.toString());
-
-//       // print(jsonresponse.toString());
-//       if (response.statusCode == 200) {
-//         print('kowsiiiiii');
-//         var jsonresponse = jsonDecode(response.body);
-
-//         log('successs-------------------------------');
-//         log('${jsonresponse['token']}');
-//         Fluttertoast.showToast(msg: jsonresponse['message'].toString());
-
-//         return LoginModel.fromJson(jsonresponse);
-//       } else {
-//         Fluttertoast.showToast(msg: response.statusCode.toString());
-//         Get.back();
-//       }
-//     } catch (e) {
-//       rethrow;
-//     }
-//   }
 }

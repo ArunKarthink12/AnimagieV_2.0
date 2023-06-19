@@ -1,8 +1,6 @@
- 
 import '../../allpackages.dart';
 import '../appointment/session_details.dart';
 import 'joinsession.dart';
- 
 
 class TodayAppointment extends StatefulWidget {
   const TodayAppointment({super.key});
@@ -14,8 +12,10 @@ class TodayAppointment extends StatefulWidget {
 class _TodayAppointmentState extends State<TodayAppointment> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
+    return
+        //  Scaffold(
+        //     body:
+        Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10.0),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -171,6 +171,8 @@ class _TodayAppointmentState extends State<TodayAppointment> {
                               ),
                             );
                           }))
-                ])));
+                ])
+            // )
+            );
   }
 }

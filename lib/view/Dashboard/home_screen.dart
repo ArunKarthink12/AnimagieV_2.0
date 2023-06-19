@@ -36,6 +36,23 @@ class _HomeScreenState extends State<HomeScreen> {
     },
   ];
   @override
+  void initState() {
+    // TODO: implement initState
+    Future.delayed(Duration.zero, () async {
+      await popupscreens();
+    });
+    super.initState();
+  }
+
+  // assets\images\successpopup.png
+  popupscreens() {
+    return AlertDialog(
+      backgroundColor: Colors.black87,
+      title: Image.asset("assets/images/successpopup.png"),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,

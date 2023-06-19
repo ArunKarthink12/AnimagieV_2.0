@@ -31,7 +31,7 @@ class _DoctorGenderState extends State<DoctorGender> {
           centerTitle: false,
           leadingWidth: 100,
           leading: Image.asset(
-            'assets/images/appbarlogo.png',
+            'assets/images/appbardesignlogo.png',
           ),
           actions: [
             Padding(
@@ -151,15 +151,21 @@ class _DoctorGenderState extends State<DoctorGender> {
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
                                 onTap: () {
-                                  kycController.gender(index == 0 ? 1 : 2);
-                                  print(kycController.gender.value);
+                                  // kycController.gender(index == 0 ? 1 : 2);
+                                  // print(kycController.gender.value);
+                                  kycController.gender.value = index;
+                                  setState(() {});
                                 },
                                 child: Container(
                                   height: 6.0.hp,
                                   width: 90.0.wp,
                                   decoration: BoxDecoration(
                                     color: screenbackground,
-                                    border: Border.all(color: screenbackground),
+                                    border: Border.all(
+                                        color:
+                                            kycController.gender.value == index
+                                                ? Colors.black
+                                                : screenbackground),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Center(

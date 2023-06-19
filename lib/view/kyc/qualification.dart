@@ -24,7 +24,7 @@ class _QualificationState extends State<Qualification> {
           centerTitle: false,
           leadingWidth: 100,
           leading: Image.asset(
-            'assets/images/appbarlogo.png',
+            'assets/images/appbardesignlogo.png',
           ),
           actions: [
             Padding(
@@ -144,16 +144,23 @@ class _QualificationState extends State<Qualification> {
                               padding: const EdgeInsets.all(8.0),
                               child: InkWell(
                                 onTap: () {
-                                  kycController
-                                      .qualification(index == 0 ? 1 : 2);
-                                  print(kycController.qualification.value);
+                                  // kycController
+                                  //     .qualification(index == 0 ? 1 : 2);
+                                  // print(kycController.qualification.value);
+                                  kycController.qualification.value = index;
+                                  setState(() {});
                                 },
                                 child: Container(
                                   height: 6.0.hp,
                                   width: 90.0.wp,
                                   decoration: BoxDecoration(
                                     color: screenbackground,
-                                    border: Border.all(color: screenbackground),
+                                    border: Border.all(
+                                        color:
+                                            kycController.qualification.value ==
+                                                    index
+                                                ? Colors.black
+                                                : screenbackground),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Center(

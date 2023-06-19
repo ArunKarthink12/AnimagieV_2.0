@@ -1,8 +1,6 @@
- 
 import '../../allpackages.dart';
 import '../appointment/session_details.dart';
 import 'joinsession.dart';
- 
 
 class UpcomingDetails extends StatefulWidget {
   const UpcomingDetails({super.key});
@@ -14,8 +12,10 @@ class UpcomingDetails extends StatefulWidget {
 class _UpcomingDetailsState extends State<UpcomingDetails> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
+    return
+        // Scaffold(
+        //     body:
+        Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10.0),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -173,6 +173,8 @@ class _UpcomingDetailsState extends State<UpcomingDetails> {
                                   ),
                                 ));
                           }))
-                ])));
+                ])
+            // )
+            );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:doctorapp/model/kycmodel.dart';
+// import 'package:doctorapp/view/kyc/popupscreen.dart';
 // import 'package:doctorapp/service/kyc_service.dart';
 //
 // import '../service/forgotpassword_service.dart';
@@ -59,8 +60,8 @@ class KycController extends GetxController {
       log('mobile---${response}');
       if (response != null) {
         _kyclist.add(response);
-        // Fluttertoast.showToast(msg: response.message.toString());
-
+        // Fluttertoast.showToast(msg: response.toString());
+        // Get.to(PopUpPage());
         // Get.toNamed('/forgototp');
       } else {
         // Fluttertoast.showToast(msg: response.message.toString());

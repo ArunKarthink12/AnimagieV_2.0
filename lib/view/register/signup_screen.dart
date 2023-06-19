@@ -14,7 +14,7 @@ class _SignupScreenState extends State<SignupScreen> {
   void initState() {
     super.initState();
     images = const AssetImage(
-      "assets/images/logo.png",
+      "assets/images/A_logo.png",
     );
   }
 
@@ -46,7 +46,10 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: Column(
                   children: [
                     SizedBox(height: 7.00.hp),
-                    Image.asset('assets/images/logo.png'),
+                    SizedBox(
+                        height: 25.0.hp,
+                        width: 25.0.hp,
+                        child: Image.asset('assets/images/A_logo.png')),
                     Text('CREATE A NEW ACCOUNT', style: toptitleStylebold),
                     SizedBox(height: 2.00.hp),
 

@@ -7,19 +7,23 @@ import 'dart:io';
 // import '../service/blog/blog_create_service.dart';
 // import '../service/blog/other_blog_service.dart';
 
+import 'package:doctorapp/model/editblocmodel.dart';
+
+import '../service/blog/editblogservice.dart';
 import '../view/allpackages.dart';
 
-class BlogCreateController extends GetxController {
-  var blogCreateservice = BlogCreateService();
-  List<BlogCreateModel> _listdata = [];
-  List<BlogCreateModel> get listdata => _listdata;
+class EditBlogController extends GetxController {
+  var editblogservice = EditBlogService();
+  List<EditBlogModel> _listdata = [];
+  List<EditBlogModel> get listdata => _listdata;
   RxBool isLoding = true.obs;
   Rx<File> image = File('').obs;
   TextEditingController topic = TextEditingController();
   TextEditingController content = TextEditingController();
-  Future blogcreateController(context) async {
+  // TextEditingController id = TextEditingController();
+  Future editBlogcreateController(context) async {
     try {
-      var response = await blogCreateservice.blogCreateService(
+      var response = await editblogservice.editBlogService(
           image: image.value.path, topic: topic.text, content: content.text);
       _listdata.clear();
       if (response != null) {

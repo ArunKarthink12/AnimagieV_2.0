@@ -224,14 +224,23 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
             ButtonIconButton(
               press: () async {
                 if (formKey.currentState!.validate()) {
-                  registerController
-                      .registerController(context: context)
-                      .then((value) => LoginScreen());
+                  // registerController
+                  //     .registerController(context: context)
+                  //     .then((value) => UploadPictureDetail()
+                  //         // LoginScreen()
+                  //         );
+                  Get.to(UploadPictureDetail());
                 }
+                // Navigator.push(
+                //           context,
+                //           MaterialPageRoute(
+                //               builder: (context) =>
+                //                   const UploadPictureDetail()),
+                //         );
                 //Get.to(const OTPScreen());
               },
-              bordercolor: appcolor1,
-              text: 'SIGN UP',
+              bordercolor: appcolor,
+              text: 'Register',
             ),
             SizedBox(height: 3.00.hp),
           ],

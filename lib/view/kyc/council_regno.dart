@@ -19,7 +19,7 @@ class _CouncilRegisterNumerState extends State<CouncilRegisterNumer> {
           centerTitle: false,
           leadingWidth: 100,
           leading: Image.asset(
-            'assets/images/appbarlogo.png',
+            'assets/images/appbardesignlogo.png',
           ),
           actions: [
             Padding(

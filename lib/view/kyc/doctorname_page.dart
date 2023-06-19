@@ -41,7 +41,7 @@ class _DoctorNameState extends State<DoctorName> with TickerProviderStateMixin {
           centerTitle: false,
           leadingWidth: 100,
           leading: Image.asset(
-            'assets/images/appbarlogo.png',
+            'assets/images/appbardesignlogo.png',
           ),
           actions: [
             Padding(

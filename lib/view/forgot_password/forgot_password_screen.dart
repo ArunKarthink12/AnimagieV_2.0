@@ -49,7 +49,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             SizedBox(
               height: 5.0.hp,
             ),
-            Image.asset('assets/images/logo.png'),
+            SizedBox(
+                height: 25.0.hp,
+                width: 25.0.hp,
+                child: Image.asset('assets/images/A_logo.png')),
             Text('FORGOT PASSWORD', style: toptitleStylebold),
             SizedBox(height: 2.00.hp),
             SizedBox(

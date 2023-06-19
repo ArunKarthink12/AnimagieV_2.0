@@ -46,3 +46,12 @@ class OtherBlogService {
     }
   }
 }
+//  Fluttertoast.showToast(msg: "success");
+//         var jsonres = jsonDecode(response.body);
+//         return OtherBlogModel.fromJson(jsonres);
+//         // List<dynamic> apiResponse = json.decode(response.body);
+//         // print("servicedata${response.body}");
+//         // return OtherBlogModel.fromJson(apiResponse as Map<String, dynamic>);
+//         // return apiResponse
+//         //     .map((job) => new OtherBlogModel.fromJson(job))
+//         //     .toList();

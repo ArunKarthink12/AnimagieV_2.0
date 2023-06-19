@@ -38,7 +38,7 @@ class _UploadPictureDetailState extends State<UploadPictureDetail> {
           centerTitle: false,
           leadingWidth: 100,
           leading: Image.asset(
-            'assets/images/appbarlogo.png',
+            '',
           ),
           actions: [
             Padding(
@@ -75,7 +75,7 @@ class _UploadPictureDetailState extends State<UploadPictureDetail> {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(children: [
                       ProgressIndicatorWithIcon(
-                        percentage: .1,
+                        percentage: .0,
                         // )
                         // child: Image.asset('assets/images/progress.png'),
                       ),
@@ -141,7 +141,7 @@ class _UploadPictureDetailState extends State<UploadPictureDetail> {
                         height: 5.0.hp,
                       ),
                       Text(
-                        ' picture..',
+                        'Upload Your picture..',
                         style: uploadpic,
                       ),
                       SizedBox(
@@ -171,25 +171,44 @@ class _UploadPictureDetailState extends State<UploadPictureDetail> {
                                     child: Container(
                                         child: kycController
                                                 .profile_pic.value.path.isEmpty
-                                            ? Image.asset(
-                                                'assets/images/doctor4.png',
+                                            ? Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 24.0.hp,
+                                                    width: 24.0.wp,
+                                                    child: Image.asset(
+                                                      'assets/images/uploaddocphoto.png',
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    "Click to Upload",
+                                                    style: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  )
+                                                ],
                                               )
                                             : Image.file(kycController
                                                 .profile_pic.value)),
                                   ),
-                                  Positioned(
-                                    right: 4.0.wp,
-                                    top: 2.0.hp,
-                                    child: CircleAvatar(
-                                      radius: 10,
-                                      backgroundColor: lightblue,
-                                      child: Icon(
-                                        Icons.close,
-                                        color: forminputcolor,
-                                        size: 13,
-                                      ),
-                                    ),
-                                  )
+                                  Visibility(
+                                      visible: kycController
+                                              .profile_pic.value.path.isEmpty
+                                          ? false
+                                          : true,
+                                      child: Positioned(
+                                        right: 4.0.wp,
+                                        top: 2.0.hp,
+                                        child: CircleAvatar(
+                                          radius: 10,
+                                          backgroundColor: lightblue,
+                                          child: Icon(
+                                            Icons.close,
+                                            color: forminputcolor,
+                                            size: 13,
+                                          ),
+                                        ),
+                                      )),
                                 ],
                               ),
                             )),

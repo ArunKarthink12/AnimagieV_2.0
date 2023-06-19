@@ -16,9 +16,10 @@ class _DummyDetailsState extends State<DummyDetails> {
           height: MediaQuery.of(context).size.height * 0.05,
         ),
         Center(
-          child: Image.asset(
-            'assets/images/logo.png',
-          ),
+          child: SizedBox(
+              height: 25.0.hp,
+              width: 25.0.hp,
+              child: Image.asset('assets/images/A_logo.png')),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.02,

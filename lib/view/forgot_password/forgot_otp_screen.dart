@@ -44,7 +44,10 @@ class _ForgotOTPScreenState extends State<ForgotOTPScreen> {
                         SizedBox(
                           height: 6.0.hp,
                         ),
-                        Image.asset('assets/images/logo.png'),
+                        SizedBox(
+                            height: 25.0.hp,
+                            width: 25.0.hp,
+                            child: Image.asset('assets/images/A_logo.png')),
                         Text('Enter Verification Code',
                             style: toptitleStylebold),
                         SizedBox(height: 2.00.hp),

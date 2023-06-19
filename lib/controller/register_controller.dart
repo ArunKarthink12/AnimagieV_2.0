@@ -14,7 +14,7 @@ class RegisterController extends GetxController {
   TextEditingController password_confirmation = TextEditingController();
   RxBool isRegisterLoad = true.obs;
 
-  // List<RegisterModel> _register = [];
+  // List<CreateAccountModel> register = [];
   //otp
 
   Future registerController({context}) async {

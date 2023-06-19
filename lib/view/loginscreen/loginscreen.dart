@@ -13,7 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-  // loginController.loginController();
+    // loginController.loginController();
     super.initState();
     images = const AssetImage(
       "assets/img/login.gif",
@@ -49,7 +49,10 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   SizedBox(height: 5.00.hp),
-                  Image.asset('assets/images/logo.png'),
+                  SizedBox(
+                      height: 25.0.hp,
+                      width: 25.0.hp,
+                      child: Image.asset('assets/images/A_logo.png')),
                   Text('WELCOME', style: toptitleStylebold),
                   SizedBox(height: 2.00.hp),
                   Text(

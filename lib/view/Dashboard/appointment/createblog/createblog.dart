@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:doctorapp/controller/blogupdatecontroller.dart';
 import 'package:doctorapp/view/Dashboard/home_screen/appointmentScreens/controller/taglistController.dart';
 
-import '../../allpackages.dart';
+import '../../../allpackages.dart';
+// import '../../allpackages.dart';
 
 class YourBlogEdit extends StatefulWidget {
   const YourBlogEdit({super.key});
@@ -20,12 +20,11 @@ class _YourBlogEditState extends State<YourBlogEdit> {
   BlogCreateController blogCreateController = Get.put(BlogCreateController());
   final _picker = ImagePicker();
   TagListController taglistcontroller = Get.put(TagListController());
-  EditBlogController editBlogController = Get.put(EditBlogController());
   @override
   void initState() {
     // TODO: implement initState
     taglistcontroller.tagListControllerFunction();
-
+    blogCreateController.image.value = File("");
     super.initState();
   }
 
@@ -79,20 +78,20 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                           'Upload photo of your blog',
                           style: sixhundredtweleve,
                         ),
-                        title: Row(
-                          children: [
-                            InkWell(
-                                onTap: () async {},
-                                child: Image.asset('assets/images/delete.png')),
-                            SizedBox(
-                              width: 1.0.wp,
-                            ),
-                            Text(
-                              'Remove',
-                              style: forminputsmall,
-                            )
-                          ],
-                        ),
+                        // title: Row(
+                        //   children: [
+                        //     InkWell(
+                        //         onTap: () async {},
+                        //         child: Image.asset('assets/images/delete.png')),
+                        //     SizedBox(
+                        //       width: 1.0.wp,
+                        //     ),
+                        //     Text(
+                        //       'Remove',
+                        //       style: forminputsmall,
+                        //     )
+                        //   ],
+                        // ),
                       ),
                       Container(
                         height: 30.0.hp,
@@ -111,50 +110,104 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                                       blogCreateController
                                           .image(File(pickedImage.path));
                                     }
+                                    print(
+                                        "image--${blogCreateController.image.value.path}");
+                                    setState(() {});
                                   },
-                                  child: blogCreateController
-                                          .image.value.path.isEmpty
-                                      ? Container(
-                                          height: 30.0.hp,
-                                          width: 100.0.wp,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            image: const DecorationImage(
-                                              image: AssetImage(
-                                                'assets/images/viewdog.png',
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: blogCreateController
+                                            .image.value.path.isEmpty
+                                        ? Column(
+                                            children: [
+                                              SizedBox(
+                                                height: 5.0.hp,
                                               ),
-                                              fit: BoxFit.cover,
+                                              Expanded(
+                                                child: SizedBox(
+                                                  height: 23.0.hp,
+                                                  width: 23.0.wp,
+                                                  child: Image.asset(
+                                                    'assets/images/uploaddocphoto.png',
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 5.0.hp,
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                  "Click to Upload",
+                                                  style: GoogleFonts.inter(
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 5.0.hp,
+                                              ),
+                                            ],
+                                          )
+                                        // Container(
+                                        //     height: 30.0.hp,
+                                        //     width: 100.0.wp,
+                                        //     decoration: BoxDecoration(
+                                        //       borderRadius:
+                                        //           BorderRadius.circular(10),
+                                        //       image: const DecorationImage(
+                                        //         image: AssetImage(
+                                        //           'assets/images/viewdog.png',
+                                        //         ),
+                                        //         fit: BoxFit.cover,
+                                        //       ),
+                                        //     ),
+                                        //   )
+                                        : Container(
+                                            height: 30.0.hp,
+                                            width: 100.0.wp,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                image: FileImage(
+                                                    blogCreateController
+                                                        .image.value),
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
-                                        )
-                                      : Container(
-                                          height: 30.0.hp,
-                                          width: 100.0.wp,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            image: DecorationImage(
-                                              image: FileImage(
-                                                  blogCreateController
-                                                      .image.value),
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        )),
+                                  )),
                             ),
-                            Positioned(
-                                right: 4.0.wp,
-                                top: 2.0.hp,
-                                child: const CircleAvatar(
-                                  backgroundColor: Color(0xffDDE7F5),
-                                  radius: 14,
-                                  child: Icon(
-                                    Icons.close,
-                                    size: 15,
-                                    color: headingtext,
-                                  ),
-                                ))
+                            Visibility(
+                              visible:
+                                  blogCreateController.image.value.path.isEmpty
+                                      ? false
+                                      : true,
+                              child: Positioned(
+                                  right: 4.0.wp,
+                                  top: 2.0.hp,
+                                  child: CircleAvatar(
+                                    backgroundColor: Color(0xffDDE7F5),
+                                    radius: 14,
+                                    child: IconButton(
+                                      onPressed: () async {
+                                        final XFile? pickedImage =
+                                            await _picker.pickImage(
+                                                source: ImageSource.gallery);
+                                        if (pickedImage != null) {
+                                          blogCreateController
+                                              .image(File(pickedImage.path));
+                                        }
+                                        setState(() {});
+                                      },
+                                      icon: Icon(
+                                        Icons.close,
+                                        size: 12,
+                                      ),
+                                      color: headingtext,
+                                    ),
+                                  )),
+                            )
                           ]),
                         ),
                       ),
@@ -176,8 +229,8 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                         // ),
                         color: screenbackground,
                         child: TextFormField(
+                          controller: blogCreateController.topic,
                           maxLines: 10,
-                          controller: editBlogController.topic,
                           textInputAction: TextInputAction.next,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
@@ -193,11 +246,10 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                                         .withOpacity(0.5),
                                     width: 1),
                               ),
-                              fillColor: const Color(0xffC6C6C6),
-                              hintText:
-                                  'How to Tell If your Dog Is At a Healthy Weight',
-                              hintStyle: fourhundredtweleve,
-                              labelStyle: const TextStyle(color: Colors.white),
+                              fillColor: Color(0xff6F6F6F),
+                              hintText: 'Type Here...',
+                              hintStyle: fourhundredtweleve.copyWith(
+                                  color: Color(0xff6F6F6F)),
                               contentPadding:
                                   const EdgeInsets.only(left: 10, top: 10),
                               border: const OutlineInputBorder(
@@ -304,7 +356,7 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                         // ),
                         color: screenbackground,
                         child: TextFormField(
-                          controller: editBlogController.content,
+                          controller: blogCreateController.content,
                           maxLines: 20,
                           textInputAction: TextInputAction.next,
                           keyboardType: TextInputType.emailAddress,
@@ -322,9 +374,9 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                                     width: 1),
                               ),
                               fillColor: const Color(0xffC6C6C6),
-                              hintText:
-                                  '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
-                              hintStyle: fivehundredtweleve,
+                              hintText: "Type Here...",
+                              hintStyle: fivehundredtweleve.copyWith(
+                                  color: Color(0xff6F6F6F)),
                               labelStyle: const TextStyle(color: Colors.white),
                               contentPadding:
                                   const EdgeInsets.only(left: 10, top: 20),
@@ -338,13 +390,16 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                       ),
                       Center(
                         child: ButtonIconButton(
-                            text: 'SAVE CHANGES',
+                            text: 'POST',
                             bordercolor: buttoncolor,
                             press: () {
+                              // blogCreateController.popup(context);
                               Future.delayed(Duration.zero, () async {
-                                await editBlogController
-                                    .editBlogcreateController(context);
+                                await blogCreateController
+                                    .blogcreateController(context);
                               });
+                              // print("asfsaf");
+                              // Get.back();
                             }),
                       ),
                       SizedBox(

@@ -41,7 +41,7 @@ class _EditTimingState extends State<EditTiming> {
           centerTitle: false,
           leadingWidth: 100,
           leading: Image.asset(
-            'assets/images/appbarlogo.png',
+            'assets/images/appbardesignlogo.png',
           ),
           actions: [
             Padding(

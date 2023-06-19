@@ -1,4 +1,5 @@
 import 'package:doctorapp/view/kyc/processindicator/progressindicator.dart';
+import 'package:flutter/services.dart';
 
 import '../allpackages.dart';
 
@@ -20,7 +21,7 @@ class _DoctorPhoneState extends State<DoctorPhone> {
           centerTitle: false,
           leadingWidth: 100,
           leading: Image.asset(
-            'assets/images/appbarlogo.png',
+            'assets/images/appbardesignlogo.png',
           ),
           actions: [
             Padding(
@@ -143,6 +144,12 @@ class _DoctorPhoneState extends State<DoctorPhone> {
                         child: TextFormField(
                           style: forminputstyle,
                           controller: kycController.mobile,
+                          keyboardType:
+                              TextInputType.numberWithOptions(decimal: true),
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.allow(
+                                RegExp(r'^\d+\.?\d*')),
+                          ],
                           decoration: InputDecoration(
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5.0),

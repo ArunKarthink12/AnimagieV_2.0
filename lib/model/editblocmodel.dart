@@ -1,26 +1,24 @@
 // To parse this JSON data, do
 //
-//     final blogCreateModel = blogCreateModelFromJson(jsonString);
+//     final editBlogModel = editBlogModelFromJson(jsonString);
 
 import 'dart:convert';
 
-BlogCreateModel blogCreateModelFromJson(String str) =>
-    BlogCreateModel.fromJson(json.decode(str));
+EditBlogModel editBlogModelFromJson(String str) =>
+    EditBlogModel.fromJson(json.decode(str));
 
-String blogCreateModelToJson(BlogCreateModel data) =>
-    json.encode(data.toJson());
+String editBlogModelToJson(EditBlogModel data) => json.encode(data.toJson());
 
-class BlogCreateModel {
+class EditBlogModel {
   String message;
   Data data;
 
-  BlogCreateModel({
+  EditBlogModel({
     required this.message,
     required this.data,
   });
 
-  factory BlogCreateModel.fromJson(Map<String, dynamic> json) =>
-      BlogCreateModel(
+  factory EditBlogModel.fromJson(Map<String, dynamic> json) => EditBlogModel(
         message: json["message"],
         data: Data.fromJson(json["data"]),
       );

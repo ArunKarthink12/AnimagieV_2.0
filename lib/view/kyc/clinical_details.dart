@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:doctorapp/view/Dashboard/home_screen.dart';
 import 'package:doctorapp/view/allpackages.dart';
+import 'package:doctorapp/view/kyc/popupscreen.dart';
 
 import 'processindicator/progressindicator.dart';
 
@@ -28,7 +30,7 @@ class _ClinicalDocumentsState extends State<ClinicalDocuments> {
             centerTitle: false,
             leadingWidth: 100,
             leading: Image.asset(
-              'assets/images/appbarlogo.png',
+              'assets/images/appbardesignlogo.png',
             ),
             actions: [
               Padding(
@@ -342,9 +344,11 @@ class _ClinicalDocumentsState extends State<ClinicalDocuments> {
                             child: ButtonIconButton(
                               press: () {
                                 // loginController.loginController(context: context);
-                                Future.delayed(Duration.zero, () async {
-                                  await kycController.kycController();
-                                });
+                                // Future.delayed(Duration.zero, () async {
+                                //   await kycController.kycController();
+                                // });
+                                // Get.to(PopUpPage());
+                                Get.to(LoginScreen());
                                 // Get.to(const HomeScreen());
                               },
                               bordercolor: buttoncolor,

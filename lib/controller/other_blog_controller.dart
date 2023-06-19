@@ -9,20 +9,19 @@ import '../view/allpackages.dart';
 class OtherBlogController extends GetxController {
   var otherblogservice = OtherBlogService();
   // List<OtherBlogModel> _listdata = [];
-  var view = "1";
   List<OtherBlogModel> listdata = [];
   RxBool isLoding = true.obs;
-  Future otherController() async {
+  Future otherController({views}) async {
     print("controller=>");
 
     try {
-      var response = await otherblogservice.otherBlogService(view: view);
+      var response = await otherblogservice.otherBlogService(view: views);
 
       print("controllerzz=>");
       if (response != null) {
         print("controlleryy=> ");
         listdata.clear();
-        listdata.add(response ?? "");
+        listdata.add(response);
         print("controller=>${listdata}");
 
         isLoding(false);

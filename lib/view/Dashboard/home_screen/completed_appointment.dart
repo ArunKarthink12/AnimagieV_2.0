@@ -1,8 +1,6 @@
- 
 import '../../allpackages.dart';
 import '../appointment/session_details.dart';
 import 'completed_view_details.dart';
- 
 
 class CompletedAppointment extends StatefulWidget {
   const CompletedAppointment({super.key});
@@ -156,224 +154,222 @@ class _CompletedAppointmentState extends State<CompletedAppointment> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
+    return
+        // Scaffold(
+        //   body:
+        Padding(
+      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  height: 6.0.hp,
+                  width: 40.0.wp,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.white),
+                  child: TextFormField(
+                    style: forminputstyle,
+                    decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                          borderSide: const BorderSide(
+                              color: screenbackground, width: 0.5),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                          borderSide: const BorderSide(
+                              color: screenbackground, width: 1),
+                        ),
+                        hintText: 'Select Date',
+                        suffixIcon: Image.asset(
+                          'assets/images/calendar.png',
+                          color: Colors.black,
+                        ),
+                        contentPadding:
+                            const EdgeInsets.only(left: 10, top: 20),
+                        hintStyle: forminputstyle,
+                        border: const OutlineInputBorder(
+                          gapPadding: 4,
+                        )),
+                  ),
+                ),
+                SizedBox(
+                  width: 4.0.wp,
+                ),
+                InkWell(
+                  onTap: () {
+                    showdialogfunc();
+                  },
+                  child: Container(
                     height: 6.0.hp,
-                    width: 40.0.wp,
+                    width: 15.0.wp,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: Colors.white),
-                    child: TextFormField(
-                      style: forminputstyle,
-                      decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                            borderSide: const BorderSide(
-                                color: screenbackground, width: 0.5),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                            borderSide: const BorderSide(
-                                color: screenbackground, width: 1),
-                          ),
-                          hintText: 'Select Date',
-                          suffixIcon: Image.asset(
-                            'assets/images/calendar.png',
-                            color: Colors.black,
-                          ),
-                          contentPadding:
-                              const EdgeInsets.only(left: 10, top: 20),
-                          hintStyle: forminputstyle,
-                          border: const OutlineInputBorder(
-                            gapPadding: 4,
-                          )),
+                    child: Image.asset(
+                      'assets/images/filter.png',
+                      color: Colors.black,
                     ),
                   ),
-                  SizedBox(
-                    width: 4.0.wp,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      showdialogfunc();
-                    },
-                    child: Container(
-                      height: 6.0.hp,
-                      width: 15.0.wp,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white),
-                      child: Image.asset(
-                        'assets/images/filter.png',
-                        color: Colors.black,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 2.0.hp,
-              ),
-              Text(
-                'Completed Appointment',
-                style: uploadpic,
-              ),
-              SizedBox(
-                height: 1.0.hp,
-              ),
-              Container(
-                height: 100.0.hp,
-                width: 100.0.wp,
-                child: ListView.builder(
-                    //   controller: _scrollController,
-                    // physics: NeverScrollableScrollPhysics(),
-                    itemCount: 30,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 28.0.hp,
-                        width: 100.00.wp,
-                        child: Card(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ListTile(
-                                leading: CircleAvatar(
-                                  backgroundImage:
-                                      AssetImage('assets/images/dd.png'),
-                                ),
-                                title: Row(
+                )
+              ],
+            ),
+            SizedBox(
+              height: 2.0.hp,
+            ),
+            Text(
+              'Completed Appointment',
+              style: uploadpic,
+            ),
+            SizedBox(
+              height: 1.0.hp,
+            ),
+            Container(
+              height: 100.0.hp,
+              width: 100.0.wp,
+              child: ListView.builder(
+                  //   controller: _scrollController,
+                  // physics: NeverScrollableScrollPhysics(),
+                  itemCount: 30,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 28.0.hp,
+                      width: 100.00.wp,
+                      child: Card(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('assets/images/dd.png'),
+                              ),
+                              title: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Krish (Dog)',
+                                    style: sixhundredfourteen,
+                                  ),
+                                  Container(
+                                    height: 3.0.hp,
+                                    width: 23.0.wp,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Color(0xffe0f5dd)),
+                                    child: Center(
+                                        child: Text('Completed',
+                                            style: GoogleFonts.poppins(
+                                                textStyle: const TextStyle(
+                                                    letterSpacing: 0.2,
+                                                    fontSize: 11.00,
+                                                    color: Color(0xff27BA0F),
+                                                    fontWeight:
+                                                        FontWeight.w600)))),
+                                  ),
+                                ],
+                              ),
+                              subtitle: Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Krish (Dog)',
-                                      style: sixhundredfourteen,
+                                      'Male - 2 yr old',
+                                      style: forminputstyle,
                                     ),
-                                    Container(
-                                      height: 3.0.hp,
-                                      width: 23.0.wp,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          color: Color(0xffe0f5dd)),
-                                      child: Center(
-                                          child: Text('Completed',
-                                              style: GoogleFonts.poppins(
-                                                  textStyle: const TextStyle(
-                                                      letterSpacing: 0.2,
-                                                      fontSize: 11.00,
-                                                      color: Color(0xff27BA0F),
-                                                      fontWeight:
-                                                          FontWeight.w600)))),
+                                    Text(
+                                      'ID:36718',
+                                      style: fourhundredtweleve,
                                     ),
                                   ],
                                 ),
-                                subtitle: Padding(
-                                  padding: const EdgeInsets.only(top: 8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Male - 2 yr old',
-                                        style: forminputstyle,
-                                      ),
-                                      Text(
-                                        'ID:36718',
-                                        style: fourhundredtweleve,
-                                      ),
-                                    ],
-                                  ),
-                                ),
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                      //  height: 2.0.hp,
-                                      width: 30.0.wp,
-                                      decoration: BoxDecoration(
-                                          // border: Border.all(),
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Image.asset(
-                                              'assets/images/calendar.png'),
-                                          Text(
-                                            '24 Mar,2023',
-                                            style: forminputstyle,
-                                          ),
-                                        ],
-                                      )),
-                                  Container(
-                                      width: 40.0.wp,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Image.asset(
-                                              'assets/images/clock.png'),
-                                          Text(
-                                            '10.00am-12.00.pm',
-                                            style: forminputstyle,
-                                          ),
-                                        ],
-                                      )),
-                                ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                    //  height: 2.0.hp,
+                                    width: 30.0.wp,
+                                    decoration: BoxDecoration(
+                                        // border: Border.all(),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Image.asset(
+                                            'assets/images/calendar.png'),
+                                        Text(
+                                          '24 Mar,2023',
+                                          style: forminputstyle,
+                                        ),
+                                      ],
+                                    )),
+                                Container(
+                                    width: 40.0.wp,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Image.asset('assets/images/clock.png'),
+                                        Text(
+                                          '10.00am-12.00.pm',
+                                          style: forminputstyle,
+                                        ),
+                                      ],
+                                    )),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 2.00.hp,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15.0),
+                              child: InkWell(
+                                onTap: () {
+                                  Get.to(ViewDetails());
+                                },
+                                child: Text('View Details',
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            letterSpacing: 0.2,
+                                            fontSize: 12.00,
+                                            color: Color(0xff0F52BA),
+                                            fontWeight: FontWeight.w400))),
                               ),
-                              SizedBox(
-                                height: 2.00.hp,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15.0),
-                                child: InkWell(
-                                  onTap: () {
-                                    Get.to(ViewDetails());
-                                  },
-                                  child: Text('View Details',
-                                      style: GoogleFonts.poppins(
-                                          textStyle: const TextStyle(
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              letterSpacing: 0.2,
-                                              fontSize: 12.00,
-                                              color: Color(0xff0F52BA),
-                                              fontWeight: FontWeight.w400))),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 2.00.hp,
-                              ),
-                              Center(
-                                  child: AddPrescription(
-                                      text: 'Add Prescription &  Health Card',
-                                      press: () {
-                                        Get.to(AddDetails());
-                                      })),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 2.00.hp,
+                            ),
+                            Center(
+                                child: AddPrescription(
+                                    text: 'Add Prescription &  Health Card',
+                                    press: () {
+                                      Get.to(AddDetails());
+                                    })),
+                          ],
                         ),
-                      );
-                    }),
-              ),
-            ],
-          ),
+                      ),
+                    );
+                  }),
+            ),
+          ],
         ),
       ),
+      // ),
     );
   }
 }

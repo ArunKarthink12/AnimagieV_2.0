@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import '../../allpackages.dart';
 import '../home_screen/otherblog.dart';
 import '../home_screen/your_blog.dart';
+import 'createblog/createblog.dart';
 
 class Appointment extends StatefulWidget {
   const Appointment({super.key, this.index});
@@ -20,7 +23,7 @@ class _AppointmentState extends State<Appointment> {
 
   fetchdata() {
     Future.delayed(Duration.zero, () async {
-      await otherBlogController.otherController();
+      await otherBlogController.otherController(views: "2");
     });
   }
 
@@ -75,7 +78,81 @@ class _AppointmentState extends State<Appointment> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.asset('assets/images/blogbannerimage.png'),
+                        Stack(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: appcolor,
+                                  borderRadius: BorderRadius.circular(10.0.sp)),
+                              height: 20.0.hp,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 10.0.wp,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      // crossAxisAlignment:
+                                      // CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          '''Write a blog offering pet owners useful insights for improved furry friend care.
+                                  ''',
+                                          maxLines: 4,
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.white,
+                                              fontSize: 10.0.sp,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        SizedBox(
+                                          height: 1.0.hp,
+                                        ),
+                                        Container(
+                                          height: 3.0.hp,
+                                          // width: 15.0.wp,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(7.0.sp),
+                                            color: Colors.white,
+                                          ),
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "post your blog",
+                                            style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 8.0.sp),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: SizedBox(
+                                      child: Image.asset(
+                                          'assets/images/bannerinside.png'),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10.0.wp,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(const YourBlogEdit());
+                                print("print");
+                              },
+                              child: SizedBox(
+                                height: 20.0.hp,
+                                width: MediaQuery.of(context).size.width,
+                                child: Image.asset('assets/images/paw.png'),
+                              ),
+                            )
+                          ],
+                        ),
                         Container(
                           height: 50,
                           decoration: BoxDecoration(
