@@ -74,12 +74,12 @@ class _HomePageState extends State<HomePage>
     Tab(text: 'Upcoming'),
     Tab(text: 'Completed'),
   ];
-  static const List bodytab = [
-    AllAppointment(),
-    TodayAppointment(),
-    UpcomingDetails(),
-    CompletedAppointment()
-  ];
+  // static const List bodytab = [
+  //   AllAppointment(),
+  //   TodayAppointment(),
+  //   UpcomingDetails(),
+  //   CompletedAppointment()
+  // ];
   Widget allAppointment() {
     return Padding(
       padding: const EdgeInsets.only(left: 5.0, right: 5.0),

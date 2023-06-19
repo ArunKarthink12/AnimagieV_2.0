@@ -8,7 +8,7 @@ class ProfessionalDetails extends StatefulWidget {
 }
 
 class _ProfessionalDetailsState extends State<ProfessionalDetails> {
-  var _selectedGender;
+  // var _selectedGender;
   var genderlist = ['male', 'female', 'I dont know'];
   var newteredlist = ['no', 'yes', 'I dont know'];
   var selectedindex = 0;

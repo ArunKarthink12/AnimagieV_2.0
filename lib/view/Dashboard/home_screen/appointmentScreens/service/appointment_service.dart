@@ -1,5 +1,5 @@
-import 'dart:convert';
-import 'dart:developer';
+// import 'dart:convert';
+// import 'dart:developer';
 
 import 'package:doctorapp/Urls/utils_Urls.dart';
 import 'package:doctorapp/utils/common_function/constants.dart';
@@ -20,7 +20,7 @@ class AppointmentService {
         headers: {'Authorization': 'Bearer $token'},
       );
 
-      var jsonresponse = jsonDecode(response.body);
+      // var jsonresponse = jsonDecode(response.body);
       // log(response.body.toString());
 
       if (response.statusCode == 200) {

@@ -1,8 +1,8 @@
-import 'package:doctorapp/controller/forgot_password_controller.dart';
-import 'package:doctorapp/view/reset_password/create_password.dart';
+// import 'package:doctorapp/controller/forgot_password_controller.dart';
+// import 'package:doctorapp/view/reset_password/create_password.dart';
 
-import '../../controller/forgot_otp_controller.dart';
-import '../Dashboard/profile/change_password/change_password.dart';
+// import '../../controller/forgot_otp_controller.dart';
+// import '../Dashboard/profile/change_password/change_password.dart';
 import '../allpackages.dart';
 
 class ForgotOtpField extends StatefulWidget {

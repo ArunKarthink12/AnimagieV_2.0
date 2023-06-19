@@ -6,7 +6,7 @@ import 'package:dio/dio.dart' as dio;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http_parser/http_parser.dart';
 
-import 'package:doctorapp/model/kycmodel.dart';
+// import 'package:doctorapp/model/kycmodel.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

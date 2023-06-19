@@ -4,8 +4,8 @@ import 'package:doctorapp/view/Dashboard/time_booking/time_completedappointment.
 import '../allpackages.dart';
 import 'appointment/appointment_screen.dart';
 import 'home_page.dart';
-import 'home_screen/blog_details.dart';
-import 'home_screen/completed_appointment.dart';
+// import 'home_screen/blog_details.dart';
+// import 'home_screen/completed_appointment.dart';
 import 'time_booking/dashboard.dart';
 
 class HomeScreen extends StatefulWidget {

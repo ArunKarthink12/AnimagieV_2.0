@@ -5,12 +5,12 @@
 // import 'package:doctorapp/view/Dashboard/profile/personaldetails/service/personal_details.dart';
 import 'package:doctorapp/view/allpackages.dart';
 import 'package:doctorapp/view/kyc/model/cancelRequestmodel.dart';
-import 'package:doctorapp/view/kyc/model/doctorUpdateslots.dart';
-import 'package:doctorapp/view/kyc/model/storeHolidayCModel.dart';
+// import 'package:doctorapp/view/kyc/model/doctorUpdateslots.dart';
+// import 'package:doctorapp/view/kyc/model/storeHolidayCModel.dart';
 import 'package:doctorapp/view/kyc/service/cancelRequestservice.dart';
 // import 'package:doctorapp/view/kyc/model/doctorslotsmodel.dart';
 // import 'package:doctorapp/view/kyc/service/doctorUpdateSlotsservice.dart';
-import 'package:doctorapp/view/kyc/service/storeHolidayservice.dart';
+// import 'package:doctorapp/view/kyc/service/storeHolidayservice.dart';
 // import 'package:doctorapp/view/kyc/service/doctorslotsservice.dart';
 
 // import '../model/personaldetailsmodel.dart';

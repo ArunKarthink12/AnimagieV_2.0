@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:doctorapp/Urls/utils_Urls.dart';
 import 'package:doctorapp/utils/common_function/constants.dart';
-import 'package:doctorapp/view/kyc/model/doctorUpdateslots.dart';
+// import 'package:doctorapp/view/kyc/model/doctorUpdateslots.dart';
 import 'package:doctorapp/view/kyc/model/storeHolidayCModel.dart';
 // import 'package:doctorapp/view/kyc/model/doctorslotsmodel.dart';
 import 'package:fluttertoast/fluttertoast.dart';

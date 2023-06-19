@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:doctorapp/Urls/utils_Urls.dart';
 import 'package:doctorapp/utils/common_function/constants.dart';
 import 'package:doctorapp/view/kyc/model/cancelRequestmodel.dart';
-import 'package:doctorapp/view/kyc/model/doctorslotsmodel.dart';
+// import 'package:doctorapp/view/kyc/model/doctorslotsmodel.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';

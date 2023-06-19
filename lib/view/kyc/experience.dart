@@ -1,5 +1,5 @@
 import 'package:doctorapp/view/kyc/processindicator/progressindicator.dart';
-import 'package:doctorapp/view/kyc/select_date.dart';
+// import 'package:doctorapp/view/kyc/select_date.dart';
 
 import '../allpackages.dart';
 

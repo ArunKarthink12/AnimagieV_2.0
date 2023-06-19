@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:doctorapp/view/Dashboard/home_screen.dart';
+// import 'package:doctorapp/view/Dashboard/home_screen.dart';
 import 'package:doctorapp/view/allpackages.dart';
-import 'package:doctorapp/view/kyc/popupscreen.dart';
+// import 'package:doctorapp/view/kyc/popupscreen.dart';
 
 import 'processindicator/progressindicator.dart';
 

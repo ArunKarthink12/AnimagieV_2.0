@@ -1,5 +1,3 @@
- 
-
 import '../allpackages.dart';
 
 class DatePicker extends StatefulWidget {
@@ -12,8 +10,8 @@ class DatePicker extends StatefulWidget {
 class _DatePickerState extends State<DatePicker> {
   var holidayindex = 0;
   late DateTime _selectedDate;
-  static const orange = Color(0xFFFE9A75);
-  static const dark = Color(0xFF333A47);
+  // static const orange = Color(0xFFFE9A75);
+  // static const dark = Color(0xFF333A47);
 
   final _defaultTimeRange = TimeRangeResult(
     const TimeOfDay(hour: 14, minute: 00),

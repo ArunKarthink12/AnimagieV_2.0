@@ -1,5 +1,5 @@
 import 'package:doctorapp/view/kyc/processindicator/progressindicator.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
+// import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../allpackages.dart';
 

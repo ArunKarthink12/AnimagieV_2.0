@@ -10,7 +10,7 @@ class Support extends StatefulWidget {
 }
 
 class _SupportState extends State<Support> {
-  var _selectedGender;
+  // var _selectedGender;
   var genderlist = ['male', 'female', 'I dont know'];
   var newteredlist = ['no', 'yes', 'I dont know'];
   var selectedindex = 0;
