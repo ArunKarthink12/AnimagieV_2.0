@@ -10,11 +10,22 @@ class Qualification extends StatefulWidget {
 }
 
 class _QualificationState extends State<Qualification> {
-  var foodname = [
-    'Under graduate',
-    'Masters',
-  ];
+  KycStaticController kycStaticController = Get.put(KycStaticController());
+
   KycController kycController = Get.find();
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchdata();
+    super.initState();
+  }
+
+  fetchdata() {
+    Future.delayed(Duration.zero, () async {
+      await kycStaticController.kycStaticController();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,45 +145,59 @@ class _QualificationState extends State<Qualification> {
                     SizedBox(
                       height: 5.0.hp,
                     ),
-                    Container(
-                      height: 19.0.hp,
-                      width: 90.0.wp,
-                      child: ListView.builder(
-                          itemCount: foodname.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: InkWell(
-                                onTap: () {
-                                  // kycController
-                                  //     .qualification(index == 0 ? 1 : 2);
-                                  // print(kycController.qualification.value);
-                                  kycController.qualification.value = index;
-                                  setState(() {});
-                                },
-                                child: Container(
-                                  height: 6.0.hp,
-                                  width: 90.0.wp,
-                                  decoration: BoxDecoration(
-                                    color: screenbackground,
-                                    border: Border.all(
-                                        color:
-                                            kycController.qualification.value ==
+                    Obx(() {
+                      if (kycStaticController.loading.isTrue) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (kycStaticController.listdata.isEmpty) {
+                        return Center(
+                          child: Text("No Data"),
+                        );
+                      } else {
+                        return Container(
+                          height: 19.0.hp,
+                          width: 90.0.wp,
+                          child: ListView.builder(
+                              itemCount: 2,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      // kycController
+                                      //     .qualification(index == 0 ? 1 : 2);
+                                      // print(kycController.qualification.value);
+                                      kycController.qualification.value = index;
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      height: 6.0.hp,
+                                      width: 90.0.wp,
+                                      decoration: BoxDecoration(
+                                        color: screenbackground,
+                                        border: Border.all(
+                                            color: kycController
+                                                        .qualification.value ==
                                                     index
                                                 ? Colors.black
                                                 : screenbackground),
-                                    borderRadius: BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Center(
+                                          child: Text(
+                                        kycStaticController.listdata.first
+                                            .qualification[index].title
+                                            .toString(),
+                                        style: forminputstyle,
+                                      )),
+                                    ),
                                   ),
-                                  child: Center(
-                                      child: Text(
-                                    foodname[index],
-                                    style: forminputstyle,
-                                  )),
-                                ),
-                              ),
-                            );
-                          }),
-                    ),
+                                );
+                              }),
+                        );
+                      }
+                    }),
                     SizedBox(
                       height: 1.00.hp,
                     ),

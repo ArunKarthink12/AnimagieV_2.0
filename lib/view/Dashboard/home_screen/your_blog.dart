@@ -10,7 +10,7 @@ class YourBlog extends StatefulWidget {
 }
 
 class _YourBlogState extends State<YourBlog> {
-  OtherBlogController otherBlogController = Get.find();
+  // OtherBlogController otherBlogController = Get.find();
 
   @override
   Widget build(BuildContext context) {

@@ -11,15 +11,20 @@ class DoctorGender extends StatefulWidget {
 }
 
 class _DoctorGenderState extends State<DoctorGender> {
-  var gendername = ['Male', 'Female'];
+  // var gendername = ['Male', 'Female'];
   KycStaticController kycStaticController = Get.put(KycStaticController());
   KycController kycController = Get.find();
   @override
   void initState() {
     // TODO: implement initState
-    kycStaticController.kycStaticController();
-
+    fetchdata();
     super.initState();
+  }
+
+  fetchdata() {
+    Future.delayed(Duration.zero, () async {
+      await kycStaticController.kycStaticController();
+    });
   }
 
   @override
@@ -79,31 +84,6 @@ class _DoctorGenderState extends State<DoctorGender> {
                         ),
                       ),
                     ),
-                    // Stack(
-                    //   children: [
-                    //     Padding(
-                    //       padding: const EdgeInsets.only(
-                    //           left: 20.0, right: 20, top: 10),
-                    //       child: Image.asset('assets/images/progress.png'),
-                    //     ),
-                    //     Positioned(
-                    //         left: 2.0.wp,
-                    //         child: Image.asset('assets/images/foot.png'))
-                    //   ],
-                    // ),
-                    // SizedBox(
-                    //   height: 1.0.hp,
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(right: 20.0),
-                    //   child: Align(
-                    //     alignment: Alignment.bottomRight,
-                    //     child: Text(
-                    //       '15% Completed',
-                    //       style: threehundredtweleve,
-                    //     ),
-                    //   ),
-                    // ),
                     Stack(
                       children: [
                         Container(
@@ -141,43 +121,56 @@ class _DoctorGenderState extends State<DoctorGender> {
                     SizedBox(
                       height: 5.0.hp,
                     ),
-                    Container(
-                      height: 30.0.hp,
-                      width: 90.0.wp,
-                      child: ListView.builder(
-                          itemCount: 2,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: InkWell(
-                                onTap: () {
-                                  // kycController.gender(index == 0 ? 1 : 2);
-                                  // print(kycController.gender.value);
-                                  kycController.gender.value = index;
-                                  setState(() {});
-                                },
-                                child: Container(
-                                  height: 6.0.hp,
-                                  width: 90.0.wp,
-                                  decoration: BoxDecoration(
-                                    color: screenbackground,
-                                    border: Border.all(
-                                        color:
-                                            kycController.gender.value == index
+                    Obx(() {
+                      if (kycStaticController.loading.isTrue) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (kycStaticController.listdata.isEmpty) {
+                        return Center(
+                          child: Text("No Data"),
+                        );
+                      } else {
+                        return Container(
+                          height: 30.0.hp,
+                          width: 90.0.wp,
+                          child: ListView.builder(
+                              itemCount: 2,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      kycController.gender.value = index;
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      height: 6.0.hp,
+                                      width: 90.0.wp,
+                                      decoration: BoxDecoration(
+                                        color: screenbackground,
+                                        border: Border.all(
+                                            color: kycController.gender.value ==
+                                                    index
                                                 ? Colors.black
                                                 : screenbackground),
-                                    borderRadius: BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Center(
+                                          child: Text(
+                                        // gendername[index],
+                                        kycStaticController
+                                            .listdata.first.gender[index].title
+                                            .toString(),
+                                        style: forminputstyle,
+                                      )),
+                                    ),
                                   ),
-                                  child: Center(
-                                      child: Text(
-                                    gendername[index],
-                                    style: forminputstyle,
-                                  )),
-                                ),
-                              ),
-                            );
-                          }),
-                    ),
+                                );
+                              }),
+                        );
+                      }
+                    }),
                     SizedBox(
                       height: 18.00.hp,
                     ),

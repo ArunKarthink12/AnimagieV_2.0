@@ -341,10 +341,11 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                             text: 'SAVE CHANGES',
                             bordercolor: buttoncolor,
                             press: () {
-                              Future.delayed(Duration.zero, () async {
-                                await editBlogController
-                                    .editBlogcreateController(context);
-                              });
+                              //need blog id to edit seperate details
+                              //Future.delayed(Duration.zero, () async {
+                              //   await editBlogController
+                              //       .editBlogcreateController(context);
+                              // });
                             }),
                       ),
                       SizedBox(

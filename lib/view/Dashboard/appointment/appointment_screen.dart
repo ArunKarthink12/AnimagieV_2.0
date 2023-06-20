@@ -14,7 +14,7 @@ class Appointment extends StatefulWidget {
 }
 
 class _AppointmentState extends State<Appointment> {
-  OtherBlogController otherBlogController = Get.put(OtherBlogController());
+  YourBlogController yourBlogController = Get.put(YourBlogController());
   @override
   void initState() {
     fetchdata();
@@ -23,7 +23,7 @@ class _AppointmentState extends State<Appointment> {
 
   fetchdata() {
     Future.delayed(Duration.zero, () async {
-      await otherBlogController.otherController(views: "2");
+      await yourBlogController.yourController();
     });
   }
 
@@ -174,12 +174,12 @@ class _AppointmentState extends State<Appointment> {
                             tabs: [
                               const Tab(
                                 child: Text(
-                                  'Others Blogs',
+                                  'Your Blog',
                                 ),
                               ),
                               const Tab(
                                 child: Text(
-                                  'Your Blog',
+                                  'Others Blogs',
                                 ),
                               ),
                             ],
@@ -189,22 +189,22 @@ class _AppointmentState extends State<Appointment> {
                           height: 1000.0.hp,
                           width: 1000.0.wp,
                           child: TabBarView(children: [
-                            Obx(() {
-                              // print(
-                              //     'othercontroller------------${otherBlogController.listdata.length}');
-                              if (otherBlogController.isLoding.isTrue) {
-                                return const Center(
-                                    child: CircularProgressIndicator());
-                              } else if (otherBlogController.listdata.first ==
-                                  []) {
-                                return const Center(
-                                  child: Text('No Data Found'),
-                                );
-                              } else {
-                                return OtherBlog();
-                              }
-                            }),
+                            // Obx(() {
+                            //   // print(
+                            //   //     'othercontroller------------${otherBlogController.listdata.length}');
+                            //   if (yourBlogController.isLoding.isTrue) {
+                            //     return const Center(
+                            //         child: CircularProgressIndicator());
+                            //   } else if (yourBlogController.listdata.isEmpty) {
+                            //     return const Center(
+                            //       child: Text('No Data Found'),
+                            //     );
+                            //   } else {
+                            //     return
                             YourBlog(),
+                            // }
+                            // }),
+                            OtherBlog()
                           ]),
                         )
                       ],

@@ -393,13 +393,27 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                             text: 'POST',
                             bordercolor: buttoncolor,
                             press: () {
-                              // blogCreateController.popup(context);
-                              Future.delayed(Duration.zero, () async {
-                                await blogCreateController
-                                    .blogcreateController(context);
-                              });
-                              // print("asfsaf");
-                              // Get.back();
+                              if (blogCreateController
+                                  .image.value.path.isEmpty) {
+                                Fluttertoast.showToast(msg: "Upload Image");
+                              } else if (blogCreateController
+                                  .content.text.isEmpty) {
+                                Fluttertoast.showToast(msg: "Add Content");
+                              } else if (blogCreateController
+                                  .topic.text.isEmpty) {
+                                Fluttertoast.showToast(msg: "Add topic");
+                              } else if (blogCreateController
+                                      .image.value.path.isEmpty &&
+                                  blogCreateController.content.text.isEmpty &&
+                                  blogCreateController.topic.text.isEmpty) {
+                                Fluttertoast.showToast(
+                                    msg: "Choose all blog fields  ");
+                              } else {
+                                Future.delayed(Duration.zero, () async {
+                                  await blogCreateController
+                                      .blogcreateController(context);
+                                });
+                              }
                             }),
                       ),
                       SizedBox(

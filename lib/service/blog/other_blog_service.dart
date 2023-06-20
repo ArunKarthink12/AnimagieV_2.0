@@ -7,12 +7,12 @@ import 'package:http/http.dart' as http;
 // import '../../utils/common_function/constants.dart';
 import '../../view/allpackages.dart';
 
-class OtherBlogService {
-  Future otherBlogService({view}) async {
+class YourBlogService {
+  Future yourBlogService() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString(Constants.token);
     try {
-      var data = {"view": view.toString()};
+      var data = {"view": "2"};
 
       var response = await http.post(
           Uri.parse(
@@ -23,19 +23,22 @@ class OtherBlogService {
             // 'Content-Type': 'application/json',
           });
 
-      // var jsonresponse = jsonDecode(response.body);
-      // print("servicess" + response.body.toString());
-
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         print("servicess" + response.body.toString());
 
-        // var jsonResponse = json.decode(response.body);
         Fluttertoast.showToast(msg: "success");
-        List<dynamic> apiResponse = json.decode(response.body);
-        print("servicedata${response.body}");
-        // return OtherBlogModel.fromJson(apiResponse as Map<String, dynamic>);
+        List<YourBlogModel> apiResponse = json.decode(response.body);
         return apiResponse
-            .map((job) => new OtherBlogModel.fromJson(job))
+            .map((job) => YourBlogModel(
+                content: job.content,
+                createdAt: job.createdAt,
+                id: job.id,
+                image: job.image,
+                imagePath: job.imagePath,
+                tags: job.tags,
+                topic: job.topic,
+                updatedAt: job.updatedAt,
+                userId: job.userId))
             .toList();
       } else {
         Fluttertoast.showToast(msg: "Failed");
