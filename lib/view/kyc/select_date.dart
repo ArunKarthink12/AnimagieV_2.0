@@ -1,4 +1,7 @@
+import 'package:intl/intl.dart';
+
 import '../allpackages.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class DatePicker extends StatefulWidget {
   const DatePicker({Key? key}) : super(key: key);
@@ -9,6 +12,7 @@ class DatePicker extends StatefulWidget {
 
 class _DatePickerState extends State<DatePicker> {
   var holidayindex = 0;
+  var satholidayindex = 0;
   DateTime? _selectedDate;
   static const orange = Color(0xFFFE9A75);
   static const dark = Color(0xFF333A47);
@@ -26,16 +30,47 @@ class _DatePickerState extends State<DatePicker> {
     _resetSelectedDate();
   }
 
+  TextEditingController dob = TextEditingController();
+
   void _resetSelectedDate() {
     _selectedDate = DateTime.now().add(const Duration(days: 2));
   }
 
+  DateTime selectedDate = DateTime.now();
+
+  selectDate(
+    BuildContext context,
+  ) async {
+    final selected = await showDatePicker(
+      context: context,
+      initialDate: dob.text.isNotEmpty
+          ? DateFormat("dd-MM-yyyy").parse(dob.text)
+          : DateTime(2015),
+      firstDate: DateTime(2000),
+      lastDate: DateTime.now(),
+    );
+    if (selected != null && selected != selectedDate) {
+      dob.text = DateFormat('dd-MM-yyyy').format(selected);
+      setState(() {});
+    } else {
+      return "";
+    }
+  }
+
   var dropdownValue = '';
-  var selectedtyped = ['30 minutes', '1 hr 30 mins', '2 hrs'];
+  var MorningStartTime = ['30 minutes', '1 hr 30 mins', '2 hrs'];
+  var MorningEndTime = ['30 minutes', '1 hr 30 mins', '2 hrs'];
+  var EveningStartTime = ['30 minutes', '1 hr 30 mins', '2 hrs'];
+  var eveningEndTime = ['30 minutes', '1 hr 30 mins', '2 hrs'];
   var holiday = ['All Saturday', 'All Sunday'];
   var holidays = ['Full day off', 'Morning off', 'Evening off'];
-  var type;
-  var checkBoxValue = false;
+  var morningStart;
+  var morningEnd;
+  var eveningStart;
+  var eveningEnd;
+
+  var checkBoxMorningValue = false;
+  var checkBoxEveningValue = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -69,14 +104,14 @@ class _DatePickerState extends State<DatePicker> {
                               InkWell(
                                 onTap: () {
                                   setState(() {
-                                    holidayindex = index;
+                                    satholidayindex = index;
                                   });
                                 },
                                 child: Container(
                                   height: 3.0.hp,
                                   width: 6.0.wp,
                                   decoration: BoxDecoration(
-                                    gradient: holidayindex == index
+                                    gradient: satholidayindex == index
                                         ? const LinearGradient(
                                             begin: Alignment.topRight,
                                             end: Alignment.bottomLeft,
@@ -97,12 +132,12 @@ class _DatePickerState extends State<DatePicker> {
                                   ),
                                 ),
                               ),
-                              holidayindex == index
+                              satholidayindex == index
                                   ? Positioned(
                                       child: InkWell(
                                       onTap: () {
                                         setState(() {
-                                          holidayindex = index;
+                                          satholidayindex = index;
                                         });
                                       },
                                       child: const Icon(
@@ -133,8 +168,8 @@ class _DatePickerState extends State<DatePicker> {
               height: 2.0.hp,
             ),
             Container(
-              height: 8.00.hp,
-              width: 200.00.wp,
+              height: 7.0.hp,
+              width: 200.0.wp,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 color: screenbackground,
@@ -150,47 +185,66 @@ class _DatePickerState extends State<DatePicker> {
                       style: forminputstyle,
                     ),
                   ),
-                  TextFormField(
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(5.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 9.0.sp),
+                        child: Text(
+                            dob.text.length == 0 ? "" : dob.text.toString()),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(5.0),
+                      GestureDetector(
+                        onTap: () {
+                          selectDate(context);
+                          //calender
+                        },
+                        child: Padding(
+                            padding: EdgeInsets.only(right: 9.0.sp),
+                            child: Image.asset('assets/images/calendar.png')),
                       ),
-                      //  label: Text('Search breed name'),
-                      suffixIcon: Image.asset('assets/images/calendar.png'),
-                      hintText: 'April,2023',
-                      hintStyle: fourhundredtweleve,
-                      contentPadding: const EdgeInsets.only(
-                        left: 10,
-                      ),
-                    ),
-                  ),
+                    ],
+                  )
+                  // TextFormField(
+                  //   textInputAction: TextInputAction.next,
+                  //   keyboardType: TextInputType.emailAddress,
+                  //   decoration: InputDecoration(
+                  //     focusedBorder: OutlineInputBorder(
+                  //       borderSide: BorderSide.none,
+                  //       borderRadius: BorderRadius.circular(5.0),
+                  //     ),
+                  //     enabledBorder: OutlineInputBorder(
+                  //       borderSide: BorderSide.none,
+                  //       borderRadius: BorderRadius.circular(5.0),
+                  //     ),
+                  //     //  label: Text('Search breed name'),
+                  //     suffixIcon: Image.asset('assets/images/calendar.png'),
+                  //     hintText: 'April,2023',
+                  //     hintStyle: fourhundredtweleve,
+                  //     contentPadding: const EdgeInsets.only(
+                  //       left: 10,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
 
-            // CalendarTimeline(
-            //   showYears: true,
-            //   initialDate: _selectedDate!,
-            //   firstDate: DateTime.now(),
-            //   lastDate: DateTime.now().add(const Duration(days: 365 * 4)),
-            //   onDateSelected: (date) => setState(() => _selectedDate = date),
-            //   leftMargin: 0,
-            //   monthColor: Colors.white,
-            //   dayColor: Colors.black,
-            //   dayNameColor: Colors.white,
-            //   activeDayColor: Colors.white,
-            //   activeBackgroundDayColor: buttoncolor,
-            //   dotsColor: buttoncolor,
-            //   selectableDayPredicate: (date) => date.day != 23,
-            //   locale: 'en',
-            // ),
+            CalendarTimeline(
+              showYears: true,
+              initialDate: _selectedDate!,
+              firstDate: DateTime.now(),
+              lastDate: DateTime.now().add(const Duration(days: 365 * 4)),
+              onDateSelected: (date) => setState(() => _selectedDate = date),
+              leftMargin: 0,
+              monthColor: Colors.white,
+              dayColor: Colors.black,
+              dayNameColor: Colors.white,
+              activeDayColor: Colors.white,
+              activeBackgroundDayColor: buttoncolor,
+              dotsColor: buttoncolor,
+              selectableDayPredicate: (date) => date.day != 23,
+              locale: 'en',
+            ),
             SizedBox(height: 3.00.hp),
 
             // Center(
@@ -254,8 +308,8 @@ class _DatePickerState extends State<DatePicker> {
                                 // },
                                 icon: const Icon(Icons.arrow_drop_down),
 
-                                items: selectedtyped
-                                    .map<DropdownMenuItem<String>>((items) {
+                                items: MorningStartTime.map<
+                                    DropdownMenuItem<String>>((items) {
                                   return DropdownMenuItem<String>(
                                     value: items,
                                     child: Container(
@@ -270,10 +324,10 @@ class _DatePickerState extends State<DatePicker> {
                                                         FontWeight.w500)))),
                                   );
                                 }).toList(),
-                                value: type,
+                                value: morningStart,
                                 onChanged: (value) {
                                   setState(() {
-                                    type = value!;
+                                    morningStart = value!;
                                   });
                                 },
                               ),
@@ -327,8 +381,8 @@ class _DatePickerState extends State<DatePicker> {
                                 // },
                                 icon: const Icon(Icons.arrow_drop_down),
 
-                                items: selectedtyped
-                                    .map<DropdownMenuItem<String>>((items) {
+                                items: MorningEndTime.map<
+                                    DropdownMenuItem<String>>((items) {
                                   return DropdownMenuItem<String>(
                                     value: items,
                                     child: Container(
@@ -343,10 +397,10 @@ class _DatePickerState extends State<DatePicker> {
                                                         FontWeight.w500)))),
                                   );
                                 }).toList(),
-                                value: type,
+                                value: morningEnd,
                                 onChanged: (value) {
                                   setState(() {
-                                    type = value!;
+                                    morningEnd = value!;
                                   });
                                 },
                               ),
@@ -368,11 +422,11 @@ class _DatePickerState extends State<DatePicker> {
                   child: Row(
                     children: [
                       Checkbox(
-                          value: checkBoxValue,
+                          value: checkBoxMorningValue,
                           activeColor: const Color.fromARGB(255, 19, 51, 77),
                           onChanged: (bool? newValue) {
                             setState(() {
-                              checkBoxValue = newValue!;
+                              checkBoxMorningValue = newValue!;
                             });
                           }),
                       Text(
@@ -438,8 +492,8 @@ class _DatePickerState extends State<DatePicker> {
                                 // },
                                 icon: const Icon(Icons.arrow_drop_down),
 
-                                items: selectedtyped
-                                    .map<DropdownMenuItem<String>>((items) {
+                                items: EveningStartTime.map<
+                                    DropdownMenuItem<String>>((items) {
                                   return DropdownMenuItem<String>(
                                     value: items,
                                     child: Container(
@@ -454,10 +508,10 @@ class _DatePickerState extends State<DatePicker> {
                                                         FontWeight.w500)))),
                                   );
                                 }).toList(),
-                                value: type,
+                                value: eveningStart,
                                 onChanged: (value) {
                                   setState(() {
-                                    type = value!;
+                                    eveningStart = value!;
                                   });
                                 },
                               ),
@@ -511,7 +565,7 @@ class _DatePickerState extends State<DatePicker> {
                                 // },
                                 icon: const Icon(Icons.arrow_drop_down),
 
-                                items: selectedtyped
+                                items: eveningEndTime
                                     .map<DropdownMenuItem<String>>((items) {
                                   return DropdownMenuItem<String>(
                                     value: items,
@@ -527,10 +581,10 @@ class _DatePickerState extends State<DatePicker> {
                                                         FontWeight.w500)))),
                                   );
                                 }).toList(),
-                                value: type,
+                                value: eveningEnd,
                                 onChanged: (value) {
                                   setState(() {
-                                    type = value!;
+                                    eveningEnd = value!;
                                   });
                                 },
                               ),
@@ -553,11 +607,11 @@ class _DatePickerState extends State<DatePicker> {
                   child: Row(
                     children: [
                       Checkbox(
-                          value: checkBoxValue,
+                          value: checkBoxEveningValue,
                           activeColor: const Color.fromARGB(255, 19, 51, 77),
                           onChanged: (bool? newValue) {
                             setState(() {
-                              checkBoxValue = newValue!;
+                              checkBoxEveningValue = newValue!;
                             });
                           }),
                       Text(

@@ -158,6 +158,7 @@ class _DoctorPhoneState extends State<DoctorPhone> {
                         child: TextFormField(
                           style: forminputstyle,
                           controller: kycController.mobile,
+                          // maxLength: 10,
                           keyboardType:
                               TextInputType.numberWithOptions(decimal: true),
                           inputFormatters: <TextInputFormatter>[
@@ -177,7 +178,7 @@ class _DoctorPhoneState extends State<DoctorPhone> {
                               ),
                               prefixIcon:
                                   Image.asset('assets/images/phone.png'),
-                              hintText: '+91  Phone number*',
+                              hintText: '+91  Phone Number*',
                               contentPadding: const EdgeInsets.all(10),
                               hintStyle: formhintstyle,
                               border: const OutlineInputBorder(

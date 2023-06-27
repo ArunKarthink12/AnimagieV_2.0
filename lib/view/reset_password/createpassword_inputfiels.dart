@@ -1,7 +1,6 @@
 // import '../../controller/change_password_controller.dart';
 // import '../../utils/common_function/constants.dart';
 import '../allpackages.dart';
- 
 
 class CreateNewPasswordInputFields extends StatefulWidget {
   CreateNewPasswordInputFields({Key? key, this.email}) : super(key: key);
@@ -134,10 +133,10 @@ class _CreateNewPasswordInputFieldsState
                     .password_confirmation.text.isEmpty) {
                   Fluttertoast.showToast(msg: 'please enter confirm password');
                 } else {
-                  changePaswordController
-                      .changePasswordController(
-                          context: context, email: widget.email.toString())
-                      .then((value) => LoginScreen());
+                  Future.delayed(Duration.zero, () async {
+                    await changePaswordController.changePasswordController(
+                        context: context, email: widget.email.toString());
+                  }); // LoginScreen()
                 }
               }
             },

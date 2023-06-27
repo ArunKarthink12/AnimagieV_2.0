@@ -270,8 +270,8 @@ class _YourBlogEditState extends State<YourBlogEdit> {
 
                       ///TagListobx
                       Container(
-                          height: 7.00.hp,
-                          width: 95.00.wp,
+                          height: 7.0.hp,
+                          width: 90.0.wp,
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           decoration: BoxDecoration(
                             color: screenbackground,
@@ -307,7 +307,7 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                                   value: value.toString(),
                                   child: Container(
                                       height: 5.0.hp,
-                                      width: 35.0.wp,
+                                      width: 32.0.wp,
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(50),
@@ -316,7 +316,7 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                                           left: 0, right: 4),
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                            MainAxisAlignment.center,
                                         children: [
                                           Text(value,
                                               style: GoogleFonts.jost(

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:doctorapp/controller/blogupdatecontroller.dart';
 import 'package:doctorapp/view/Dashboard/home_screen/appointmentScreens/controller/taglistController.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 import '../../allpackages.dart';
 
@@ -218,74 +219,83 @@ class _YourBlogEditState extends State<YourBlogEdit> {
 
                       ///TagListobx
                       Container(
-                          height: 7.00.hp,
-                          width: 95.00.wp,
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          decoration: BoxDecoration(
-                            color: screenbackground,
-                            borderRadius: BorderRadius.circular(5.0),
-                            border: Border.all(
-                              color: const Color(0xFFECE9E9),
-                              width: MediaQuery.of(context).size.height * 0.001,
-                            ),
+                        height: 7.00.hp,
+                        width: 95.00.wp,
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        decoration: BoxDecoration(
+                          color: screenbackground,
+                          borderRadius: BorderRadius.circular(5.0),
+                          border: Border.all(
+                            color: const Color(0xFFECE9E9),
+                            width: MediaQuery.of(context).size.height * 0.001,
                           ),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton<String>(
-                              value: selectvalue,
-                              style: GoogleFonts.jost(
-                                  textStyle: TextStyle(
-                                      fontSize: 10.00.sp,
-                                      color: forminputcolor,
-                                      fontWeight: FontWeight.w500)),
-                              hint: Text('Select your options',
-                                  style: GoogleFonts.jost(
-                                      textStyle: TextStyle(
-                                          fontSize: 10.00.sp,
-                                          color: formhintcolor,
-                                          fontWeight: FontWeight.w500))),
-                              onChanged: (String? newValue) async {
-                                setState(() {
-                                  selectvalue = newValue;
-                                });
-                              },
-                              icon: const Icon(Icons.arrow_drop_down_outlined),
-                              items: blogname
-                                  .map<DropdownMenuItem<String>>((value) {
-                                return DropdownMenuItem<String>(
-                                  value: value.toString(),
-                                  child: Container(
-                                      height: 5.0.hp,
-                                      width: 35.0.wp,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          border: Border.all(color: appcolor)),
-                                      margin: const EdgeInsets.only(
-                                          left: 0, right: 4),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Text(value,
-                                              style: GoogleFonts.jost(
-                                                  textStyle: TextStyle(
-                                                      fontSize: 10.00.sp,
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.w400))),
-                                          const CircleAvatar(
-                                            backgroundColor: Colors.white,
-                                            child: Icon(
-                                              Icons.close,
-                                              size: 15,
-                                            ),
-                                          )
-                                        ],
-                                      )),
-                                );
-                              }).toList(),
-                            ),
-                          )),
+                        ),
+                        //   child: MultiSelectDialogField(
+                        //     onConfirm: (val) {
+                        //       // _selectedAnimals5 = val;
+                        //     },
+                        //     dialogWidth: MediaQuery.of(context).size.width * 0.7,
+                        //     items: [],
+                        //     initialValue: ["dog", "cat"],
+                        //   ),
+                      ),
+                      // DropdownButtonHideUnderline(
+                      //   child: DropdownButton<String>(
+                      //     value: selectvalue,
+                      //     style: GoogleFonts.jost(
+                      //         textStyle: TextStyle(
+                      //             fontSize: 10.00.sp,
+                      //             color: forminputcolor,
+                      //             fontWeight: FontWeight.w500)),
+                      //     hint: Text('Select your options',
+                      //         style: GoogleFonts.jost(
+                      //             textStyle: TextStyle(
+                      //                 fontSize: 10.00.sp,
+                      //                 color: formhintcolor,
+                      //                 fontWeight: FontWeight.w500))),
+                      //     onChanged: (String? newValue) async {
+                      //       setState(() {
+                      //         selectvalue = newValue;
+                      //       });
+                      //     },
+                      //     icon: const Icon(Icons.arrow_drop_down_outlined),
+                      //     items: blogname
+                      //         .map<DropdownMenuItem<String>>((value) {
+                      //       return DropdownMenuItem<String>(
+                      //         value: value.toString(),
+                      //         child: Container(
+                      //             height: 5.0.hp,
+                      //             width: 35.0.wp,
+                      //             decoration: BoxDecoration(
+                      //                 borderRadius:
+                      //                     BorderRadius.circular(50),
+                      //                 border: Border.all(color: appcolor)),
+                      //             margin: const EdgeInsets.only(
+                      //                 left: 0, right: 4),
+                      //             child: Row(
+                      //               mainAxisAlignment:
+                      //                   MainAxisAlignment.spaceEvenly,
+                      //               children: [
+                      //                 Text(value,
+                      //                     style: GoogleFonts.jost(
+                      //                         textStyle: TextStyle(
+                      //                             fontSize: 10.00.sp,
+                      //                             color: Colors.black,
+                      //                             fontWeight:
+                      //                                 FontWeight.w400))),
+                      //                 const CircleAvatar(
+                      //                   backgroundColor: Colors.white,
+                      //                   child: Icon(
+                      //                     Icons.close,
+                      //                     size: 15,
+                      //                   ),
+                      //                 )
+                      //               ],
+                      //             )),
+                      //       );
+                      //     }).toList(),
+                      //   ),
+                      // )),
                       SizedBox(
                         height: 3.0.hp,
                       ),

@@ -15,21 +15,24 @@ class _NotificationPageState extends State<NotificationPage> {
           elevation: 0,
           backgroundColor: bgcolor,
           centerTitle: true,
-          leading: Icon(
-            Icons.arrow_back,
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(Icons.arrow_back),
             color: headingtext,
           ),
           title: Text(
             'NOTIFICATION',
             style: sixteeneighthundred000958,
           ),
-          actions: [
-            Padding(
-                padding: EdgeInsets.all(20.0),
-                child: InkWell(
-                    onTap: () {},
-                    child: Image.asset('assets/images/notification.png'))),
-          ],
+          // actions: [
+          //   Padding(
+          //       padding: EdgeInsets.all(20.0),
+          //       child: InkWell(
+          //           onTap: () {},
+          //           child: Image.asset('assets/images/notification.png'))),
+          // ],
         ),
         body: Container(
             decoration: const BoxDecoration(

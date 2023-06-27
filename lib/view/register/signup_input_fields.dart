@@ -208,7 +208,7 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
                         width: 1.0.wp,
                       ),
                       Text(
-                        'Terms&Condition',
+                        'Terms & Condition',
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                                 decoration: TextDecoration.underline,

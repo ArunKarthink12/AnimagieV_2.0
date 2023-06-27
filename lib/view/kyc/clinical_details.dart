@@ -1,6 +1,7 @@
 import 'dart:io';
 
 // import 'package:doctorapp/view/Dashboard/home_screen.dart';
+import 'package:doctorapp/view/Dashboard/home_screen.dart';
 import 'package:doctorapp/view/allpackages.dart';
 // import 'package:doctorapp/view/kyc/popupscreen.dart';
 
@@ -359,9 +360,8 @@ class _ClinicalDocumentsState extends State<ClinicalDocuments> {
                                 // Future.delayed(Duration.zero, () async {
                                 //   await kycController.kycController();
                                 // });
-                                // Get.to(PopUpPage());
-                                Get.to(LoginScreen());
-                                // Get.to(const HomeScreen());
+
+                                popup();
                               },
                               bordercolor: buttoncolor,
                               text: 'DONE',
@@ -372,5 +372,26 @@ class _ClinicalDocumentsState extends State<ClinicalDocuments> {
             ],
           ))));
     });
+  }
+
+  popup() {
+    showDialog(
+      context: context,
+      builder: (ctx) => Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+          child: GestureDetector(
+            onTap: () {
+              // Get.back();
+              Get.to(const HomeScreen());
+            },
+            child: SizedBox(
+              // height: 25.0.hp,
+              child: Image.asset(
+                "assets/images/successpopup.png",
+                fit: BoxFit.cover,
+              ),
+            ),
+          )),
+    );
   }
 }

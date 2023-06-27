@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import '../../allpackages.dart';
 import '../appointment/session_details.dart';
 import 'completed_view_details.dart';
@@ -147,10 +149,33 @@ class _CompletedAppointmentState extends State<CompletedAppointment> {
     );
   }
 
+  TextEditingController dob = TextEditingController();
+
   ScrollController _scrollController = ScrollController();
 
   _scrollToBottom() {
     _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+  }
+
+  DateTime selectedDate = DateTime.now();
+
+  selectDate(
+    BuildContext context,
+  ) async {
+    final selected = await showDatePicker(
+      context: context,
+      initialDate: dob.text.isNotEmpty
+          ? DateFormat("dd-MM-yyyy").parse(dob.text)
+          : DateTime(2015),
+      firstDate: DateTime(2000),
+      lastDate: DateTime.now(),
+    );
+    if (selected != null && selected != selectedDate) {
+      dob.text = DateFormat('dd-MM-yyyy').format(selected);
+      setState(() {});
+    } else {
+      return "";
+    }
   }
 
   Widget build(BuildContext context) {
@@ -168,37 +193,56 @@ class _CompletedAppointmentState extends State<CompletedAppointment> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  height: 6.0.hp,
-                  width: 40.0.wp,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white),
-                  child: TextFormField(
-                    style: forminputstyle,
-                    decoration: InputDecoration(
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide: const BorderSide(
-                              color: screenbackground, width: 0.5),
+                    height: 6.0.hp,
+                    width: 40.0.wp,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.white),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 9.0.sp),
+                          child: Text(
+                              dob.text.length == 0 ? "" : dob.text.toString()),
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                          borderSide: const BorderSide(
-                              color: screenbackground, width: 1),
+                        GestureDetector(
+                          onTap: () {
+                            selectDate(context);
+                            //calender
+                          },
+                          child: Padding(
+                              padding: EdgeInsets.only(right: 9.0.sp),
+                              child: Image.asset('assets/images/calendar.png')),
                         ),
-                        hintText: 'Select Date',
-                        suffixIcon: Image.asset(
-                          'assets/images/calendar.png',
-                          color: Colors.black,
-                        ),
-                        contentPadding:
-                            const EdgeInsets.only(left: 10, top: 20),
-                        hintStyle: forminputstyle,
-                        border: const OutlineInputBorder(
-                          gapPadding: 4,
-                        )),
-                  ),
-                ),
+                      ],
+                    )
+                    // child: TextFormField(
+                    //   style: forminputstyle,
+                    //   decoration: InputDecoration(
+                    //       focusedBorder: OutlineInputBorder(
+                    //         borderRadius: BorderRadius.circular(5.0),
+                    //         borderSide: const BorderSide(
+                    //             color: screenbackground, width: 0.5),
+                    //       ),
+                    //       enabledBorder: OutlineInputBorder(
+                    //         borderRadius: BorderRadius.circular(5.0),
+                    //         borderSide: const BorderSide(
+                    //             color: screenbackground, width: 1),
+                    //       ),
+                    //       hintText: 'Select Date',
+                    //       suffixIcon: Image.asset(
+                    //         'assets/images/calendar.png',
+                    //         color: Colors.black,
+                    //       ),
+                    //       contentPadding:
+                    //           const EdgeInsets.only(left: 10, top: 20),
+                    //       hintStyle: forminputstyle,
+                    //       border: const OutlineInputBorder(
+                    //         gapPadding: 4,
+                    //       )),
+                    // ),
+                    ),
                 SizedBox(
                   width: 4.0.wp,
                 ),

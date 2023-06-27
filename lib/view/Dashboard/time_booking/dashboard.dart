@@ -69,60 +69,89 @@ class _DashboardState extends State<Dashboard> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text(
-                                            'Total Appointment',
-                                            style: GoogleFonts.poppins(
-                                                textStyle: const TextStyle(
-                                                    letterSpacing: 0.2,
-                                                    fontSize: 12.00,
-                                                    color: Color(0xff000958),
-                                                    fontWeight:
-                                                        FontWeight.w700)),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Total Appointment',
+                                                style: GoogleFonts.poppins(
+                                                    textStyle: const TextStyle(
+                                                        letterSpacing: 0.2,
+                                                        fontSize: 12.00,
+                                                        color:
+                                                            Color(0xff000958),
+                                                        fontWeight:
+                                                            FontWeight.w700)),
+                                              ),
+                                              Text(
+                                                '100',
+                                                style: forminputstyle,
+                                              ),
+                                            ],
                                           ),
-                                          Text(
-                                            'Total Earning',
-                                            style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
-                                                  letterSpacing: 0.2,
-                                                  fontSize: 12.00,
-                                                  color: Color(0xff000958),
-                                                  fontWeight: FontWeight.w700),
-                                            ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Total Earning',
+                                                style: GoogleFonts.poppins(
+                                                  textStyle: const TextStyle(
+                                                      letterSpacing: 0.2,
+                                                      fontSize: 12.00,
+                                                      color: Color(0xff000958),
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
+                                              ),
+                                              Text(
+                                                'Rs.10,000',
+                                                style: forminputstyle,
+                                              ),
+                                            ],
                                           ),
-                                          Text(
-                                            'Credited',
-                                            style: GoogleFonts.poppins(
-                                              textStyle: const TextStyle(
-                                                  letterSpacing: 0.2,
-                                                  fontSize: 12.00,
-                                                  color: Color(0xff000958),
-                                                  fontWeight: FontWeight.w700),
-                                            ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Credited',
+                                                style: GoogleFonts.poppins(
+                                                  textStyle: const TextStyle(
+                                                      letterSpacing: 0.2,
+                                                      fontSize: 12.00,
+                                                      color: Color(0xff000958),
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
+                                              ),
+                                              Text(
+                                                'Rs.10,000',
+                                                style: forminputstyle,
+                                              )
+                                            ],
                                           )
                                         ],
                                       ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            '100',
-                                            style: forminputstyle,
-                                          ),
-                                          SizedBox(
-                                            width: 37.0.wp,
-                                          ),
-                                          Text(
-                                            'Rs.10,000',
-                                            style: forminputstyle,
-                                          ),
-                                          SizedBox(
-                                            width: 16.0.wp,
-                                          ),
-                                          Text(
-                                            'Rs.10,000',
-                                            style: forminputstyle,
-                                          )
-                                        ],
-                                      )
+                                      // Row(
+                                      //   children: [
+                                      //     Text(
+                                      //       '100',
+                                      //       style: forminputstyle,
+                                      //     ),
+                                      //     SizedBox(
+                                      //       width: 37.0.wp,
+                                      //     ),
+                                      //     Text(
+                                      //       'Rs.10,000',
+                                      //       style: forminputstyle,
+                                      //     ),
+                                      //     SizedBox(
+                                      //       width: 15.0.wp,
+                                      //     ),
+                                      //   ],
+                                      // )
                                     ],
                                   ),
                                 ),

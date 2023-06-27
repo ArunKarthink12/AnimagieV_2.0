@@ -1,7 +1,5 @@
 import '../../../allpackages.dart';
 import 'changepassword_inputfiels.dart';
- 
- 
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({Key? key}) : super(key: key);

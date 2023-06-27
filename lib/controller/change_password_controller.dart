@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:doctorapp/view/view.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,9 +18,11 @@ class ChangePaswordController extends GetxController {
   var changePassword = ChangePasswordService();
   Future changePasswordController({context, email}) async {
     if (password.text.isEmpty) {
-      //Fluttertoast.showToast(msg: "Please enter old password");
+      Fluttertoast.showToast(msg: "Please enter password");
     } else if (password_confirmation.text.isEmpty) {
-      //Fluttertoast.showToast(msg: "Please enter create password");
+      Fluttertoast.showToast(msg: "Please enter Confirm password");
+    } else if (password.text != password_confirmation.text) {
+      Fluttertoast.showToast(msg: "Both Should be Same");
     } else {
       createpasswordLoad(true);
       if (createpasswordLoad.value) {
@@ -31,11 +35,11 @@ class ChangePaswordController extends GetxController {
             password_confirmation: password_confirmation.text,
             email: email);
         log('responseeeee------------');
-        log(response.toString());
+        // log(response.toString());
 
         if (response != null) {
-          Get.back();
-          print('responseeee');
+          Get.to(const LoginScreen());
+          // print('responseeee');
           createpasswordLoad(false);
           // Fluttertoast.showToast(msg: response.message.toString());
         } else {

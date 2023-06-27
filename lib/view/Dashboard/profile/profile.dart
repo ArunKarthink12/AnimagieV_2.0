@@ -226,38 +226,28 @@ class _OptionListState extends State<OptionList> {
               builder: (ctx) => AlertDialog(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5)),
-                insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
+                // insetPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                // contentPadding:
+                //     EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
                 title: Stack(
                   children: [
                     Container(
                       height: 6.0.hp,
                       width: 100.0.wp,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "logout",
-                                style: GoogleFonts.poppins(
-                                    textStyle: const TextStyle(
-                                        fontSize: 14.00,
-                                        color: Color(0xff262626),
-                                        fontWeight: FontWeight.w700)),
-                              ),
-                            ],
-                          ),
-                        ],
+                      child: Text(
+                        "logout",
+                        style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                                fontSize: 14.00,
+                                color: Color(0xff262626),
+                                fontWeight: FontWeight.w700)),
                       ),
                     ),
                     Positioned(
                       top: 0,
-                      right: 2.0.wp,
+                      right: 0,
                       child: CircleAvatar(
-                        radius: 15,
+                        radius: 10.0.sp,
                         backgroundColor: Color(0xffDDE7F5),
                         child: InkWell(
                             onTap: () {
@@ -266,7 +256,7 @@ class _OptionListState extends State<OptionList> {
                             child: Icon(Icons.close,
                                 size: 15, color: headingtext)),
                       ),
-                    )
+                    ),
                   ],
                 ),
                 content: Text(
@@ -358,7 +348,7 @@ class _OptionListState extends State<OptionList> {
             );
           },
           child: Padding(
-            padding: const EdgeInsets.only(left: 12.0),
+            padding: EdgeInsets.only(left: 20.0.sp),
             child: Container(
               height: 8.0.hp,
               child: Row(

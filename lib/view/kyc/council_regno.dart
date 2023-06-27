@@ -167,7 +167,7 @@ class _CouncilRegisterNumerState extends State<CouncilRegisterNumer> {
                                 borderSide: const BorderSide(
                                     color: screenbackground, width: 1),
                               ),
-                              hintText: 'Your register number*',
+                              hintText: 'Your registration number*',
                               contentPadding: const EdgeInsets.all(10),
                               hintStyle: forminputstyle,
                               border: const OutlineInputBorder(
