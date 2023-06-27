@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 // import 'package:get/get.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/forgotpassword_model.dart';
@@ -24,18 +25,20 @@ class ForgotPasswordService {
       log('toast------');
 
       if (response.statusCode == 200) {
-        if (jsonresponse['status'] == 'success') {
-          // Fluttertoast.showToast(msg: jsonresponse['message'].toString());
-          return ForgetOtpModel.fromJson(jsonresponse);
-        } else {
-          // Fluttertoast.showToast(msg: jsonresponse['message'].toString());
-          return null;
-        }
+        // if (jsonresponse['status'] == 'success') {
+        Fluttertoast.showToast(msg: jsonresponse['message'].toString());
+        return ForgetOtpModel.fromJson(jsonresponse);
       } else {
         // Fluttertoast.showToast(msg: jsonresponse['message'].toString());
         return null;
       }
-    } catch (e) {
+    }
+    //  else {
+    //   // Fluttertoast.showToast(msg: jsonresponse['message'].toString());
+    //   return null;
+    // }
+    // }
+    catch (e) {
       rethrow;
     }
   }

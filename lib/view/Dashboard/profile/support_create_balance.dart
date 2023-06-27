@@ -1,5 +1,3 @@
- 
-
 import 'package:doctorapp/view/Dashboard/profile/profile.dart';
 
 import '../../allpackages.dart';
@@ -303,7 +301,7 @@ class _SupportState extends State<SupportCreateBalance> {
                     ),
                     Center(
                       child: ButtonIconButton(
-                          text: 'SAVE CHANGES',
+                          text: 'Submit',
                           bordercolor: buttoncolor,
                           press: () {
                             Get.to(Profile());

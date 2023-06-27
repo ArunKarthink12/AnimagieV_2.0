@@ -45,13 +45,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Positioned(
                 child: Column(
                   children: [
-                    SizedBox(height: 7.00.hp),
+                    SizedBox(height: 4.0.hp),
                     SizedBox(
-                        height: 25.0.hp,
-                        width: 25.0.hp,
+                        height: 24.0.hp,
+                        width: 24.0.hp,
                         child: Image.asset('assets/images/A_logo.png')),
                     Text('CREATE A NEW ACCOUNT', style: toptitleStylebold),
-                    SizedBox(height: 2.00.hp),
+                    SizedBox(height: 1.0.hp),
 
                     // Container(
                     //   color: Colors.white,
@@ -70,7 +70,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                     const SignupInputFields(),
 
-                    SizedBox(height: 3.00.hp),
+                    SizedBox(height: 1.0.hp),
                     //  / SignupSocialLogins(),
 
                     GestureDetector(

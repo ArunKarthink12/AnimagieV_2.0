@@ -36,8 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Stack(children: [
             Container(
-                height: 100.0.hp,
-                width: 100.0.wp,
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                   image: AssetImage(
@@ -48,20 +48,20 @@ class _LoginScreenState extends State<LoginScreen> {
             Positioned(
               child: Column(
                 children: [
-                  SizedBox(height: 5.00.hp),
+                  SizedBox(height: 2.0.hp),
                   SizedBox(
                       height: 25.0.hp,
                       width: 25.0.hp,
                       child: Image.asset('assets/images/A_logo.png')),
                   Text('WELCOME', style: toptitleStylebold),
-                  SizedBox(height: 2.00.hp),
+                  SizedBox(height: 1.00.hp),
                   Text(
                       'Please put your informaton below to login to \n your account',
                       style: welcome,
                       textAlign: TextAlign.center),
-                  SizedBox(height: 5.00.hp),
+                  SizedBox(height: 3.0.hp),
                   const LoginInputFields(),
-                  SizedBox(height: 5.00.hp),
+                  SizedBox(height: 3.0.hp),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           'Don’t have an account?',
                           style: GoogleFonts.poppins(
                               textStyle: TextStyle(
-                                  fontSize: 12.00.sp,
+                                  fontSize: 10.0.sp,
                                   color: const Color(0xff6F6F6F),
                                   fontWeight: FontWeight.w500)),
                         ),
@@ -85,14 +85,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           'Register',
                           style: GoogleFonts.poppins(
                               textStyle: TextStyle(
-                                  fontSize: 12.00.sp,
+                                  fontSize: 10.0.sp,
                                   color: appcolor,
                                   fontWeight: FontWeight.w600)),
                         )
                       ],
                     ),
                   ),
-                  SizedBox(height: 1.00.hp),
+                  SizedBox(height: 1.0.hp),
                 ],
               ),
             ),

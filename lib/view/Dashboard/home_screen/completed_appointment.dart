@@ -324,7 +324,7 @@ class _CompletedAppointmentState extends State<CompletedAppointment> {
                                       children: [
                                         Image.asset('assets/images/clock.png'),
                                         Text(
-                                          '10.00am-12.00.pm',
+                                          '10.00am-12.00 pm',
                                           style: forminputstyle,
                                         ),
                                       ],

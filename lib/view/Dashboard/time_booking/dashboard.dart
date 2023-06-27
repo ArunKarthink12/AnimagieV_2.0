@@ -138,90 +138,109 @@ class _DashboardState extends State<Dashboard> {
                               height: 2.0.hp,
                             ),
                             Container(
-                              height: 5.0.hp,
-                              width: 80.0.wp,
+                              // height: 5.0.hp,
+                              // width: 80.0.wp,
+                              // color: Colors.amber,
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text(
-                                    'This week\'s income',
-                                    style: forminputstyle,
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 15.0.sp),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'This week\'s income',
+                                          style: forminputstyle,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'Rs.1,000',
+                                              style: GoogleFonts.poppins(
+                                                  textStyle: TextStyle(
+                                                      letterSpacing: 0.2,
+                                                      fontSize: 18.0.sp,
+                                                      color: Color(0xff18273B),
+                                                      fontWeight:
+                                                          FontWeight.w600)),
+                                            ),
+                                            SizedBox(
+                                              width: 1.0.wp,
+                                            ),
+                                            Container(
+                                              height: 3.0.hp,
+                                              width: 15.0.wp,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                gradient: const LinearGradient(
+                                                  begin: Alignment.topRight,
+                                                  end: Alignment.bottomLeft,
+                                                  colors: [
+                                                    Color(0xff0F52BA),
+                                                    Color(0xff003586)
+                                                  ],
+                                                ),
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Text(
+                                                    '34%',
+                                                    style: GoogleFonts.poppins(
+                                                        textStyle: const TextStyle(
+                                                            letterSpacing: 0.2,
+                                                            fontSize: 10.00,
+                                                            color:
+                                                                screenbackground,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600)),
+                                                  ),
+                                                  Icon(
+                                                    Icons.arrow_outward_rounded,
+                                                    color: screenbackground,
+                                                    size: 15,
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  Text(
-                                    'Balance',
-                                    style: forminputstyle,
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: 90.0.wp,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Row(
+                                  Column(
                                     children: [
                                       Text(
-                                        'Rs.1,000',
-                                        style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                                letterSpacing: 0.2,
-                                                fontSize: 20.00,
-                                                color: Color(0xff18273B),
-                                                fontWeight: FontWeight.w600)),
-                                      ),
-                                      SizedBox(
-                                        width: 1.0.wp,
+                                        'Balance',
+                                        style: forminputstyle,
                                       ),
                                       Container(
-                                        height: 3.0.hp,
-                                        width: 15.0.wp,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          gradient: const LinearGradient(
-                                            begin: Alignment.topRight,
-                                            end: Alignment.bottomLeft,
-                                            colors: [
-                                              Color(0xff0F52BA),
-                                              Color(0xff003586)
-                                            ],
-                                          ),
-                                        ),
+                                        // width: 90.0.wp,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
                                           children: [
                                             Text(
-                                              '34%',
+                                              'Rs.2,000',
                                               style: GoogleFonts.poppins(
                                                   textStyle: const TextStyle(
                                                       letterSpacing: 0.2,
-                                                      fontSize: 10.00,
-                                                      color: screenbackground,
+                                                      fontSize: 20.00,
+                                                      color: Color(0xff18273B),
                                                       fontWeight:
                                                           FontWeight.w600)),
-                                            ),
-                                            Icon(
-                                              Icons.arrow_outward_rounded,
-                                              color: screenbackground,
-                                              size: 15,
                                             )
                                           ],
                                         ),
-                                      )
+                                      ),
                                     ],
-                                  ),
-                                  Text(
-                                    'Rs.2,000',
-                                    style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                            letterSpacing: 0.2,
-                                            fontSize: 20.00,
-                                            color: Color(0xff18273B),
-                                            fontWeight: FontWeight.w600)),
                                   )
                                 ],
                               ),

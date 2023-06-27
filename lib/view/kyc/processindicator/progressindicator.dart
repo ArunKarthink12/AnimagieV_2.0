@@ -15,20 +15,34 @@ class _ProgressIndicatorWithIconState extends State<ProgressIndicatorWithIcon> {
   @override
   Widget build(BuildContext context) {
     return LinearPercentIndicator(
+      alignment: MainAxisAlignment.spaceAround,
       width: 95.0.wp,
       lineHeight: 8,
       percent: widget.percentage,
-      // center: Text(
-      //   "50.0%",
-      //   style: new TextStyle(fontSize: 12.0),
-      // ),
-      // trailing: Icon(Icons.mood),
       barRadius: Radius.circular(6.0.sp),
       backgroundColor: Colors.grey,
-      progressColor: Colors.blue,
+      progressColor: buttoncolor,
       widgetIndicator: SizedBox(
-        child: Image.asset('assets/images/foot.png'),
+        height: 2.0.hp,
+        width: 5.5.wp,
+        child: Image.asset(
+          'assets/images/foot.png',
+          fit: BoxFit.cover,
+        ),
       ),
+      //  Container(
+      //   height: 5.0.hp,
+      //   width: 10.0.wp,
+
+      //   decoration: BoxDecoration(
+      //       // color: Colors.black,
+      //       image:
+      //           DecorationImage(image: AssetImage("assets/images/paw 3.png"))),
+      //   // child: Image.asset(
+      //   //   'assets/images/paw 3.png',
+      //   //   fit: BoxFit.cover,
+      //   // ),
+      // ),
     );
   }
 }

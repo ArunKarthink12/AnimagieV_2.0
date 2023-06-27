@@ -69,91 +69,76 @@ class _HomeScreenState extends State<HomeScreen> {
               ))),
           Positioned(child: Center(child: _pages[_currentIndex]['page']))
         ]),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(
-            left: 3.0,
-            right: 3,
-          ),
-          child: BottomNavyBar(
-            containerHeight: 55,
-            selectedIndex: _currentIndex,
-            showElevation: false,
-            itemCornerRadius: 24,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            curve: Curves.easeIn,
-            onItemSelected: (index) => setState(() => _currentIndex = index),
-            items: <BottomNavyBarItem>[
-              BottomNavyBarItem(
-                icon: Image.asset(
-                  'assets/images/home.png',
-                  height: 3.0.hp,
-                  color: _currentIndex == 0 ? Colors.white : Colors.black,
-                ),
-                title: const Padding(
-                  padding: EdgeInsets.only(left: 1.0),
-                  child: Text('Home'),
-                ),
-              ),
-              BottomNavyBarItem(
-                icon: Image.asset(
-                  'assets/images/calendar.png',
-                  height: 3.0.hp,
-                  color: _currentIndex == 1 ? Colors.white : Colors.black,
-                ),
-                title: const Padding(
-                  padding: EdgeInsets.only(left: 1.0),
-                  child: Text('Calendar'),
-                ),
-              ),
-              BottomNavyBarItem(
-                icon: Image.asset(
-                  'assets/images/blog.png',
-                  height: 3.0.hp,
-                  color: _currentIndex == 2 ? Colors.white : Colors.black,
-                ),
-                title: const Padding(
-                  padding: EdgeInsets.only(left: 0.0),
-                  child: FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Text(
-                      'Blog',
-                      // style: GoogleFonts.poppins(
-                      //     textStyle: TextStyle(
-                      //         letterSpacing: 1,
-                      //         fontSize: 9.00.sp,
-                      //         color: Colors.white,
-                      //         fontWeight: FontWeight.w700)),
-                    ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          selectedFontSize: 0,
+          unselectedFontSize: 0,
+          unselectedItemColor: Colors.grey,
+          selectedIconTheme: IconThemeData(color: appcolor),
+          selectedItemColor: appcolor,
+          onTap: (value) {
+            _currentIndex = value;
+            setState(() {});
+          },
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: CircleAvatar(
+                  child: Image.asset(
+                    'assets/images/newhome.png',
+                    height: 3.0.hp,
+                    color: _currentIndex == 0 ? Colors.white : Colors.black,
                   ),
+                  backgroundColor:
+                      _currentIndex == 0 ? appcolor : Colors.transparent,
                 ),
-                activeColor: appcolor,
-                textAlign: TextAlign.center,
-              ),
-              BottomNavyBarItem(
-                icon: Image.asset(
-                  'assets/images/user.png',
-                  height: 3.0.hp,
-                  color: _currentIndex == 3 ? Colors.white : Colors.black,
+                label: ""),
+            BottomNavigationBarItem(
+                icon: CircleAvatar(
+                  child: Image.asset(
+                    'assets/images/newcal.png',
+                    height: 3.0.hp,
+                    color: _currentIndex == 1 ? Colors.white : Colors.black,
+                  ),
+                  backgroundColor:
+                      _currentIndex == 1 ? appcolor : Colors.transparent,
                 ),
-                title: const Padding(
-                  padding: EdgeInsets.only(left: 1.0),
-                  child: Text('Profile'),
+                label: ""),
+            BottomNavigationBarItem(
+                icon: CircleAvatar(
+                  child: Image.asset(
+                    'assets/images/newblogger.png',
+                    height: 3.0.hp,
+                    fit: BoxFit.cover,
+                    color: _currentIndex == 2 ? Colors.white : Colors.black,
+                  ),
+                  backgroundColor:
+                      _currentIndex == 2 ? appcolor : Colors.transparent,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              BottomNavyBarItem(
-                icon: Image.asset(
-                  'assets/images/dash.png',
-                  height: 3.0.hp,
-                  color: _currentIndex == 4 ? Colors.white : Colors.black,
+                label: ""),
+            BottomNavigationBarItem(
+                icon: CircleAvatar(
+                  child: Image.asset(
+                    'assets/images/newuserss.png',
+                    height: 3.0.hp,
+                    color: _currentIndex == 3 ? Colors.white : Colors.black,
+                  ),
+                  backgroundColor:
+                      _currentIndex == 3 ? appcolor : Colors.transparent,
                 ),
-                title: const Padding(
-                  padding: EdgeInsets.only(left: 1.0),
-                  child: Text('Dashboard'),
+                label: ""),
+            BottomNavigationBarItem(
+                icon: CircleAvatar(
+                  child: Image.asset(
+                    'assets/images/newnetwork.png',
+                    height: 3.0.hp,
+                    color: _currentIndex == 4 ? Colors.white : Colors.black,
+                  ),
+                  backgroundColor:
+                      _currentIndex == 4 ? appcolor : Colors.transparent,
                 ),
-              ),
-            ],
-          ),
+                label: ""),
+          ],
         ));
   }
 }
@@ -185,7 +170,5 @@ class _ShopState extends State<Shop> {
     return const Placeholder();
   }
 }
- 
-
 
 //homescreen

@@ -16,7 +16,6 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
   RegisterController registerController = Get.put(RegisterController());
   @override
   void initState() {
-    registerController.registerController();
     super.initState();
   }
 
@@ -61,7 +60,7 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
                       child: Image.asset('assets/images/user.png')),
                   fillColor: const Color(0xffC6C6C6),
                   hintText: 'User Name',
-                  contentPadding: const EdgeInsets.only(left: 10, top: 10),
+                  contentPadding: const EdgeInsets.only(left: 10, top: 13),
                   hintStyle: formhintstyle,
                 ),
               ),
@@ -85,7 +84,7 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
                       child: Image.asset('assets/images/email.png')),
                   fillColor: const Color(0xffC6C6C6),
                   hintText: 'Email Id',
-                  contentPadding: const EdgeInsets.only(left: 10, top: 10),
+                  contentPadding: const EdgeInsets.only(left: 10, top: 13),
                   hintStyle: formhintstyle,
                 ),
               ),
@@ -113,7 +112,7 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
                       child: Image.asset('assets/images/pass.png')),
                   fillColor: const Color(0xffC6C6C6),
                   hintText: 'Password',
-                  contentPadding: const EdgeInsets.only(left: 10, top: 10),
+                  contentPadding: const EdgeInsets.only(left: 10, top: 13),
                   hintStyle: formhintstyle,
                 ),
               ),
@@ -141,17 +140,21 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
                       child: Image.asset('assets/images/eye.png')),
                   fillColor: const Color(0xffC6C6C6),
                   hintText: 'Confirm Password',
-                  contentPadding: const EdgeInsets.only(left: 10, top: 10),
+                  contentPadding: const EdgeInsets.only(left: 10, top: 13),
                   hintStyle: formhintstyle,
                 ),
               ),
             ),
             SizedBox(height: 2.00.hp),
             Text(
-              'Or',
-              style: toptitleStylebold,
+              'OR',
+              style: GoogleFonts.inter(
+                  // letterSpacing: 0.2,
+                  fontSize: 14.0.sp,
+                  color: Color(0xff000958),
+                  fontWeight: FontWeight.w700),
             ),
-            SizedBox(height: 2.00.hp),
+            SizedBox(height: 1.0.hp),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 'Register Using',
@@ -168,7 +171,7 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
                   backgroundColor: screenbackground,
                   child: Image.asset('assets/images/google.png')),
             ]),
-            SizedBox(height: 2.00.hp),
+            SizedBox(height: 1.0.hp),
             Padding(
               padding: EdgeInsets.only(left: 11.0.wp),
               child: Row(
@@ -222,15 +225,39 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
               height: 3.0.wp,
             ),
             ButtonIconButton(
-              press: () async {
-                if (formKey.currentState!.validate()) {
-                  // registerController
-                  //     .registerController(context: context)
-                  //     .then((value) => UploadPictureDetail()
-                  //         // LoginScreen()
-                  //         );
-                  Get.to(UploadPictureDetail());
+              press: () {
+                if (registerController.name.text == '') {
+                  Fluttertoast.showToast(msg: "Enter Username");
+                } else if (registerController.email.text == '') {
+                  Fluttertoast.showToast(msg: "Enter Email");
+                } else if (registerController.password.text == '') {
+                  Fluttertoast.showToast(msg: "Enter Password");
+                } else if (registerController.password_confirmation.text ==
+                    '') {
+                  Fluttertoast.showToast(msg: "Enter Conform Password");
+                } else if (registerController.password.text !=
+                    registerController.password_confirmation.text) {
+                  Fluttertoast.showToast(
+                      msg:
+                          "Enter password and conform password should be same");
+                } else if (registerController.password.text.length != 8 &&
+                    registerController.password_confirmation.text.length != 8) {
+                  Fluttertoast.showToast(
+                      msg: "password should be greater then equal to 8 Digits");
+                } else if (isEmailValid()) {
+                  Get.to(const UploadPictureDetail());
+                } else {
+                  Fluttertoast.showToast(msg: "Enter The Valid Email");
                 }
+                // if (formKey.currentState!.validate()) {
+                // registerController
+                //     .registerController(context: context)
+                //     .then((value) =>
+                // UploadPictureDetail();
+                // LoginScreen()
+                // );
+                // Get.to(UploadPictureDetail());
+                // }
                 // Navigator.push(
                 //           context,
                 //           MaterialPageRoute(
@@ -242,10 +269,20 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
               bordercolor: appcolor,
               text: 'Register',
             ),
-            SizedBox(height: 3.00.hp),
+            SizedBox(height: 1.0.hp),
           ],
         ),
       ),
     );
+  }
+
+  bool isEmailValid() {
+    // Regular expression pattern for email validation
+    final RegExp emailRegex = RegExp(
+      r'^[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$',
+    );
+
+    // Check if the email matches the regex pattern
+    return emailRegex.hasMatch(registerController.email.text);
   }
 }

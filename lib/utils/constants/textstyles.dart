@@ -1,3 +1,4 @@
+import 'package:doctorapp/utils/constants/responsive.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -132,33 +133,32 @@ final text = GoogleFonts.poppins(
 
 //////////////////////////////////////////////////////////////
 final welcome = GoogleFonts.poppins(
-    textStyle: const TextStyle(
-        fontSize: 12.00,
+    textStyle: TextStyle(
+        fontSize: 10.0.sp,
         color: Color(0xff525A66),
         fontWeight: FontWeight.w500));
-final toptitleStylebold = GoogleFonts.poppins(
-    textStyle: const TextStyle(
-        letterSpacing: 0.2,
-        fontSize: 20.00,
-        color: Color(0xff000958),
-        fontFamily: 'Mulish',
-        fontWeight: FontWeight.w700));
+final toptitleStylebold = TextStyle(
+    letterSpacing: 0.2,
+    fontSize: 15.0.sp,
+    color: Color(0xff000958),
+    fontFamily: 'Mulish',
+    fontWeight: FontWeight.w700);
 final rememberme = GoogleFonts.poppins(
-    textStyle: const TextStyle(
+    textStyle: TextStyle(
         letterSpacing: 0.2,
-        fontSize: 13.00,
+        fontSize: 11.0.sp,
         color: Color(0xff525A66),
         fontWeight: FontWeight.w500));
 
 //14px 600bold
 final usinglogin = GoogleFonts.poppins(
-    textStyle: const TextStyle(
+    textStyle: TextStyle(
         letterSpacing: 0.2,
-        fontSize: 14.00,
+        fontSize: 12.0.sp,
         color: Color(0xff292D32),
         fontWeight: FontWeight.w600));
 final uploadpic = GoogleFonts.poppins(
-    textStyle: const TextStyle(
+    textStyle: TextStyle(
         fontSize: 14.00,
         color: Color(0xff000958),
         fontWeight: FontWeight.w600));
@@ -174,7 +174,7 @@ final fourhundredtweleve = GoogleFonts.poppins(
         fontSize: 12.00,
         color: Colors.black,
         fontWeight: FontWeight.w400));
-        final threehundredtweleve = GoogleFonts.poppins(
+final threehundredtweleve = GoogleFonts.poppins(
     textStyle: const TextStyle(
         letterSpacing: 0.2,
         fontSize: 12.00,
@@ -211,7 +211,7 @@ final fourteensixhundred2B2E35 = GoogleFonts.poppins(
         color: Color(0xff2B2E35),
         fontWeight: FontWeight.w600));
 
-final twelvesixhundred0F52BA =  GoogleFonts.poppins(
+final twelvesixhundred0F52BA = GoogleFonts.poppins(
     textStyle: const TextStyle(
         letterSpacing: 0.2,
         fontSize: 14.00,

@@ -65,9 +65,7 @@ class _ForgotPasswordInputFieldsState extends State<ForgotPasswordInputFields> {
                 if (forgotPasswordController.email.text.isEmpty) {
                   Fluttertoast.showToast(msg: 'enter email id');
                 } else {
-                  forgotPasswordController
-                      .forgotPasswordController()
-                      .then((value) => Get.to(ForgotOTPScreen()));
+                  forgotPasswordController.forgotPasswordController();
                 }
               }
             },

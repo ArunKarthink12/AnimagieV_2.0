@@ -242,7 +242,7 @@ class _SupportState extends State<SupportCreate> {
                     ),
                     Center(
                       child: ButtonIconButton(
-                          text: 'SAVE CHANGES',
+                          text: 'Submit',
                           bordercolor: buttoncolor,
                           press: () {
                             Get.to(SupportCreateBalance());

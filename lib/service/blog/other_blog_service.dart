@@ -26,7 +26,7 @@ class YourBlogService {
       if (response.statusCode == 200 || response.statusCode == 201) {
         print("servicess" + response.body.toString());
 
-        Fluttertoast.showToast(msg: "success");
+        // Fluttertoast.showToast(msg: "success");
         List<YourBlogModel> apiResponse = json.decode(response.body);
         return apiResponse
             .map((job) => YourBlogModel(

@@ -9,20 +9,20 @@ class DatePicker extends StatefulWidget {
 
 class _DatePickerState extends State<DatePicker> {
   var holidayindex = 0;
-  late DateTime _selectedDate;
-  // static const orange = Color(0xFFFE9A75);
-  // static const dark = Color(0xFF333A47);
+  DateTime? _selectedDate;
+  static const orange = Color(0xFFFE9A75);
+  static const dark = Color(0xFF333A47);
 
   final _defaultTimeRange = TimeRangeResult(
     const TimeOfDay(hour: 14, minute: 00),
     const TimeOfDay(hour: 15, minute: 00),
   );
-  TimeRangeResult? _timeRange;
+  TimeRangeResult? timerange;
 
   @override
   void initState() {
     super.initState();
-    _timeRange = _defaultTimeRange;
+    timerange = _defaultTimeRange;
     _resetSelectedDate();
   }
 
@@ -44,7 +44,7 @@ class _DatePickerState extends State<DatePicker> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
+          children: [
             Text(
               'Common Holiday',
               style: sixhundredtweleve,
@@ -175,30 +175,30 @@ class _DatePickerState extends State<DatePicker> {
               ),
             ),
 
-            CalendarTimeline(
-              showYears: true,
-              initialDate: _selectedDate,
-              firstDate: DateTime.now(),
-              lastDate: DateTime.now().add(const Duration(days: 365 * 4)),
-              onDateSelected: (date) => setState(() => _selectedDate = date),
-              leftMargin: 0,
-              monthColor: Colors.white,
-              dayColor: Colors.black,
-              dayNameColor: Colors.white,
-              activeDayColor: Colors.white,
-              activeBackgroundDayColor: buttoncolor,
-              dotsColor: buttoncolor,
-              selectableDayPredicate: (date) => date.day != 23,
-              locale: 'en',
-            ),
+            // CalendarTimeline(
+            //   showYears: true,
+            //   initialDate: _selectedDate!,
+            //   firstDate: DateTime.now(),
+            //   lastDate: DateTime.now().add(const Duration(days: 365 * 4)),
+            //   onDateSelected: (date) => setState(() => _selectedDate = date),
+            //   leftMargin: 0,
+            //   monthColor: Colors.white,
+            //   dayColor: Colors.black,
+            //   dayNameColor: Colors.white,
+            //   activeDayColor: Colors.white,
+            //   activeBackgroundDayColor: buttoncolor,
+            //   dotsColor: buttoncolor,
+            //   selectableDayPredicate: (date) => date.day != 23,
+            //   locale: 'en',
+            // ),
             SizedBox(height: 3.00.hp),
 
             // Center(
             //   child: Text(
             //     'Selected date is $_selectedDate',
-            //     style: const TextStyle(color: Colors.white),
+            //     style: const TextStyle(color: Colors.black),
             //   ),
-            // )
+            // ),
             Text(
               'Morning',
               style: sixhundredtweleve,
@@ -545,26 +545,48 @@ class _DatePickerState extends State<DatePicker> {
             SizedBox(
               height: 1.0.hp,
             ),
-            Container(
-              height: 7.0.hp,
-              width: 45.0.wp,
-              child: ListTile(
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
-                title: Text(
-                  'Same Everyday',
-                  style: toptitleStyle,
-                ),
-                leading: Checkbox(
-                    value: checkBoxValue,
-                    activeColor: const Color.fromARGB(255, 19, 51, 77),
-                    onChanged: (bool? newValue) {
-                      setState(() {
-                        checkBoxValue = newValue!;
-                      });
-                    }),
-              ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                  height: 7.0.hp,
+                  width: 60.0.wp,
+                  child: Row(
+                    children: [
+                      Checkbox(
+                          value: checkBoxValue,
+                          activeColor: const Color.fromARGB(255, 19, 51, 77),
+                          onChanged: (bool? newValue) {
+                            setState(() {
+                              checkBoxValue = newValue!;
+                            });
+                          }),
+                      Text(
+                        'Same Everyday',
+                        style: sixhundredtweleve,
+                      ),
+                    ],
+                  )),
             ),
+            // Container(
+            //   height: 7.0.hp,
+            //   width: 45.0.wp,
+            //   child: ListTile(
+            //     contentPadding:
+            //         const EdgeInsets.symmetric(vertical: 0.0, horizontal: 0.0),
+            //     title: Text(
+            //       'Same Everyday',
+            //       style: sixhundredtweleve,
+            //     ),
+            //     leading: Checkbox(
+            //         value: checkBoxValue,
+            //         activeColor: const Color.fromARGB(255, 19, 51, 77),
+            //         onChanged: (bool? newValue) {
+            //           setState(() {
+            //             checkBoxValue = newValue!;
+            //           });
+            //         }),
+            //   ),
+            // ),
 
             Text(
               'Common Holiday',

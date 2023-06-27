@@ -174,12 +174,12 @@ class _AppointmentState extends State<Appointment> {
                             tabs: [
                               const Tab(
                                 child: Text(
-                                  'Your Blog',
+                                  'Others Blogs',
                                 ),
                               ),
                               const Tab(
                                 child: Text(
-                                  'Others Blogs',
+                                  'Your Blog',
                                 ),
                               ),
                             ],
@@ -201,10 +201,10 @@ class _AppointmentState extends State<Appointment> {
                             //     );
                             //   } else {
                             //     return
-                            YourBlog(),
+                            OtherBlog(),
                             // }
                             // }),
-                            OtherBlog()
+                            YourBlog(),
                           ]),
                         )
                       ],

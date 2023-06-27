@@ -26,7 +26,7 @@ class PersonalDetailsService {
 
       if (response.statusCode == 200) {
         // print("123" + response.body);
-        Fluttertoast.showToast(msg: "Success");
+        // Fluttertoast.showToast(msg: "Success");
         return DoctorDetailsModel.fromJson(jsonresponse);
       } else {
         Fluttertoast.showToast(msg: "Failed");

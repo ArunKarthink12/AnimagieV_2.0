@@ -34,7 +34,7 @@ class _LoginInputFieldsState extends State<LoginInputFields> {
         children: [
           Container(
             color: Colors.white,
-            height: 7.00.hp, width: 90.00.wp,
+            height: 7.0.hp, width: MediaQuery.of(context).size.width - 10.0.wp,
             // padding: const EdgeInsets.only(
             //   left: 20,
             //   right: 20,
@@ -55,17 +55,17 @@ class _LoginInputFieldsState extends State<LoginInputFields> {
                   fillColor: const Color(0xffC6C6C6),
                   prefixIcon: Image.asset('assets/images/email.png'),
                   hintText: 'Email Id',
-                  contentPadding: const EdgeInsets.only(left: 20),
+                  contentPadding: EdgeInsets.only(left: 20.0.sp),
                   hintStyle: forminputstyle,
                   border: const OutlineInputBorder(
                     gapPadding: 4,
                   )),
             ),
           ),
-          SizedBox(height: 3.00.hp),
+          SizedBox(height: 2.0.hp),
           Container(
             color: Colors.white,
-            height: 7.00.hp, width: 90.00.wp,
+            height: 7.0.hp, width: MediaQuery.of(context).size.width - 10.0.wp,
             // padding: const EdgeInsets.only(
             //   left: 20,
             //   right: 20,
@@ -93,8 +93,8 @@ class _LoginInputFieldsState extends State<LoginInputFields> {
                       _togglecnewPinView();
                     },
                     child: Padding(
-                      padding:
-                          const EdgeInsets.only(top: 15, left: 3, bottom: 15),
+                      padding: EdgeInsets.only(
+                          top: 13.0.sp, left: 3, bottom: 13.0.sp),
                       child: Icon(
                         _isPinnewHidden
                             ? Icons.visibility
@@ -106,8 +106,8 @@ class _LoginInputFieldsState extends State<LoginInputFields> {
                   ),
                   // /fillColor: const Color(0xffC6C6C6),
                   hintText: 'Password',
-                  contentPadding: const EdgeInsets.only(
-                    left: 30,
+                  contentPadding: EdgeInsets.only(
+                    left: 20.0.sp,
                   ),
                   hintStyle: forminputstyle,
                   border: const OutlineInputBorder(
@@ -117,7 +117,7 @@ class _LoginInputFieldsState extends State<LoginInputFields> {
           ),
           SizedBox(height: 2.00.hp),
           Padding(
-            padding: EdgeInsets.only(left: 11.0.wp),
+            padding: EdgeInsets.only(left: 18.0.sp),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -169,14 +169,14 @@ class _LoginInputFieldsState extends State<LoginInputFields> {
               ],
             ),
           ),
-          SizedBox(height: 3.00.hp),
+          SizedBox(height: 2.0.hp),
           Text(
-            'Or',
-            style: GoogleFonts.poppins(
-                textStyle: TextStyle(
-                    fontSize: 15.00.sp,
-                    color: toptitlecolor,
-                    fontWeight: FontWeight.w600)),
+            'OR',
+            style: GoogleFonts.inter(
+                // letterSpacing: 0.2,
+                fontSize: 14.0.sp,
+                color: Color(0xff000958),
+                fontWeight: FontWeight.w700),
           ),
           SizedBox(height: 3.00.hp),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -188,7 +188,7 @@ class _LoginInputFieldsState extends State<LoginInputFields> {
                 backgroundColor: screenbackground,
                 child: Image.asset('assets/images/google.png')),
           ]),
-          SizedBox(height: 5.00.hp),
+          SizedBox(height: 2.0.hp),
           ButtonIconButton(
             press: () {
               if (formKey.currentState!.validate()) {

@@ -15,7 +15,7 @@ class ForgotPasswordController extends GetxController {
       if (response != null) {
         Fluttertoast.showToast(msg: response.message.toString());
         Get.to(ForgotOTPScreen());
-        Get.toNamed('/forgototp');
+        // Get.toNamed('/forgototp');
       } else {
         // Fluttertoast.showToast(msg: response.message.toString());
       }

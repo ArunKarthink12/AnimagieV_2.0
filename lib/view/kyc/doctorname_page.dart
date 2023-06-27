@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:doctorapp/view/kyc/processindicator/progressindicator.dart';
 // import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -58,14 +60,14 @@ class _DoctorNameState extends State<DoctorName> with TickerProviderStateMixin {
                 child: Stack(
           children: [
             Container(
-                height: 100.0.hp,
-                width: 100.0.wp,
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                   image: AssetImage(
                     'assets/images/background.png',
                   ),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ))),
             Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -111,14 +113,23 @@ class _DoctorNameState extends State<DoctorName> with TickerProviderStateMixin {
                                       Image.asset('assets/images/hand.png')))),
                       Positioned(
                           left: 12.0.wp,
+                          top: 10.0.sp,
                           child: Container(
-                            height: 10.0.hp,
-                            width: 20.0.wp,
-                            child: Image.asset(
-                              'assets/images/uploaddoctor.png',
-                              fit: BoxFit.cover,
-                            ),
-                          )),
+                              // backgroundColor: Colors.transparent,
+                              // radius: 30.0.sp,
+                              height: 7.0.hp,
+                              width: 15.0.wp,
+                              child: kycController.profile_pic.value.path == ""
+                                  ? Image.asset(
+                                      'assets/images/doctor2.png',
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.file(
+                                      File(
+                                        kycController.profile_pic.value.path,
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ))),
                     ],
                   ),
                   SizedBox(

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:doctorapp/view/kyc/processindicator/progressindicator.dart';
 
 import '../allpackages.dart';
@@ -127,12 +129,24 @@ class _QualificationState extends State<Qualification> {
                                     Image.asset('assets/images/qualify.png'))),
                         Positioned(
                             left: 12.0.wp,
+                            top: 10.0.sp,
                             child: Container(
-                              height: 10.0.hp,
-                              width: 20.0.wp,
-                              child:
-                                  Image.asset('assets/images/uploaddoctor.png'),
-                            )),
+                                // backgroundColor: Colors.transparent,
+                                // radius: 30.0.sp,
+                                height: 7.0.hp,
+                                width: 15.0.wp,
+                                child: kycController.profile_pic.value.path ==
+                                        ""
+                                    ? Image.asset(
+                                        'assets/images/doctor2.png',
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Image.file(
+                                        File(
+                                          kycController.profile_pic.value.path,
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ))),
                       ],
                     ),
                     SizedBox(
