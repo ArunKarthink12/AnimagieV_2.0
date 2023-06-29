@@ -4,7 +4,8 @@ import '../allpackages.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 class DatePicker extends StatefulWidget {
-  const DatePicker({Key? key}) : super(key: key);
+  String? buttonss;
+  DatePicker({Key? key, this.buttonss}) : super(key: key);
 
   @override
   State<DatePicker> createState() => _DatePickerState();
@@ -167,65 +168,81 @@ class _DatePickerState extends State<DatePicker> {
             SizedBox(
               height: 2.0.hp,
             ),
-            Container(
-              height: 7.0.hp,
-              width: 200.0.wp,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: screenbackground,
-              ),
-              child: Wrap(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10.0,
-                    ),
-                    child: Text(
-                      'Select the month',
-                      style: forminputstyle,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 9.0.sp),
-                        child: Text(
-                            dob.text.length == 0 ? "" : dob.text.toString()),
+            GestureDetector(
+              onTap: () {
+                selectDate(context);
+              },
+              child: Container(
+                height: 6.0.hp,
+                width: 200.0.wp,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.white,
+                ),
+                child: Wrap(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 10.0,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          selectDate(context);
-                          //calender
-                        },
-                        child: Padding(
-                            padding: EdgeInsets.only(right: 9.0.sp),
-                            child: Image.asset('assets/images/calendar.png')),
+                      child: Text(
+                        'Select the month',
+                        style: forminputstyle,
                       ),
-                    ],
-                  )
-                  // TextFormField(
-                  //   textInputAction: TextInputAction.next,
-                  //   keyboardType: TextInputType.emailAddress,
-                  //   decoration: InputDecoration(
-                  //     focusedBorder: OutlineInputBorder(
-                  //       borderSide: BorderSide.none,
-                  //       borderRadius: BorderRadius.circular(5.0),
-                  //     ),
-                  //     enabledBorder: OutlineInputBorder(
-                  //       borderSide: BorderSide.none,
-                  //       borderRadius: BorderRadius.circular(5.0),
-                  //     ),
-                  //     //  label: Text('Search breed name'),
-                  //     suffixIcon: Image.asset('assets/images/calendar.png'),
-                  //     hintText: 'April,2023',
-                  //     hintStyle: fourhundredtweleve,
-                  //     contentPadding: const EdgeInsets.only(
-                  //       left: 10,
-                  //     ),
-                  //   ),
-                  // ),
-                ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 9.0.sp),
+                          child: Text(dob.text.length == 0
+                              ? "Select Date"
+                              : dob.text.toString()),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            //calender
+                            selectDate(context);
+                          },
+                          child: Padding(
+                              padding: EdgeInsets.only(
+                                right: 9.0.sp,
+                              ),
+                              child: Container(
+                                  alignment: Alignment.topCenter,
+                                  // color: Colors.amber,
+                                  height: 3.9.hp,
+                                  width: 5.5.wp,
+                                  child: Image.asset(
+                                    'assets/images/newcal.png',
+                                    fit: BoxFit.cover,
+                                  ))),
+                        ),
+                      ],
+                    )
+                    // TextFormField(
+                    //   textInputAction: TextInputAction.next,
+                    //   keyboardType: TextInputType.emailAddress,
+                    //   decoration: InputDecoration(
+                    //     focusedBorder: OutlineInputBorder(
+                    //       borderSide: BorderSide.none,
+                    //       borderRadius: BorderRadius.circular(5.0),
+                    //     ),
+                    //     enabledBorder: OutlineInputBorder(
+                    //       borderSide: BorderSide.none,
+                    //       borderRadius: BorderRadius.circular(5.0),
+                    //     ),
+                    //     //  label: Text('Search breed name'),
+                    //     suffixIcon: Image.asset('assets/images/calendar.png'),
+                    //     hintText: 'April,2023',
+                    //     hintStyle: fourhundredtweleve,
+                    //     contentPadding: const EdgeInsets.only(
+                    //       left: 10,
+                    //     ),
+                    //   ),
+                    // ),
+                  ],
+                ),
               ),
             ),
 
@@ -237,8 +254,11 @@ class _DatePickerState extends State<DatePicker> {
               onDateSelected: (date) => setState(() => _selectedDate = date),
               leftMargin: 0,
               monthColor: Colors.white,
+              //unselected numbers
               dayColor: Colors.black,
+              //selected day
               dayNameColor: Colors.white,
+              //selected numbers
               activeDayColor: Colors.white,
               activeBackgroundDayColor: buttoncolor,
               dotsColor: buttoncolor,
@@ -295,12 +315,12 @@ class _DatePickerState extends State<DatePicker> {
                                         fontSize: 12.00.sp,
                                         color: forminputcolor,
                                         fontWeight: FontWeight.w400)),
-                                hint: Text('2.30 PM',
-                                    style: GoogleFonts.poppins(
+                                hint: Text('Start Time',
+                                    style: GoogleFonts.jost(
                                         textStyle: TextStyle(
-                                            fontSize: 12.00.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w400))),
+                                            fontSize: 10.00.sp,
+                                            color: forminputcolor,
+                                            fontWeight: FontWeight.w500))),
                                 // onChanged: (String? newValue) async {
                                 //   setState(() {
                                 //     selectstate = newValue.toString();
@@ -368,12 +388,12 @@ class _DatePickerState extends State<DatePicker> {
                                         fontSize: 12.00.sp,
                                         color: forminputcolor,
                                         fontWeight: FontWeight.w400)),
-                                hint: Text('8 PM',
-                                    style: GoogleFonts.poppins(
+                                hint: Text('End Time',
+                                    style: GoogleFonts.jost(
                                         textStyle: TextStyle(
-                                            fontSize: 12.00.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w400))),
+                                            fontSize: 10.00.sp,
+                                            color: forminputcolor,
+                                            fontWeight: FontWeight.w500))),
                                 // onChanged: (String? newValue) async {
                                 //   setState(() {
                                 //     selectstate = newValue.toString();
@@ -479,12 +499,12 @@ class _DatePickerState extends State<DatePicker> {
                                         fontSize: 12.00.sp,
                                         color: forminputcolor,
                                         fontWeight: FontWeight.w400)),
-                                hint: Text('2.30 PM',
-                                    style: GoogleFonts.poppins(
+                                hint: Text('Start Time',
+                                    style: GoogleFonts.jost(
                                         textStyle: TextStyle(
-                                            fontSize: 12.00.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w400))),
+                                            fontSize: 10.00.sp,
+                                            color: forminputcolor,
+                                            fontWeight: FontWeight.w500))),
                                 // onChanged: (String? newValue) async {
                                 //   setState(() {
                                 //     selectstate = newValue.toString();
@@ -552,12 +572,12 @@ class _DatePickerState extends State<DatePicker> {
                                         fontSize: 12.00.sp,
                                         color: forminputcolor,
                                         fontWeight: FontWeight.w400)),
-                                hint: Text('8 PM',
-                                    style: GoogleFonts.poppins(
+                                hint: Text('End Time',
+                                    style: GoogleFonts.jost(
                                         textStyle: TextStyle(
-                                            fontSize: 12.00.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w400))),
+                                            fontSize: 10.00.sp,
+                                            color: forminputcolor,
+                                            fontWeight: FontWeight.w500))),
                                 // onChanged: (String? newValue) async {
                                 //   setState(() {
                                 //     selectstate = newValue.toString();
@@ -673,14 +693,23 @@ class _DatePickerState extends State<DatePicker> {
                                   height: 3.0.hp,
                                   width: 6.0.wp,
                                   decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.bottomLeft,
-                                      colors: [
-                                        Color(0xff0F52BA),
-                                        Color(0xff003586)
-                                      ],
-                                    ),
+                                    gradient: holidayindex == index
+                                        ? const LinearGradient(
+                                            begin: Alignment.topRight,
+                                            end: Alignment.bottomLeft,
+                                            colors: [
+                                              Color(0xff0F52BA),
+                                              Color(0xff003586)
+                                            ],
+                                          )
+                                        : const LinearGradient(
+                                            begin: Alignment.topRight,
+                                            end: Alignment.bottomLeft,
+                                            colors: [
+                                              Colors.white,
+                                              Colors.white,
+                                            ],
+                                          ),
                                     borderRadius: BorderRadius.circular(2),
                                   ),
                                 ),
@@ -752,7 +781,7 @@ class _DatePickerState extends State<DatePicker> {
             ),
             Center(
               child: ButtonIconButton(
-                  text: 'Continue',
+                  text: widget.buttonss.toString(),
                   bordercolor: Colors.blue,
                   press: () {
                     Get.to(const UploadDocuments());

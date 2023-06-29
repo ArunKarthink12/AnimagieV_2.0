@@ -1,3 +1,4 @@
+// import 'package:doctorapp/view/Dashboard/profile/personaldetails/controller/direct_to_home.dart';
 import 'package:doctorapp/view/Dashboard/profile/personaldetails/view/personal_details.dart';
 import 'package:doctorapp/view/Dashboard/profile/professional_details.dart';
 import 'package:doctorapp/view/Dashboard/profile/support.dart';
@@ -7,6 +8,7 @@ import '../../allpackages.dart';
 import '../../notification.dart';
 import 'change_password/change_password.dart';
 import 'edit_clinic_details.dart';
+import 'personaldetails/controller/direct_to_home.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -17,6 +19,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   LoginController loginController = Get.put(LoginController());
+  GoHome goHome = Get.put(GoHome());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +27,15 @@ class _ProfileState extends State<Profile> {
         backgroundColor: bgcolor,
         elevation: 0,
         centerTitle: true,
-        leading: const Icon(
-          Icons.arrow_back,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+          ),
+          onPressed: () {
+            goHome.currentIndex.value = 0;
+
+            setState(() {});
+          },
           color: Colors.black,
         ),
         title: Text(
@@ -136,6 +146,8 @@ class _OptionListState extends State<OptionList> {
     const TermsConditionScreen(),
     const ChangePassword(),
   ];
+  GoHome goHome = Get.put(GoHome());
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -171,12 +183,14 @@ class _OptionListState extends State<OptionList> {
                                 Row(children: [
                                   Image.asset(
                                     images[index],
-                                    height: 3.0.hp,
+                                    height: 3.5.hp,
+                                    width: 4.5.wp,
                                   ),
                                   SizedBox(
                                     width: 5.0.wp,
                                   ),
                                   Container(
+                                    color: Colors.white,
                                     width: 60.0.wp,
                                     child: Text(
                                       menuoptions[index],
@@ -184,22 +198,22 @@ class _OptionListState extends State<OptionList> {
                                     ),
                                   ),
                                   index < 4
-                                      ? Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Container(
-                                              child: Text('Edit',
-                                                  style: GoogleFonts.poppins(
-                                                      textStyle: const TextStyle(
-                                                          letterSpacing: 0.2,
-                                                          decoration:
-                                                              TextDecoration
-                                                                  .underline,
-                                                          fontSize: 12.00,
-                                                          color:
-                                                              Color(0xff0F52BA),
-                                                          fontWeight: FontWeight
-                                                              .w400)))),
-                                        )
+                                      ?
+                                      // Align(
+                                      //     alignment: Alignment.centerRight,
+                                      //     child:
+                                      Container(
+                                          child: Text('Edit',
+                                              style: GoogleFonts.poppins(
+                                                  textStyle: const TextStyle(
+                                                      letterSpacing: 0.2,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                      fontSize: 12.00,
+                                                      color: Color(0xff0F52BA),
+                                                      fontWeight:
+                                                          FontWeight.w400))))
+                                      // )
                                       : Container()
                                 ])
                               ],
@@ -276,7 +290,12 @@ class _OptionListState extends State<OptionList> {
                         child: ElevatedButton(
                           onPressed: () {
                             print('clickk');
+
                             loginController.logout();
+                            goHome.currentIndex.value = 0;
+                            //  goHome.currentIndex.value = value;
+                            // _currentIndex = goHome.dashboard ;
+                            setState(() {});
                           },
                           style: ElevatedButton.styleFrom(
                             primary: screenbackground,
@@ -348,17 +367,20 @@ class _OptionListState extends State<OptionList> {
             );
           },
           child: Padding(
-            padding: EdgeInsets.only(left: 20.0.sp),
+            padding: const EdgeInsets.only(
+                left: 14.0, right: 10.0, top: 0), //  const EdgeInsets.all(8.0),
             child: Container(
               height: 8.0.hp,
+              padding: const EdgeInsets.only(left: 10, bottom: 5, right: 10),
               child: Row(
                 children: [
                   Image.asset(
                     'assets/images/logout.png',
-                    height: 3.0.hp,
+                    height: 3.5.hp,
+                    width: 4.5.wp,
                   ),
                   SizedBox(
-                    width: 8.0.wp,
+                    width: 5.0.wp,
                   ),
                   Text(
                     'Logout',

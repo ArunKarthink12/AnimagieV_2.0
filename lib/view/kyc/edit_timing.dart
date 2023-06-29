@@ -166,7 +166,9 @@ class _EditTimingState extends State<EditTiming> {
                     SizedBox(
                       height: 3.0.hp,
                     ),
-                    DatePicker()
+                    DatePicker(
+                      buttonss: "CONTINUE",
+                    )
                   ])),
             ),
           ],

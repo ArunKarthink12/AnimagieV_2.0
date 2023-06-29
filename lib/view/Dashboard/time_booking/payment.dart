@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import '../../allpackages.dart';
 
 class PaymentHistory extends StatefulWidget {
@@ -19,6 +21,27 @@ class _PaymentHistoryState extends State<PaymentHistory> {
     'Doctor_approch food'
   ];
   var selectvalue;
+  DateTime selectedDate = DateTime.now();
+  var dob = TextEditingController();
+  selectDate(
+    BuildContext context,
+  ) async {
+    final selected = await showDatePicker(
+      context: context,
+      initialDate: dob.text.isNotEmpty
+          ? DateFormat("dd-MM-yyyy").parse(dob.text)
+          : DateTime(2015),
+      firstDate: DateTime(2000),
+      lastDate: DateTime.now(),
+    );
+    if (selected != null && selected != selectedDate) {
+      dob.text = DateFormat('dd-MM-yyyy').format(selected);
+      setState(() {});
+    } else {
+      return "";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,37 +93,70 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Container(
-                                  height: 7.0.hp,
-                                  width: 45.0.wp,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white),
-                                  child: TextFormField(
-                                    style: forminputstyle,
-                                    decoration: InputDecoration(
-                                        focusedBorder: OutlineInputBorder(
+                                GestureDetector(
+                                  onTap: () {
+                                    selectDate(context);
+                                  },
+                                  child: Container(
+                                      height: 7.0.hp,
+                                      width: 45.0.wp,
+                                      decoration: BoxDecoration(
                                           borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: screenbackground,
-                                              width: 0.5),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5.0),
-                                          borderSide: const BorderSide(
-                                              color: screenbackground,
-                                              width: 1),
-                                        ),
-                                        hintText: 'Select Month',
-                                        suffixIcon: Image.asset(
-                                            'assets/images/calendar.png'),
-                                        hintStyle: forminputstyle,
-                                        border: const OutlineInputBorder(
-                                          gapPadding: 4,
-                                        )),
-                                  ),
+                                              BorderRadius.circular(10),
+                                          color: Colors.white),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            padding:
+                                                EdgeInsets.only(left: 8.0.sp),
+                                            width: 30.0.wp,
+                                            child: Text(dob.text.length == 0
+                                                ? "Select Date"
+                                                : dob.text),
+                                          ),
+                                          SizedBox(
+                                            width: 1.0.wp,
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              selectDate(context);
+                                            },
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              width: 7.0.wp,
+                                              height: 3.0.hp,
+                                              child: Image.asset(
+                                                  "assets/images/newcal.png"),
+                                            ),
+                                          )
+                                        ],
+                                      )
+                                      // TextFormField(
+                                      //   style: forminputstyle,
+                                      //   decoration: InputDecoration(
+                                      //       focusedBorder: OutlineInputBorder(
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(5.0),
+                                      //         borderSide: const BorderSide(
+                                      //             color: screenbackground,
+                                      //             width: 0.5),
+                                      //       ),
+                                      //       enabledBorder: OutlineInputBorder(
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(5.0),
+                                      //         borderSide: const BorderSide(
+                                      //             color: screenbackground,
+                                      //             width: 1),
+                                      //       ),
+                                      //       hintText: 'Select Month',
+                                      //       suffixIcon: Image.asset(
+                                      //           'assets/images/calendar.png'),
+                                      //       hintStyle: forminputstyle,
+                                      //       border: const OutlineInputBorder(
+                                      //         gapPadding: 4,
+                                      //       )),
+                                      // ),
+                                      ),
                                 ),
                               ],
                             ),

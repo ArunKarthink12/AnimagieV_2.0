@@ -1,3 +1,5 @@
+// import 'package:intl/intl.dart';
+
 import 'package:intl/intl.dart';
 
 import '../../allpackages.dart';
@@ -203,8 +205,9 @@ class _CompletedAppointmentState extends State<CompletedAppointment> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(left: 9.0.sp),
-                          child: Text(
-                              dob.text.length == 0 ? "" : dob.text.toString()),
+                          child: Text(dob.text.length == 0
+                              ? "Select Date"
+                              : dob.text.toString()),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -213,7 +216,11 @@ class _CompletedAppointmentState extends State<CompletedAppointment> {
                           },
                           child: Padding(
                               padding: EdgeInsets.only(right: 9.0.sp),
-                              child: Image.asset('assets/images/calendar.png')),
+                              child: SizedBox(
+                                  height: 4.5.hp,
+                                  width: 5.5.wp,
+                                  child:
+                                      Image.asset('assets/images/newcal.png'))),
                         ),
                       ],
                     )
@@ -368,7 +375,7 @@ class _CompletedAppointmentState extends State<CompletedAppointment> {
                                       children: [
                                         Image.asset('assets/images/clock.png'),
                                         Text(
-                                          '10.00am-12.00 pm',
+                                          '10.00 am-12.00 pm',
                                           style: forminputstyle,
                                         ),
                                       ],

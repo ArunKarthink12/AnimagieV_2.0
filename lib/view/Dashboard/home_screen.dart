@@ -6,6 +6,7 @@ import 'appointment/appointment_screen.dart';
 import 'home_page.dart';
 // import 'home_screen/blog_details.dart';
 // import 'home_screen/completed_appointment.dart';
+import 'profile/personaldetails/controller/direct_to_home.dart';
 import 'time_booking/dashboard.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,8 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
-
+  GoHome goHome = Get.put(GoHome());
   final List<Map<String, Widget>> _pages = [
     {
       'page': const HomePage(),
@@ -56,90 +56,111 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Stack(children: [
-          Container(
-              height: 100.0.hp,
-              width: 100.0.wp,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                image: AssetImage(
-                  'assets/images/background.png',
-                ),
-                fit: BoxFit.fill,
-              ))),
-          Positioned(child: Center(child: _pages[_currentIndex]['page']))
-        ]),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 0,
-          selectedFontSize: 0,
-          unselectedFontSize: 0,
-          unselectedItemColor: Colors.grey,
-          selectedIconTheme: IconThemeData(color: appcolor),
-          selectedItemColor: appcolor,
-          onTap: (value) {
-            _currentIndex = value;
-            setState(() {});
-          },
-          type: BottomNavigationBarType.fixed,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: CircleAvatar(
-                  child: Image.asset(
-                    'assets/images/newhome.png',
-                    height: 3.0.hp,
-                    color: _currentIndex == 0 ? Colors.white : Colors.black,
+        body: Obx(() {
+          return Stack(children: [
+            Container(
+                height: 100.0.hp,
+                width: 100.0.wp,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/background.png',
                   ),
-                  backgroundColor:
-                      _currentIndex == 0 ? appcolor : Colors.transparent,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: CircleAvatar(
-                  child: Image.asset(
-                    'assets/images/newcal.png',
-                    height: 3.0.hp,
-                    color: _currentIndex == 1 ? Colors.white : Colors.black,
+                  fit: BoxFit.fill,
+                ))),
+            Positioned(
+                child: Center(child: _pages[goHome.currentIndex.value]['page']))
+          ]);
+        }),
+        bottomNavigationBar: Obx(() {
+          return BottomNavigationBar(
+            currentIndex: 0,
+            selectedFontSize: 0,
+            unselectedFontSize: 0,
+            unselectedItemColor: Colors.grey,
+            selectedIconTheme: IconThemeData(color: appcolor),
+            selectedItemColor: appcolor,
+            onTap: (value) {
+              goHome.currentIndex.value = value;
+              // _currentIndex = goHome.dashboard ;
+              setState(() {});
+            },
+            type: BottomNavigationBarType.fixed,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  icon: CircleAvatar(
+                    backgroundColor: goHome.currentIndex.value == 0
+                        ? appcolor
+                        : Colors.transparent,
+                    child: Image.asset(
+                      'assets/images/newhome.png',
+                      height: 3.0.hp,
+                      color: goHome.currentIndex.value == 0
+                          ? Colors.white
+                          : Colors.black,
+                    ),
                   ),
-                  backgroundColor:
-                      _currentIndex == 1 ? appcolor : Colors.transparent,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: CircleAvatar(
-                  child: Image.asset(
-                    'assets/images/newblogger.png',
-                    height: 3.0.hp,
-                    fit: BoxFit.cover,
-                    color: _currentIndex == 2 ? Colors.white : Colors.black,
+                  label: ""),
+              BottomNavigationBarItem(
+                  icon: CircleAvatar(
+                    backgroundColor: goHome.currentIndex.value == 1
+                        ? appcolor
+                        : Colors.transparent,
+                    child: Image.asset(
+                      'assets/images/newcal.png',
+                      height: 3.0.hp,
+                      color: goHome.currentIndex.value == 1
+                          ? Colors.white
+                          : Colors.black,
+                    ),
                   ),
-                  backgroundColor:
-                      _currentIndex == 2 ? appcolor : Colors.transparent,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: CircleAvatar(
-                  child: Image.asset(
-                    'assets/images/newuserss.png',
-                    height: 3.0.hp,
-                    color: _currentIndex == 3 ? Colors.white : Colors.black,
+                  label: ""),
+              BottomNavigationBarItem(
+                  icon: CircleAvatar(
+                    backgroundColor: goHome.currentIndex.value == 2
+                        ? appcolor
+                        : Colors.transparent,
+                    child: Image.asset(
+                      'assets/images/newblogger.png',
+                      height: 3.0.hp,
+                      fit: BoxFit.cover,
+                      color: goHome.currentIndex.value == 2
+                          ? Colors.white
+                          : Colors.black,
+                    ),
                   ),
-                  backgroundColor:
-                      _currentIndex == 3 ? appcolor : Colors.transparent,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: CircleAvatar(
-                  child: Image.asset(
-                    'assets/images/newnetwork.png',
-                    height: 3.0.hp,
-                    color: _currentIndex == 4 ? Colors.white : Colors.black,
+                  label: ""),
+              BottomNavigationBarItem(
+                  icon: CircleAvatar(
+                    backgroundColor: goHome.currentIndex.value == 3
+                        ? appcolor
+                        : Colors.transparent,
+                    child: Image.asset(
+                      'assets/images/newuserss.png',
+                      height: 3.0.hp,
+                      color: goHome.currentIndex.value == 3
+                          ? Colors.white
+                          : Colors.black,
+                    ),
                   ),
-                  backgroundColor:
-                      _currentIndex == 4 ? appcolor : Colors.transparent,
-                ),
-                label: ""),
-          ],
-        ));
+                  label: ""),
+              BottomNavigationBarItem(
+                  icon: CircleAvatar(
+                    backgroundColor: goHome.currentIndex.value == 4
+                        ? appcolor
+                        : Colors.transparent,
+                    child: Image.asset(
+                      'assets/images/newnetwork.png',
+                      height: 3.0.hp,
+                      color: goHome.currentIndex.value == 4
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                  ),
+                  label: ""),
+            ],
+          );
+        }));
   }
 }
 

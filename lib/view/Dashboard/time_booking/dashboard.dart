@@ -1,3 +1,4 @@
+import 'package:doctorapp/view/Dashboard/profile/personaldetails/controller/direct_to_home.dart';
 import 'package:doctorapp/view/Dashboard/time_booking/payment.dart';
 
 import '../../allpackages.dart';
@@ -10,6 +11,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  GoHome goHome = Get.put(GoHome());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,8 +19,17 @@ class _DashboardState extends State<Dashboard> {
           elevation: 0,
           backgroundColor: bgcolor,
           centerTitle: true,
-          leading: Icon(
-            Icons.arrow_back,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+            ),
+            onPressed: () {
+              // Get.back();
+
+              goHome.currentIndex.value = 0;
+
+              setState(() {});
+            },
             color: headingtext,
           ),
           title: Text(

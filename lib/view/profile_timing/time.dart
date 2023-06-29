@@ -2,6 +2,7 @@ import 'package:calendar_timeline/src/day_item.dart';
 import 'package:calendar_timeline/src/month_item.dart';
 import 'package:calendar_timeline/src/util/utils.dart';
 import 'package:calendar_timeline/src/year_item.dart';
+import 'package:doctorapp/utils/utils.dart';
 // import 'package:calender_picker/calender_picker.dart';
 
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class CalendarTimeline extends StatefulWidget {
     this.monthColor,
     this.dotsColor,
     this.dayNameColor,
-    this.shrink = false,
+    // this.shrink = false,
     this.locale,
     this.showYears = false,
   })  : assert(
@@ -66,7 +67,7 @@ class CalendarTimeline extends StatefulWidget {
   final Color? monthColor;
   final Color? dotsColor;
   final Color? dayNameColor;
-  final bool shrink;
+  // final bool shrink;
   final String? locale;
 
   /// If true, it will show a separate row for the years.
@@ -402,7 +403,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
                       name: DateFormat.y(_locale).format(currentDate),
                       color: widget.monthColor,
                       onTap: () {},
-                      shrink: widget.shrink,
+                      // shrink: widget.shrink,
                     ),
                   ),
                 MonthItem(
@@ -410,7 +411,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
                   name: monthName,
                   onTap: () => _onSelectMonth(index),
                   color: widget.monthColor,
-                  shrink: widget.shrink,
+                  // shrink: widget.shrink,
                   activeColor: widget.activeBackgroundDayColor,
                 ),
                 if (index == _months.length - 1)
@@ -451,13 +452,14 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
+                  height: 20.0.hp,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                       border: Border.all(
                           color: _daySelectedIndex == index
                               ? Colors.white
-                              : Colors.black)),
+                              : Colors.white)),
                   child: DayItem(
                     isSelected: _isSelectedDay(index),
                     dayNumber: currentDay.day,
@@ -472,7 +474,7 @@ class _CalendarTimelineState extends State<CalendarTimeline> {
                     activeDayBackgroundColor: widget.activeBackgroundDayColor,
                     dotsColor: widget.dotsColor,
                     dayNameColor: widget.dayNameColor,
-                    shrink: widget.shrink,
+                    // shrink: widget.shrink,
                   ),
                 ),
               ),

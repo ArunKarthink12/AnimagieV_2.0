@@ -1,10 +1,20 @@
 import 'dart:io';
 
+// import 'package:doctorapp/controller/blogupdatecontroller.dart';
+// import 'package:doctorapp/view/Dashboard/home_screen/appointmentScreens/controller/taglistController.dart';
+// import 'package:multi_select_flutter/multi_select_flutter.dart';
+// import 'package:multiselect/multiselect.dart';
+
 import 'package:doctorapp/controller/blogupdatecontroller.dart';
 import 'package:doctorapp/view/Dashboard/home_screen/appointmentScreens/controller/taglistController.dart';
-import 'package:multi_select_flutter/multi_select_flutter.dart';
+import 'package:doctorapp/view/allpackages.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:multi_dropdown/multiselect_dropdown.dart';
+// import 'package:multiselect/multiselect.dart';
+// import 'package:multiselect/multiselect.dart';
 
-import '../../allpackages.dart';
+// import '../../allpackages.dart';
 
 class YourBlogEdit extends StatefulWidget {
   const YourBlogEdit({super.key});
@@ -16,17 +26,18 @@ class YourBlogEdit extends StatefulWidget {
 class _YourBlogEditState extends State<YourBlogEdit> {
   var selectindex = 0;
   List blogname = ['Dog Blog', 'Health', 'Funny Friend'];
-  var selectvalue;
-  var dummylist;
+  // var selectvalue;
+  // var dummylist;
   BlogCreateController blogCreateController = Get.put(BlogCreateController());
   final _picker = ImagePicker();
   TagListController taglistcontroller = Get.put(TagListController());
   EditBlogController editBlogController = Get.put(EditBlogController());
+  List<String> selected = [];
+
   @override
   void initState() {
     // TODO: implement initState
     taglistcontroller.tagListControllerFunction();
-
     super.initState();
   }
 
@@ -46,7 +57,7 @@ class _YourBlogEditState extends State<YourBlogEdit> {
           ),
         ),
         title: Text(
-          'NEW BLOG',
+          'EDIT BLOG',
           style: sixteeneighthundred000958,
         ),
       ),
@@ -221,7 +232,7 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                       Container(
                         height: 7.00.hp,
                         width: 95.00.wp,
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        // padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         decoration: BoxDecoration(
                           color: screenbackground,
                           borderRadius: BorderRadius.circular(5.0),
@@ -230,72 +241,25 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                             width: MediaQuery.of(context).size.height * 0.001,
                           ),
                         ),
-                        //   child: MultiSelectDialogField(
-                        //     onConfirm: (val) {
-                        //       // _selectedAnimals5 = val;
-                        //     },
-                        //     dialogWidth: MediaQuery.of(context).size.width * 0.7,
-                        //     items: [],
-                        //     initialValue: ["dog", "cat"],
-                        //   ),
+                        child: MultiSelectDropDown(
+                          selectedOptionBackgroundColor: Colors.grey.shade400,
+                          onOptionSelected: (options) {
+                            debugPrint(options.toString());
+                          },
+                          options: List.generate(
+                              blogname.length,
+                              (index) =>
+                                  ValueItem(label: blogname[index].toString())),
+                          selectionType: SelectionType.multi,
+                          chipConfig:
+                              const ChipConfig(wrapType: WrapType.scroll),
+                          dropdownHeight: 15.0.hp,
+                          optionTextStyle: const TextStyle(fontSize: 16),
+                          backgroundColor: Colors.white,
+                          selectedOptionIcon: const Icon(Icons.check_circle),
+                        ),
                       ),
-                      // DropdownButtonHideUnderline(
-                      //   child: DropdownButton<String>(
-                      //     value: selectvalue,
-                      //     style: GoogleFonts.jost(
-                      //         textStyle: TextStyle(
-                      //             fontSize: 10.00.sp,
-                      //             color: forminputcolor,
-                      //             fontWeight: FontWeight.w500)),
-                      //     hint: Text('Select your options',
-                      //         style: GoogleFonts.jost(
-                      //             textStyle: TextStyle(
-                      //                 fontSize: 10.00.sp,
-                      //                 color: formhintcolor,
-                      //                 fontWeight: FontWeight.w500))),
-                      //     onChanged: (String? newValue) async {
-                      //       setState(() {
-                      //         selectvalue = newValue;
-                      //       });
-                      //     },
-                      //     icon: const Icon(Icons.arrow_drop_down_outlined),
-                      //     items: blogname
-                      //         .map<DropdownMenuItem<String>>((value) {
-                      //       return DropdownMenuItem<String>(
-                      //         value: value.toString(),
-                      //         child: Container(
-                      //             height: 5.0.hp,
-                      //             width: 35.0.wp,
-                      //             decoration: BoxDecoration(
-                      //                 borderRadius:
-                      //                     BorderRadius.circular(50),
-                      //                 border: Border.all(color: appcolor)),
-                      //             margin: const EdgeInsets.only(
-                      //                 left: 0, right: 4),
-                      //             child: Row(
-                      //               mainAxisAlignment:
-                      //                   MainAxisAlignment.spaceEvenly,
-                      //               children: [
-                      //                 Text(value,
-                      //                     style: GoogleFonts.jost(
-                      //                         textStyle: TextStyle(
-                      //                             fontSize: 10.00.sp,
-                      //                             color: Colors.black,
-                      //                             fontWeight:
-                      //                                 FontWeight.w400))),
-                      //                 const CircleAvatar(
-                      //                   backgroundColor: Colors.white,
-                      //                   child: Icon(
-                      //                     Icons.close,
-                      //                     size: 15,
-                      //                   ),
-                      //                 )
-                      //               ],
-                      //             )),
-                      //       );
-                      //     }).toList(),
-                      //   ),
-                      // )),
+
                       SizedBox(
                         height: 3.0.hp,
                       ),
@@ -371,4 +335,14 @@ class _YourBlogEditState extends State<YourBlogEdit> {
       ),
     );
   }
+}
+
+class Animal {
+  final int? id;
+  final String? name;
+
+  Animal({
+    this.id,
+    this.name,
+  });
 }

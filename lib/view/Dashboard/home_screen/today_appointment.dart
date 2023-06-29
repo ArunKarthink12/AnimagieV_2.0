@@ -126,7 +126,7 @@ class _TodayAppointmentState extends State<TodayAppointment> {
                                                 Image.asset(
                                                     'assets/images/clock.png'),
                                                 Text(
-                                                  '10.00am-12.00 pm',
+                                                  '10.00 am-12.00 pm',
                                                   style: forminputstyle,
                                                 ),
                                               ],

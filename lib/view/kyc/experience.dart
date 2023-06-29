@@ -148,9 +148,9 @@ class _ExperienceState extends State<Experience> {
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                       child: Container(
-                        height: 7.0.hp,
+                        height: 6.8.hp,
                         width: 90.0.wp,
-                        color: screenbackground,
+                        color: screenbackground, alignment: Alignment.center,
                         // padding: const EdgeInsets.only(
                         //   left: 23,
                         //   right: 25,
@@ -169,7 +169,7 @@ class _ExperienceState extends State<Experience> {
                                 borderSide: const BorderSide(
                                     color: screenbackground, width: 1),
                               ),
-                              hintText: 'Years in medical practice',
+                              hintText: 'Years in Medical Practice',
                               contentPadding: const EdgeInsets.all(10),
                               hintStyle: forminputstyle,
                               border: const OutlineInputBorder(

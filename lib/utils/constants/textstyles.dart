@@ -189,7 +189,7 @@ final fivehundredtweleve = GoogleFonts.poppins(
 final sixhundredfourteen = GoogleFonts.poppins(
     textStyle: const TextStyle(
         letterSpacing: 0.2,
-        fontSize: 14.00,
+        fontSize: 14.0,
         color: Colors.black,
         fontWeight: FontWeight.w600));
 final note = GoogleFonts.poppins(

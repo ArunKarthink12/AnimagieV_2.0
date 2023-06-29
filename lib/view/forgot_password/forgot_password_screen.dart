@@ -87,7 +87,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     'Don’t have an account?',
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
-                            fontSize: 12.00.sp,
+                            fontSize: 11.0.sp,
                             color: const Color(0xff6F6F6F),
                             fontWeight: FontWeight.w500)),
                   ),
@@ -95,7 +95,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     'Register',
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
-                            fontSize: 12.00.sp,
+                            fontSize: 11.0.sp,
                             color: appcolor,
                             fontWeight: FontWeight.w600)),
                   )

@@ -13,16 +13,16 @@ class KycStaticController extends GetxController {
   Future kycStaticController() async {
     try {
       var response = await kycstatticservice.kycStatic();
-      log('mobile---${response}');
+      // log('mobile---${response}');
       if (response != null) {
         _listdata.clear();
         _listdata.add(response);
         loading(false);
-        Fluttertoast.showToast(msg: "Success controller");
+        // Fluttertoast.showToast(msg: "Success controller");
       } else {
         loading(false);
 
-        Fluttertoast.showToast(msg: "failed controller");
+        // Fluttertoast.showToast(msg: "failed controller");
       }
     } catch (e) {
       rethrow;

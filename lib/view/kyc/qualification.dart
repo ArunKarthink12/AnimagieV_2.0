@@ -237,7 +237,7 @@ class _QualificationState extends State<Qualification> {
                         style: forminputstyle,
                         decoration: InputDecoration(
                             fillColor: const Color(0xffC6C6C6),
-                            hintText: 'Enter the major',
+                            hintText: 'Enter the Major',
                             contentPadding: const EdgeInsets.only(left: 10),
                             hintStyle: forminputstyle,
                             border: InputBorder.none),

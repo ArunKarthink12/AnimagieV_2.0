@@ -20,7 +20,7 @@ class KycStaticService {
           });
       print("Responce--->" + response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        Fluttertoast.showToast(msg: response.statusCode.toString());
+        // Fluttertoast.showToast(msg: response.statusCode.toString());
         var jsonresponse = jsonDecode(response.body);
 
         return KycStaticModel.fromJson(jsonresponse);

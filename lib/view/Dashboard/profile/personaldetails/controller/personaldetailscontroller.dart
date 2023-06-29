@@ -6,6 +6,7 @@ import '../model/personaldetailsmodel.dart';
 
 class PersonalDetailsController extends GetxController {
   RxList<DoctorDetailsModel> doctorDetailsList = <DoctorDetailsModel>[].obs;
+
   RxBool loadingindicator = false.obs;
   var clint = PersonalDetailsService();
   Future personalDetailsControl() async {

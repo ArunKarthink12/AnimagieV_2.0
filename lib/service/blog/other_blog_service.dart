@@ -41,7 +41,7 @@ class YourBlogService {
                 userId: job.userId))
             .toList();
       } else {
-        Fluttertoast.showToast(msg: "Failed");
+        // Fluttertoast.showToast(msg: "Failed");
         return null;
       }
     } catch (e) {

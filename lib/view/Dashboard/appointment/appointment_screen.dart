@@ -1,5 +1,7 @@
 // import 'dart:developer';
 
+import 'package:doctorapp/view/Dashboard/profile/personaldetails/controller/direct_to_home.dart';
+
 import '../../allpackages.dart';
 import '../home_screen/otherblog.dart';
 import '../home_screen/your_blog.dart';
@@ -27,6 +29,7 @@ class _AppointmentState extends State<Appointment> {
     });
   }
 
+  GoHome goHome = Get.put(GoHome());
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -36,8 +39,15 @@ class _AppointmentState extends State<Appointment> {
           elevation: 0,
           backgroundColor: bgcolor,
           centerTitle: true,
-          leading: Icon(
-            Icons.arrow_back,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+            ),
+            onPressed: () {
+              goHome.currentIndex.value = 0;
+
+              setState(() {});
+            },
             color: headingtext,
           ),
           title: Text(

@@ -1,3 +1,5 @@
+import 'package:doctorapp/view/Dashboard/appointment/session_details.dart';
+
 import '../../allpackages.dart';
 
 class ViewDetails extends StatefulWidget {
@@ -154,14 +156,20 @@ class _ViewDetailsState extends State<ViewDetails> {
                                   'Prescription',
                                   style: uploadpic,
                                 ),
-                                Text(
-                                  'Edit',
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                          fontSize: 12.00,
-                                          decoration: TextDecoration.underline,
-                                          color: Color(0xff0F52BA),
-                                          fontWeight: FontWeight.w500)),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(const AddDetails());
+                                  },
+                                  child: Text(
+                                    'Edit',
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            fontSize: 12.00,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: Color(0xff0F52BA),
+                                            fontWeight: FontWeight.w500)),
+                                  ),
                                 ),
                               ],
                             ),
@@ -186,14 +194,20 @@ class _ViewDetailsState extends State<ViewDetails> {
                                 SizedBox(
                                   height: 1.0.hp,
                                 ),
-                                Text(
-                                  'Edit',
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                          fontSize: 12.00,
-                                          decoration: TextDecoration.underline,
-                                          color: Color(0xff0F52BA),
-                                          fontWeight: FontWeight.w500)),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(AddDetails());
+                                  },
+                                  child: Text(
+                                    'Edit',
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            fontSize: 12.00,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: Color(0xff0F52BA),
+                                            fontWeight: FontWeight.w500)),
+                                  ),
                                 ),
                               ],
                             ),

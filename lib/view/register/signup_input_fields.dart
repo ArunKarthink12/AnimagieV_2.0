@@ -147,10 +147,10 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
             ),
             SizedBox(height: 2.00.hp),
             Text(
-              'OR',
+              'or',
               style: GoogleFonts.inter(
                   // letterSpacing: 0.2,
-                  fontSize: 14.0.sp,
+                  fontSize: 12.0.sp,
                   color: Color(0xff000958),
                   fontWeight: FontWeight.w700),
             ),
@@ -160,7 +160,7 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
                 'Register Using',
                 style: GoogleFonts.poppins(
                     textStyle: TextStyle(
-                        fontSize: 14.00.sp,
+                        fontSize: 12.0.sp,
                         color: const Color(0xff292D32),
                         fontWeight: FontWeight.w600)),
               ),
@@ -208,7 +208,7 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
                         width: 1.0.wp,
                       ),
                       Text(
-                        'Terms & Condition',
+                        'Terms & Conditions',
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                                 decoration: TextDecoration.underline,
