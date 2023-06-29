@@ -1,3 +1,5 @@
+// import 'package:email_auth/email_auth.dart';
+import 'package:email_auth/email_auth.dart';
 import '../allpackages.dart';
 
 class ForgotOTPScreen extends StatefulWidget {
@@ -48,7 +50,7 @@ class _ForgotOTPScreenState extends State<ForgotOTPScreen> {
                             height: 25.0.hp,
                             width: 25.0.hp,
                             child: Image.asset('assets/images/A_logo.png')),
-                        Text('Enter Verification Code',
+                        Text('Enter Verification Code'.toUpperCase(),
                             style: toptitleStylebold),
                         SizedBox(height: 2.00.hp),
                         SizedBox(

@@ -25,20 +25,13 @@ class ForgotPasswordService {
       log('toast------');
 
       if (response.statusCode == 200) {
-        // if (jsonresponse['status'] == 'success') {
         Fluttertoast.showToast(msg: jsonresponse['message'].toString());
         return ForgetOtpModel.fromJson(jsonresponse);
       } else {
-        // Fluttertoast.showToast(msg: jsonresponse['message'].toString());
+        Fluttertoast.showToast(msg: jsonresponse['message'].toString());
         return null;
       }
-    }
-    //  else {
-    //   // Fluttertoast.showToast(msg: jsonresponse['message'].toString());
-    //   return null;
-    // }
-    // }
-    catch (e) {
+    } catch (e) {
       rethrow;
     }
   }

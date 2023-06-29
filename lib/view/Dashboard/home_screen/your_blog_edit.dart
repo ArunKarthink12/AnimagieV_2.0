@@ -315,6 +315,7 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                             text: 'SAVE CHANGES',
                             bordercolor: buttoncolor,
                             press: () {
+                              Get.back();
                               //need blog id to edit seperate details
                               //Future.delayed(Duration.zero, () async {
                               //   await editBlogController

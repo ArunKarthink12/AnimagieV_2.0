@@ -22,7 +22,7 @@ class _DummyDetailsState extends State<DummyDetails> {
               child: Image.asset('assets/images/A_logo.png')),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.02,
+          height: 2.0.hp,
         ),
         Text(
           'RESET PASSWORD',

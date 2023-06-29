@@ -243,47 +243,58 @@ class _HomePageState extends State<HomePage>
       length: 3,
       child: Scaffold(
           appBar: AppBar(
+            leadingWidth: 70.0.wp,
+            toolbarHeight: 10.0.hp,
             elevation: 0,
             backgroundColor: bgcolor,
-            leadingWidth: 50.0.wp,
-            leading: ListTile(
-              minLeadingWidth: 20.0.wp,
-              leading: Padding(
-                padding: const EdgeInsets.only(top: 10.0),
+            leading: SizedBox(
+              child: Padding(
+                padding: EdgeInsets.only(left: 25.0.sp),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Dr. John Wilson!',
-                          style: TextStyle(
-                              letterSpacing: 0.2,
-                              fontSize: 20.00,
-                              color: headingtext,
-                              fontWeight: FontWeight.w800)),
+                      SizedBox(
+                        height: 2.0.hp,
+                      ),
+                      Container(
+                        color: Colors.transparent,
+                        width: 80.0.wp,
+                        child: Text('Dr. Ranjith Wilson',
+                            style: TextStyle(
+                                // letterSpacing: 0.2,
+                                fontSize: 17.0.sp,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w800)),
+                      ),
                       SizedBox(
                         height: 1.0.hp,
                       ),
-                      const Text('Welcome to Jooju',
-                          style: TextStyle(
-                              letterSpacing: 0.2,
-                              fontSize: 12.00,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400))
+                      Container(
+                        color: Colors.transparent,
+                        width: 43.0.wp,
+                        child: Text('Welcome to Jooju',
+                            style: TextStyle(
+                                // letterSpacing: 0.2,
+                                fontSize: 9.0.sp,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400)),
+                      )
                     ]),
               ),
             ),
             actions: [
               Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: InkWell(
-                      onTap: () {
-                        Get.to(NotificationPage());
-                      },
-                      child: Container(
-                          width: 5.0.wp,
-                          height: 5.0.hp,
-                          child:
-                              Image.asset('assets/images/notification.png')))),
+                padding: const EdgeInsets.only(right: 10.0),
+                child: InkWell(
+                    onTap: () {
+                      Get.to(NotificationPage());
+                    },
+                    child: Container(
+                        width: 5.0.wp,
+                        height: 5.0.hp,
+                        child: Image.asset('assets/images/notification.png'))),
+              ),
             ],
           ),
           body: SingleChildScrollView(

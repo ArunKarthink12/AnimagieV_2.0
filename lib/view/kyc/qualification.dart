@@ -215,32 +215,48 @@ class _QualificationState extends State<Qualification> {
                     SizedBox(
                       height: 1.00.hp,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text('What\'s is the Major in Masters',
-                              style: sixhundredtweleve)),
+                    Visibility(
+                      visible:
+                          kycController.qualification.value == 1 ? true : false,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text('What\'s is the Major in Masters',
+                                    style: sixhundredtweleve)),
+                          ),
+                          SizedBox(
+                            height: 2.00.hp,
+                          ),
+                          Container(
+                            color: Colors.white,
+                            height: 6.00.hp, width: 85.00.wp,
+                            // padding: const EdgeInsets.only(
+                            //   left: 20,
+                            //   right: 20,
+                            // ),
+                            child: TextFormField(
+                              controller: kycController.qualification_details,
+                              style: forminputstyle,
+                              decoration: InputDecoration(
+                                  fillColor: const Color(0xffC6C6C6),
+                                  hintText: 'Enter the Major',
+                                  contentPadding:
+                                      const EdgeInsets.only(left: 10),
+                                  hintStyle: forminputstyle,
+                                  border: InputBorder.none),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    SizedBox(
-                      height: 2.00.hp,
-                    ),
-                    Container(
-                      color: Colors.white,
-                      height: 6.00.hp, width: 85.00.wp,
-                      // padding: const EdgeInsets.only(
-                      //   left: 20,
-                      //   right: 20,
-                      // ),
-                      child: TextFormField(
-                        controller: kycController.qualification_details,
-                        style: forminputstyle,
-                        decoration: InputDecoration(
-                            fillColor: const Color(0xffC6C6C6),
-                            hintText: 'Enter the Major',
-                            contentPadding: const EdgeInsets.only(left: 10),
-                            hintStyle: forminputstyle,
-                            border: InputBorder.none),
+                    Visibility(
+                      visible:
+                          kycController.qualification.value == 0 ? true : false,
+                      child: SizedBox(
+                        height: 9.00.hp,
                       ),
                     ),
                     SizedBox(
@@ -249,9 +265,14 @@ class _QualificationState extends State<Qualification> {
                     ButtonIconButton(
                       press: () {
                         // loginController.loginController(context: context);
-                        if (kycController.qualification_details.text.isEmpty) {
-                          Fluttertoast.showToast(
-                              msg: 'pls enter qualification details');
+                        if (kycController.qualification.value == 1) {
+                          if (kycController
+                              .qualification_details.text.isEmpty) {
+                            Fluttertoast.showToast(
+                                msg: 'pls enter qualification details');
+                          } else {
+                            Get.to(CouncilRegisterNumer());
+                          }
                         } else {
                           Get.to(CouncilRegisterNumer());
                         }

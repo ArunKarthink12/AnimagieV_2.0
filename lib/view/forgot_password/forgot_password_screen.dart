@@ -53,7 +53,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 height: 25.0.hp,
                 width: 25.0.hp,
                 child: Image.asset('assets/images/A_logo.png')),
-            Text('FORGOT PASSWORD', style: toptitleStylebold),
+            Text('FORGOT  ', style: toptitleStylebold),
             SizedBox(height: 2.00.hp),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,

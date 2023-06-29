@@ -784,7 +784,9 @@ class _DatePickerState extends State<DatePicker> {
                   text: widget.buttonss.toString(),
                   bordercolor: Colors.blue,
                   press: () {
-                    Get.to(const UploadDocuments());
+                    widget.buttonss == "CONTINUE"
+                        ? Get.to(const UploadDocuments())
+                        : Get.back();
                   }),
             )
           ],
