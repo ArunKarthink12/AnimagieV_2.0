@@ -1,11 +1,16 @@
 // import 'dart:convert';
 // import 'dart:developer';
 
+import 'dart:convert';
+
 import 'package:doctorapp/Urls/utils_Urls.dart';
 import 'package:doctorapp/utils/common_function/constants.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../model/taglistModel.dart';
 
 // import '../model/personaldetailsmodel.dart';
 class TagListService {
@@ -20,17 +25,12 @@ class TagListService {
         headers: {'Authorization': 'Bearer $token'},
       );
 
-      // var jsonresponse = jsonDecode(response.body);
-      // log(response.body.toString());
-
       if (response.statusCode == 200) {
-        // print("123" + response.body);
-        // Fluttertoast.showToast(msg: "Success");
-// ???Modelclassmissing
-        // return  .fromJson(jsonresponse);
-      } else {
-        // Fluttertoast.showToast(msg: "Failed");
-      }
+        // var json = jsonDecode(response.body).toString();
+        // print("datas--> " + json);
+
+        return yourBlogModelFromJson(response.body);
+      } else {}
     } catch (e) {
       rethrow;
     }

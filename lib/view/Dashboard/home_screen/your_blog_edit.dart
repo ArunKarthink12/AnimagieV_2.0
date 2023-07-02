@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 // import 'package:doctorapp/controller/blogupdatecontroller.dart';
@@ -17,7 +18,16 @@ import 'package:multi_dropdown/multiselect_dropdown.dart';
 // import '../../allpackages.dart';
 
 class YourBlogEdit extends StatefulWidget {
-  const YourBlogEdit({super.key});
+  String tags;
+  String image;
+  String topic;
+  String content;
+  YourBlogEdit(
+      {super.key,
+      required this.tags,
+      required this.content,
+      required this.image,
+      required this.topic});
 
   @override
   State<YourBlogEdit> createState() => _YourBlogEditState();
@@ -25,7 +35,7 @@ class YourBlogEdit extends StatefulWidget {
 
 class _YourBlogEditState extends State<YourBlogEdit> {
   var selectindex = 0;
-  List blogname = ['Dog Blog', 'Health', 'Funny Friend'];
+  // List blogname = ['Dog Blog', 'Health', 'Funny Friend'];
   // var selectvalue;
   // var dummylist;
   BlogCreateController blogCreateController = Get.put(BlogCreateController());
@@ -33,12 +43,32 @@ class _YourBlogEditState extends State<YourBlogEdit> {
   TagListController taglistcontroller = Get.put(TagListController());
   EditBlogController editBlogController = Get.put(EditBlogController());
   List<String> selected = [];
+  YourBlogController yourBlogController = Get.put(YourBlogController());
 
   @override
   void initState() {
     // TODO: implement initState
-    taglistcontroller.tagListControllerFunction();
+    fetchData();
     super.initState();
+  }
+
+  List<String> optionss = [];
+  fetchData() {
+    Future.delayed(Duration.zero, () async {
+      await
+          // yourBlogController.yourController();
+          taglistcontroller.tagListControllerFunction().then((value) {
+        splitString();
+      });
+    });
+  }
+
+  splitString() {
+    setState(() {
+      optionss = widget.tags.split(",");
+    });
+    // var json = jsonDecode(optionss as String);
+    print("tagss" + optionss.toString());
   }
 
   Widget build(BuildContext context) {
@@ -206,8 +236,7 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                                     width: 1),
                               ),
                               fillColor: const Color(0xffC6C6C6),
-                              hintText:
-                                  'How to Tell If your Dog Is At a Healthy Weight',
+                              hintText: widget.topic.toString(),
                               hintStyle: fourhundredtweleve,
                               labelStyle: const TextStyle(color: Colors.white),
                               contentPadding:
@@ -229,6 +258,18 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                       ),
 
                       ///TagListobx
+                      // Obx(() {
+                      //   if (taglistcontroller.loading.isTrue) {
+                      //     return SizedBox(
+                      //         height: 10,
+                      //         width: 20,
+                      //         child: CircularProgressIndicator());
+                      //   } else if (taglistcontroller.tagListList.isEmpty) {
+                      //     return Center(
+                      //       child: Text("NO Data"),
+                      //     );
+                      //   } else {
+                      //     return
                       Container(
                         height: 7.00.hp,
                         width: 95.00.wp,
@@ -246,10 +287,14 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                           onOptionSelected: (options) {
                             debugPrint(options.toString());
                           },
-                          options: List.generate(
-                              blogname.length,
+                          selectedOptions: List.generate(
+                              optionss.length,
                               (index) =>
-                                  ValueItem(label: blogname[index].toString())),
+                                  ValueItem(label: optionss[index].toString())),
+                          options: List.generate(
+                              optionss.length,
+                              (index) =>
+                                  ValueItem(label: optionss[index].toString())),
                           selectionType: SelectionType.multi,
                           chipConfig:
                               const ChipConfig(wrapType: WrapType.scroll),
@@ -259,6 +304,8 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                           selectedOptionIcon: const Icon(Icons.check_circle),
                         ),
                       ),
+                      //   }
+                      // }),
 
                       SizedBox(
                         height: 3.0.hp,
@@ -296,8 +343,7 @@ class _YourBlogEditState extends State<YourBlogEdit> {
                                     width: 1),
                               ),
                               fillColor: const Color(0xffC6C6C6),
-                              hintText:
-                                  '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.''',
+                              hintText: widget.content.toString(),
                               hintStyle: fivehundredtweleve,
                               labelStyle: const TextStyle(color: Colors.white),
                               contentPadding:

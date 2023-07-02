@@ -4,14 +4,36 @@
 
 import 'dart:convert';
 
-List<YourBlogModel> yourBlogModelFromJson(String str) =>
-    List<YourBlogModel>.from(
-        json.decode(str).map((x) => YourBlogModel.fromJson(x)));
+YourBlogModel yourBlogModelFromJson(String str) =>
+    YourBlogModel.fromJson(json.decode(str));
 
-String yourBlogModelToJson(List<YourBlogModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String yourBlogModelToJson(YourBlogModel data) => json.encode(data.toJson());
 
 class YourBlogModel {
+  String status;
+  String message;
+  List<Datum> data;
+
+  YourBlogModel({
+    required this.status,
+    required this.message,
+    required this.data,
+  });
+
+  factory YourBlogModel.fromJson(Map<String, dynamic> json) => YourBlogModel(
+        status: json["status"],
+        message: json["message"],
+        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "status": status,
+        "message": message,
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+      };
+}
+
+class Datum {
   int id;
   int userId;
   String image;
@@ -22,7 +44,7 @@ class YourBlogModel {
   DateTime updatedAt;
   String imagePath;
 
-  YourBlogModel({
+  Datum({
     required this.id,
     required this.userId,
     required this.image,
@@ -34,10 +56,10 @@ class YourBlogModel {
     required this.imagePath,
   });
 
-  factory YourBlogModel.fromJson(Map<String, dynamic> json) => YourBlogModel(
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         id: json["id"],
         userId: json["user_id"],
-        image: json["image"],
+        image: json["image"] == null ? "" : json["image"],
         topic: json["topic"],
         content: json["content"],
         tags: json["tags"],

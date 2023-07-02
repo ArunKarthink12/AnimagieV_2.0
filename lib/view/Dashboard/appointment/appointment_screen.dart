@@ -23,10 +23,18 @@ class _AppointmentState extends State<Appointment> {
     super.initState();
   }
 
+  List<String> items = [];
   fetchdata() {
     Future.delayed(Duration.zero, () async {
       await yourBlogController.yourController();
     });
+    // for (int i = 0; i < yourBlogController.listdata.first.data.length; i++) {
+    //   yourBlogController.listdata.first.data[i].tags.split(", ").toString();
+    //   print("tagsss" +
+    //       yourBlogController.listdata.first.data[i].tags
+    //           .split(", ")
+    //           .toString());
+    // }
   }
 
   GoHome goHome = Get.put(GoHome());
@@ -55,176 +63,186 @@ class _AppointmentState extends State<Appointment> {
             style: sixteeneighthundred000958,
           ),
         ),
-        body: Container(
-          height: 100.0.hp,
-          width: 100.0.wp,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/background.png"),
-              fit: BoxFit.fill,
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 10.0,
-              right: 10,
-            ),
-            child: SingleChildScrollView(
-              child: Stack(
-                children: [
-                  Container(
-                    height: 100.0.hp,
-                    width: 100.0.wp,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/background.png',
+        body: Obx(() {
+          if (yourBlogController.isLoding.isTrue) {
+            return CircularProgressIndicator();
+          } else if (yourBlogController.listdata.first.message != "Your Blog") {
+            return Center(child: Text("No Datas"));
+          } else {
+            return Container(
+              height: 100.0.hp,
+              width: 100.0.wp,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/background.png"),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 10.0,
+                  right: 10,
+                ),
+                child: SingleChildScrollView(
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: 100.0.hp,
+                        width: 100.0.wp,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                          image: AssetImage(
+                            'assets/images/background.png',
+                          ),
+                          fit: BoxFit.cover,
+                        )),
                       ),
-                      fit: BoxFit.cover,
-                    )),
-                  ),
-                  Positioned(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Stack(
+                      Positioned(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Stack(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: appcolor,
+                                      borderRadius:
+                                          BorderRadius.circular(10.0.sp)),
+                                  height: 20.0.hp,
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 10.0.wp,
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          // crossAxisAlignment:
+                                          // CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              '''Write a blog offering pet owners useful insights for improved furry friend care.
+                                      ''',
+                                              maxLines: 4,
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.white,
+                                                  fontSize: 10.0.sp,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            SizedBox(
+                                              height: 1.0.hp,
+                                            ),
+                                            Container(
+                                              height: 3.0.hp,
+                                              // width: 15.0.wp,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        7.0.sp),
+                                                color: Colors.white,
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: Text(
+                                                "post your blog",
+                                                style: GoogleFonts.poppins(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 8.0.sp),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: SizedBox(
+                                          child: Image.asset(
+                                              'assets/images/bannerinside.png'),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10.0.wp,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(const CreateBlog());
+                                    print("print");
+                                  },
+                                  child: SizedBox(
+                                    height: 20.0.hp,
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Image.asset('assets/images/paw.png'),
+                                  ),
+                                )
+                              ],
+                            ),
                             Container(
+                              height: 50,
                               decoration: BoxDecoration(
-                                  color: appcolor,
-                                  borderRadius: BorderRadius.circular(10.0.sp)),
-                              height: 20.0.hp,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 10.0.wp,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      // crossAxisAlignment:
-                                      // CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          '''Write a blog offering pet owners useful insights for improved furry friend care.
-                                  ''',
-                                          maxLines: 4,
-                                          style: GoogleFonts.poppins(
-                                              color: Colors.white,
-                                              fontSize: 10.0.sp,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        SizedBox(
-                                          height: 1.0.hp,
-                                        ),
-                                        Container(
-                                          height: 3.0.hp,
-                                          // width: 15.0.wp,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(7.0.sp),
-                                            color: Colors.white,
-                                          ),
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            "post your blog",
-                                            style: GoogleFonts.poppins(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 8.0.sp),
-                                          ),
-                                        )
-                                      ],
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: TabBar(
+                                onTap: (index) {
+                                  setState(() {});
+                                },
+                                isScrollable: true,
+                                unselectedLabelColor: Colors.grey,
+                                indicator: const BoxDecoration(),
+                                labelColor: const Color(0xff0F52BA),
+                                dividerColor: const Color(0xff0F52BA),
+                                labelStyle: blog,
+                                unselectedLabelStyle: forminputstyle,
+
+                                // ignore: prefer_const_literals_to_create_immutables
+                                tabs: [
+                                  const Tab(
+                                    child: Text(
+                                      'Others Blogs',
                                     ),
                                   ),
-                                  Expanded(
-                                    child: SizedBox(
-                                      child: Image.asset(
-                                          'assets/images/bannerinside.png'),
+                                  const Tab(
+                                    child: Text(
+                                      'Your Blog',
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.0.wp,
                                   ),
                                 ],
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(const YourBlogEdit());
-                                print("print");
-                              },
-                              child: SizedBox(
-                                height: 20.0.hp,
-                                width: MediaQuery.of(context).size.width,
-                                child: Image.asset('assets/images/paw.png'),
-                              ),
+                            SizedBox(
+                              height: 1000.0.hp,
+                              width: 1000.0.wp,
+                              child: TabBarView(children: [
+                                // Obx(() {
+                                //   // print(
+                                //   //     'othercontroller------------${otherBlogController.listdata.length}');
+                                //   if (yourBlogController.isLoding.isTrue) {
+                                //     return const Center(
+                                //         child: CircularProgressIndicator());
+                                //   } else if (yourBlogController.listdata.isEmpty) {
+                                //     return const Center(
+                                //       child: Text('No Data Found'),
+                                //     );
+                                //   } else {
+                                //     return
+                                OtherBlog(),
+                                // }
+                                // }),
+                                YourBlog(),
+                              ]),
                             )
                           ],
                         ),
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: TabBar(
-                            onTap: (index) {
-                              setState(() {});
-                            },
-                            isScrollable: true,
-                            unselectedLabelColor: Colors.grey,
-                            indicator: const BoxDecoration(),
-                            labelColor: const Color(0xff0F52BA),
-                            dividerColor: const Color(0xff0F52BA),
-                            labelStyle: blog,
-                            unselectedLabelStyle: forminputstyle,
-
-                            // ignore: prefer_const_literals_to_create_immutables
-                            tabs: [
-                              const Tab(
-                                child: Text(
-                                  'Others Blogs',
-                                ),
-                              ),
-                              const Tab(
-                                child: Text(
-                                  'Your Blog',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 1000.0.hp,
-                          width: 1000.0.wp,
-                          child: TabBarView(children: [
-                            // Obx(() {
-                            //   // print(
-                            //   //     'othercontroller------------${otherBlogController.listdata.length}');
-                            //   if (yourBlogController.isLoding.isTrue) {
-                            //     return const Center(
-                            //         child: CircularProgressIndicator());
-                            //   } else if (yourBlogController.listdata.isEmpty) {
-                            //     return const Center(
-                            //       child: Text('No Data Found'),
-                            //     );
-                            //   } else {
-                            //     return
-                            OtherBlog(),
-                            // }
-                            // }),
-                            YourBlog(),
-                          ]),
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
-        ),
+            );
+          }
+        }),
 
         //
       ),

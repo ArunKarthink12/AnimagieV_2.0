@@ -1,3 +1,5 @@
+import 'package:doctorapp/view/kyc/enterotp.dart';
+
 import '../../controller/register_controller.dart';
 import '../allpackages.dart';
 
@@ -245,7 +247,8 @@ class _SignupInputFieldsState extends State<SignupInputFields> {
                   Fluttertoast.showToast(
                       msg: "password should be greater then equal to 8 Digits");
                 } else if (isEmailValid()) {
-                  Get.to(const UploadPictureDetail());
+                  Get.to(VerifyOTP());
+                  // Get.to(const UploadPictureDetail());
                 } else {
                   Fluttertoast.showToast(msg: "Enter The Valid Email");
                 }

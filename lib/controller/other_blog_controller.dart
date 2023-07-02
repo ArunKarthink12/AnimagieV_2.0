@@ -17,18 +17,13 @@ class YourBlogController extends GetxController {
     try {
       var response = await yourblogservice.yourBlogService();
 
-      print("controllerzz=>");
       if (response != null) {
-        print("controlleryy=> ");
         listdata.clear();
         listdata.add(response);
-        print("controller=>${response}");
 
         isLoding(false);
       } else {
-        print("fcontroller=>");
-
-        // print("fcontroller=>${listdata}");
+        // print("fcontroller=>");
         isLoding(false);
       }
     } catch (e) {

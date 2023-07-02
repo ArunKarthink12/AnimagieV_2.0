@@ -1,3 +1,5 @@
+import 'package:doctorapp/controller/register_controller.dart';
+
 import '../allpackages.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -10,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   AssetImage? images;
   // String? token;
+  RegisterController registerController = Get.put(RegisterController());
 
   @override
   void initState() {
@@ -72,6 +75,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 3.0.hp),
                     GestureDetector(
                       onTap: () {
+                        registerController.email.text = '';
+                        registerController.name.text = '';
+                        registerController.password.text = '';
+                        registerController.password_confirmation.text = '';
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(

@@ -1,11 +1,11 @@
 // To parse this JSON data, do
-// //
-// //     final cancelRequestModel = cancelRequestModelFromJson(jsonString);
+//
+//     final yourBlogModel = yourBlogModelFromJson(jsonString);
 
-// import 'dart:convert';
+import 'dart:convert';
 
-// Map<String, String> cancelRequestModelFromJson(String str) =>
-//     Map.from(json.decode(str)).map((k, v) => MapEntry<String, String>(k, v));
+List<String> yourBlogModelFromJson(String str) =>
+    List<String>.from(json.decode(str).map((x) => x));
 
-// String cancelRequestModelToJson(Map<String, String> data) =>
-//     json.encode(Map.from(data).map((k, v) => MapEntry<String, dynamic>(k, v)));
+String yourBlogModelToJson(List<String> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x)));

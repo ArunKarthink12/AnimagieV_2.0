@@ -10,6 +10,8 @@ import 'dart:io';
 import '../view/allpackages.dart';
 
 class BlogCreateController extends GetxController {
+  YourBlogController yourBlogController = Get.put(YourBlogController());
+
   var blogCreateservice = BlogCreateService();
   List<BlogCreateModel> _listdata = [];
   List<BlogCreateModel> get listdata => _listdata;
@@ -62,7 +64,10 @@ class BlogCreateController extends GetxController {
   }
 
   doubleback() {
-    Get.back();
-    Get.back();
+    Future.delayed(Duration.zero, () async {
+      await yourBlogController.yourController();
+      Get.back();
+      Get.back();
+    });
   }
 }

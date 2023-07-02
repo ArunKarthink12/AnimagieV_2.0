@@ -6,14 +6,14 @@ import 'package:multi_dropdown/multiselect_dropdown.dart';
 import '../../../allpackages.dart';
 // import '../../allpackages.dart';
 
-class YourBlogEdit extends StatefulWidget {
-  const YourBlogEdit({super.key});
+class CreateBlog extends StatefulWidget {
+  const CreateBlog({super.key});
 
   @override
-  State<YourBlogEdit> createState() => _YourBlogEditState();
+  State<CreateBlog> createState() => _CreateBlogState();
 }
 
-class _YourBlogEditState extends State<YourBlogEdit> {
+class _CreateBlogState extends State<CreateBlog> {
   var selectindex = 0;
   List blogname = ['Dog Blog', 'Health', 'Funny Friend'];
   var selectvalue;

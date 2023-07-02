@@ -24,22 +24,14 @@ class YourBlogService {
           });
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        print("servicess" + response.body.toString());
-
+        // print("servicess" + response.body.toString());
+        var json = jsonDecode(response.body);
+        return YourBlogModel.fromJson(json);
         // Fluttertoast.showToast(msg: "success");
-        List<YourBlogModel> apiResponse = json.decode(response.body);
-        return apiResponse
-            .map((job) => YourBlogModel(
-                content: job.content,
-                createdAt: job.createdAt,
-                id: job.id,
-                image: job.image,
-                imagePath: job.imagePath,
-                tags: job.tags,
-                topic: job.topic,
-                updatedAt: job.updatedAt,
-                userId: job.userId))
-            .toList();
+        // List<YourBlogModel> apiResponse = json.decode(response.body);
+        // return apiResponse
+        //     .map((job) => YourBlogModel()
+        //     .toList();
       } else {
         // Fluttertoast.showToast(msg: "Failed");
         return null;

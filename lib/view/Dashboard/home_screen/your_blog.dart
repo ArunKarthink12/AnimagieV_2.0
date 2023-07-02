@@ -1,4 +1,5 @@
 import 'package:doctorapp/view/Dashboard/home_screen/your_blog_edit.dart';
+import 'package:intl/intl.dart';
 
 import '../../allpackages.dart';
 
@@ -11,17 +12,23 @@ class YourBlog extends StatefulWidget {
 
 class _YourBlogState extends State<YourBlog> {
   // OtherBlogController otherBlogController = Get.find();
+  YourBlogController yourBlogController = Get.put(YourBlogController());
+  DateTime now = DateTime.now();
 
+  // Formatting the date
+  // String formattedDate = DateFormat('yyyy-MM-dd').format(now);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 1000.0.hp,
       child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
-          itemCount: 10,
+          itemCount: yourBlogController.listdata.first.data.length,
           // otherBlogController.listdata.length,
           itemBuilder: (context, index) {
-            var item = "";
+            var item = yourBlogController.listdata.first.data[index].imagePath;
+            var itemnull = yourBlogController.listdata.first.data[index].image;
+            print("images${item}");
             // otherBlogController.listdata[index];
             return Container(
               height: 20.0.hp,
@@ -30,14 +37,19 @@ class _YourBlogState extends State<YourBlog> {
                 child: Row(
                   children: [
                     Container(
-                        height: 15.0.hp,
-                        width: 30.0.wp,
-                        child: item == ""
-                            ? Image.asset(
-                                'assets/images/threedog.png',
-                                fit: BoxFit.cover,
-                              )
-                            : Image.network(item)),
+                      height: 15.0.hp,
+                      width: 30.0.wp,
+                      child: itemnull.isEmpty
+                          //  == null
+                          ? Image.asset(
+                              'assets/images/threedog.png',
+                              fit: BoxFit.cover,
+                            )
+                          : Image.network(
+                              item.toString(),
+                              fit: BoxFit.cover,
+                            ),
+                    ),
                     SizedBox(
                       width: 4.0.wp,
                     ),
@@ -65,26 +77,30 @@ class _YourBlogState extends State<YourBlog> {
                                   ))),
                             ),
                             SizedBox(
-                              width: 13.0.wp,
+                              width: 19.0.wp,
                             ),
                             Padding(
                               padding: EdgeInsets.only(
                                 top: 8.0,
                               ),
                               child: Text(
-                                'Jan 4,2023',
+                                DateFormat('yyyy-MM-dd').format(
+                                    yourBlogController
+                                        .listdata.first.data[index].createdAt),
                                 style: formhintstyle,
                               ),
                             )
                           ],
                         ),
                         Text(
-                          'How To Tell If Your Dog\n Is At A Healthy Weight',
+                          yourBlogController.listdata.first.data[index].topic
+                              .toString(),
                           style: subtitleStyle,
                           maxLines: 2,
                         ),
                         Text(
-                          'For dogs to lead an active,......',
+                          yourBlogController.listdata.first.data[index].content
+                              .toString(),
                           style: formhintstyle,
                           maxLines: 2,
                         ),
@@ -114,7 +130,20 @@ class _YourBlogState extends State<YourBlog> {
                                 ),
                                 InkWell(
                                     onTap: () {
-                                      Get.to(YourBlogEdit());
+                                      Get.to(YourBlogEdit(
+                                        image: yourBlogController.listdata.first
+                                            .data[index].imagePath
+                                            .toString(),
+                                        content: yourBlogController
+                                            .listdata.first.data[index].content
+                                            .toString(),
+                                        topic: yourBlogController
+                                            .listdata.first.data[index].topic
+                                            .toString(),
+                                        tags: yourBlogController
+                                            .listdata.first.data[index].tags
+                                            .toString(),
+                                      ));
                                     },
                                     child: Container(
                                       width: 10.0.wp,
