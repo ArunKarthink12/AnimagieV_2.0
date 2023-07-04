@@ -95,6 +95,49 @@ class _ProfileState extends State<Profile> {
                               fontWeight: FontWeight.w600),
                         ),
                       ),
+                      trailing: GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                  backgroundColor: Colors.transparent,
+                                  content: Container(
+                                    height: 30.0.hp,
+                                    color: Colors.transparent,
+                                    // Color(0xffE4D524),
+                                    alignment: Alignment.center,
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 20.0.hp,
+                                          width: 18.0.wp,
+                                          child: Image.asset(
+                                              "assets/images/warning-removebg-preview.png"),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.of(context);
+                                            Get.to(UploadPictureDetail());
+                                          },
+                                          child: Text(
+                                            "Complete Your KYC",
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ));
+                            },
+                          );
+                        },
+                        child: SizedBox(
+                          height: 20.0.hp,
+                          width: 18.0.wp,
+                          child: Image.asset(
+                              "assets/images/warning-removebg-preview.png"),
+                        ),
+                      ),
                     ),
                     Card(
                       shape: RoundedRectangleBorder(
@@ -233,6 +276,7 @@ class _OptionListState extends State<OptionList> {
                     ]);
               }),
         ),
+        Text("Kyc"),
         InkWell(
           onTap: () {
             showDialog(
